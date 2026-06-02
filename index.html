@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Target Vocabulary</title>
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.0/index.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5B5BFF;
+            --primary-light: #7B7BFF;
+            --bg-dark: #FAFBFC;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #F5F8FB;
+            --text-main: #0F1419;
+            --text-secondary: #5A6B7C;
+            --accent-green: #1DB854;
+            --accent-pink: #F97316;
+            --accent-blue: #0EA5E9;
+            --border-color: rgba(91, 91, 255, 0.12);
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(91, 91, 255, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(29, 184, 84, 0.04) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(91, 91, 255, 0.06), rgba(29, 184, 84, 0.04));
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 1.5rem auto 0;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .search-bar::before {
+            content: "🔍";
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+        }
+
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .vocab-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vocab-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+            background: var(--bg-card-hover);
+            border-color: var(--primary-light);
+        }
+
+        .vocab-card.expanded {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 20px rgba(44, 182, 125, 0.15);
+        }
+
+        .vocab-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .vocab-word {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-main);
+            word-break: break-word;
+        }
+
+        .vocab-controls {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .btn-speak {
+            background: rgba(91, 91, 255, 0.1);
+            border: 1px solid var(--border-color);
+            color: var(--primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
+        }
+
+        .btn-speak:hover {
+            background: var(--primary);
+            color: var(--text-main);
+            transform: scale(1.1);
+        }
+
+        .btn-speak.speaking {
+            background: var(--accent-green);
+            color: var(--text-main);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .feedback-message {
+            min-width: 220px;
+            padding: 0.75rem 1rem;
+            border-radius: 14px;
+            font-weight: 700;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .feedback-success {
+            background: rgba(34, 197, 94, 0.12);
+            color: #16a34a;
+            border-color: rgba(34, 197, 94, 0.25);
+            box-shadow: 0 10px 24px rgba(34, 197, 94, 0.12);
+        }
+
+        .feedback-error {
+            background: rgba(248, 113, 113, 0.12);
+            color: #dc2626;
+            border-color: rgba(248, 113, 113, 0.25);
+            box-shadow: 0 10px 24px rgba(248, 113, 113, 0.12);
+        }
+
+        .transcription {
+            color: #0EA5E9;
+            font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', sans-serif;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .examples-list {
+            list-style: none;
+            margin-bottom: 0.75rem;
+        }
+
+        .examples-list li {
+            position: relative;
+            padding: 0.4rem 0 0.4rem 1.25rem;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .examples-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .examples-list li .highlight {
+            color: var(--text-main);
+            font-weight: 500;
+            background: rgba(108, 99, 255, 0.15);
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+
+        /* General highlight for vocabulary words in exercises */
+        .highlight {
+            background: linear-gradient(120deg, rgba(91, 91, 255, 0.18) 0%, rgba(91, 91, 255, 0.12) 100%);
+            color: #2D47B8;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(91, 91, 255, 0.15);
+        }
+
+        .click-hint {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+        }
+
+        .russian-meanings {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease, margin 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+            background: rgba(29, 184, 84, 0.06);
+            border-radius: 12px;
+            margin-top: 0;
+        }
+
+        .vocab-card.expanded .russian-meanings {
+            max-height: 300px;
+            padding: 1rem;
+            margin-top: 0.75rem;
+            opacity: 1;
+            border: 1px solid rgba(44, 182, 125, 0.2);
+        }
+
+        .russian-meanings h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .meaning-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .meaning-tag {
+            background: rgba(29, 184, 84, 0.08);
+            color: #1DB854;
+            padding: 0.3rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(29, 184, 84, 0.2);
+        }
+
+        .meaning-tag.part-of-speech {
+            background: rgba(255, 137, 6, 0.15);
+            color: var(--accent-pink);
+            border-color: rgba(255, 137, 6, 0.3);
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .stat-item .count {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-light);
+        }
+
+        .stat-item .label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.25rem;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: var(--text-main);
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            header h1 { font-size: 1.75rem; }
+            .vocabulary-grid { grid-template-columns: 1fr; }
+        }
+
+        .expand-icon {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .vocab-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Course navigation */
+        .course-nav {
+            display: flex;
+            justify-content: center;
+            margin: 1.25rem 0 2rem 0;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, #02050b 0%, #0e1729 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 40px;
+            box-shadow: 0 26px 80px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(16px);
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-item {
+            min-width: 170px;
+            text-align: center;
+            padding: 1rem 1.35rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.06);
+            color: #d8e3ff;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+        }
+
+        .nav-item:hover,
+        .nav-item:focus-visible {
+            background: rgba(96, 165, 250, 0.16);
+            color: #ffffff;
+            transform: translateY(-3px);
+            outline: none;
+            box-shadow: 0 20px 48px rgba(56, 189, 248, 0.18);
+        }
+
+        .nav-item.active {
+            position: relative;
+            background: linear-gradient(135deg, #60a5fa 0%, #0ea5e9 100%);
+            color: #071423;
+            border-color: transparent;
+            box-shadow: 0 18px 50px rgba(56, 189, 248, 0.28);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-item.active::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -8px;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 18px rgba(96, 165, 250, 0.45);
+        }
+
+        @keyframes floatPulse {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 18px 38px rgba(91, 91, 255, 0.22);
+            }
+            50% {
+                transform: translateY(-3px);
+                box-shadow: 0 26px 52px rgba(91, 91, 255, 0.18);
+            }
+        }
+
+        .pulse-button {
+            animation: floatPulse 2.8s ease-in-out infinite;
+        }
+
+        .section-content {
+            margin-bottom: 2rem;
+            padding: 1rem 1.5rem;
+            background: rgba(91,91,255,0.03);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .slides {
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .section-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .practice-exercise {
+            margin-bottom: 1.8rem;
+            padding: 1.35rem 1.4rem;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(91, 91, 255, 0.14);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px rgba(91, 91, 255, 0.05);
+            position: relative;
+        }
+
+        .practice-exercise:nth-of-type(2n) {
+            background: rgba(245, 247, 255, 0.94);
+            border-color: rgba(91, 91, 255, 0.08);
+        }
+
+        .practice-exercise:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .exercise-title {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 0.5rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.02em;
+        }
+
+        .exercise-title::before {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(91,91,255,0.9), rgba(29,184,84,0.9));
+        }
+
+        .action-btn {
+            padding: 0.65rem 1.1rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: var(--primary);
+            color: #FFFFFF;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 18px rgba(108,99,255,0.16);
+        }
+
+        .word-chip {
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--text-main);
+            border: 1px solid rgba(91, 91, 255, 0.24);
+            box-shadow: 0 8px 18px rgba(16, 24, 40, 0.08);
+        }
+
+        .word-chip:hover,
+        .word-chip.selected {
+            background: rgba(59, 130, 246, 0.12);
+            color: #0b1220;
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .word-chip.placed {
+            opacity: 0.55;
+            background: rgba(91, 91, 255, 0.08);
+            border-color: rgba(91, 91, 255, 0.22);
+            box-shadow: inset 0 0 0 1px rgba(91, 91, 255, 0.08);
+        }
+
+        .action-btn.selected {
+            background: rgba(56, 189, 248, 0.18);
+            color: #0B1220;
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .action-btn.placed {
+            opacity: 0.55;
+            background: rgba(56, 189, 248, 0.08);
+            border-color: rgba(56, 189, 248, 0.2);
+            box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.08);
+        }
+
+        .gap-input {
+            min-width: 160px;
+            border: none;
+            border-bottom: 2px dashed var(--primary);
+            background: transparent;
+            color: var(--text-main);
+            font-size: 1rem;
+            padding: 4px 6px;
+            outline: none;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .gap-input:focus {
+            background: rgba(91,91,255,0.08);
+            border-color: var(--primary);
+        }
+
+        .match-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.95rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(91,91,255,0.12);
+            background: rgba(248,250,255,0.85);
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .match-row:hover {
+            background: rgba(237,242,255,0.95);
+        }
+
+        .match-row.assigned {
+            border-color: rgba(29,184,84,0.35);
+            background: rgba(236,252,245,0.96);
+        }
+
+        .match-row-number {
+            min-width: 30px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .match-row-text {
+            flex: 1;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .match-assigned {
+            min-width: 36px;
+            padding: 0.35rem 0.65rem;
+            border-radius: 999px;
+            background: rgba(91,91,255,0.1);
+            color: var(--primary);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .match-grid {
+            display: grid;
+            grid-template-columns: minmax(280px, 1fr) minmax(260px, 1fr);
+            gap: 1.2rem;
+            align-items: start;
+        }
+
+        .match-bank {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.85rem;
+            padding: 0.75rem;
+            border: 1px dashed rgba(91,91,255,0.16);
+            border-radius: 16px;
+            background: rgba(247,249,255,0.95);
+            min-height: 100px;
+        }
+
+        .match-option {
+            padding: 0.9rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(91,91,255,0.15);
+            background: rgba(255,255,255,0.98);
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+            position: relative;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.25rem;
+        }
+
+        .match-option:hover {
+            transform: translateY(-1px);
+            border-color: rgba(91,91,255,0.35);
+        }
+
+        .match-option.selected {
+            border-color: rgba(29,184,84,0.7);
+            background: rgba(236,252,245,0.96);
+        }
+
+        .match-option-letter {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .match-option-text {
+            font-size: 0.92rem;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        .colloc-grid {
+            display: grid;
+            grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .colloc-bank {
+            padding: 0.85rem;
+            border: 1px dashed rgba(91,91,255,0.16);
+            border-radius: 16px;
+            background: rgba(247,249,255,0.96);
+            min-height: 120px;
+        }
+
+        .colloc-bank-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .ex6-layout {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .ex6-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .ex6-hint-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-align: center;
+            letter-spacing: 0.18em;
+            padding: 0.75rem 0.85rem;
+            border-radius: 16px;
+            border: 1px solid rgba(91,91,255,0.16);
+            background: rgba(255,255,255,0.95);
+        }
+
+        .ex6-group-box {
+            padding: 0.85rem;
+            border: 1px dashed rgba(91,91,255,0.16);
+            border-radius: 16px;
+            background: rgba(247,249,255,0.96);
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #ex6GroupA,
+        #ex6GroupB {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            min-height: 100px;
+            margin-top: 0.75rem;
+        }
+
+        .colloc-item {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 0.9rem;
+            margin: 0.2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(91,91,255,0.18);
+            background: rgba(255,255,255,0.98);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.92rem;
+            user-select: none;
+        }
+
+        .colloc-item.selected {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .colloc-item.used {
+            opacity: 0.45;
+            cursor: default;
+        }
+
+        .colloc-row {
+            padding: 0.95rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(91,91,255,0.12);
+            background: rgba(255,255,255,0.95);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .colloc-row:hover {
+            background: rgba(237,242,255,0.95);
+        }
+
+        .colloc-row.assigned {
+            border-color: rgba(29,184,84,0.35);
+            background: rgba(236,252,245,0.96);
+        }
+
+        .colloc-row-number {
+            min-width: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .colloc-row-text {
+            flex: 1;
+            line-height: 1.5;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .colloc-slot {
+            min-width: 70px;
+            padding: 0 6px;
+            border-bottom: 2px dashed var(--primary);
+            color: var(--text-main);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        .sd-row {
+            display: grid;
+            grid-template-columns: 32px 1fr 90px 1fr;
+            gap: 0.8rem;
+            align-items: start;
+            padding: 0.95rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(91,91,255,0.12);
+            background: rgba(255,255,255,0.95);
+        }
+
+        .sd-row:nth-child(odd) {
+            background: rgba(247,249,255,0.96);
+        }
+
+        .sd-number {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .sd-content {
+            color: var(--text-main);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .sd-select {
+            width: 100%;
+            padding: 0.65rem 0.75rem;
+            border: 1px solid rgba(91,91,255,0.2);
+            border-radius: 12px;
+            background: #ffffff;
+            color: var(--text-main);
+        }
+
+        .sd-note {
+            width: 100%;
+            padding: 0.65rem 0.75rem;
+            border: 1px solid rgba(91,91,255,0.2);
+            border-radius: 12px;
+            background: #ffffff;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Course navigation -->
+        <nav class="course-nav" aria-label="Course sections">
+            <ul class="nav-list" id="courseNav">
+                <li class="nav-item" data-section="Warm-up">Warm-up</li>
+                <li class="nav-item active" data-section="Vocabulary Introduction and Practice">Vocabulary Introduction and Practice</li>
+                <li class="nav-item" data-section="Reading and Listening">Reading and Listening</li>
+                <li class="nav-item" data-section="Pronunciation and Speaking">Pronunciation and Speaking</li>
+                <li class="nav-item" data-section="Reading">Reading</li>
+                <li class="nav-item" data-section="Grammar">Grammar</li>
+                <li class="nav-item" data-section="Writing">Writing</li>
+            </ul>
+        </nav>
+
+        <div class="slides">
+            <div class="section-content slide active" id="vocabSlide">
+                <header>
+                    <h1>📚 Target Vocabulary</h1>
+                    <p>Click on any card to see Russian translations • Tap 🔊 to hear pronunciation</p>
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search vocabulary...">
+                    </div>
+                </header>
+                <strong id="sectionTitle">Vocabulary Introduction and Practice</strong>
+                <div id="sectionBody" style="margin-top:0.75rem; color:var(--text-secondary); line-height:1.6;">
+                    <p>Study the vocabulary cards below, then click the button to open the practice slide.</p>
+                </div>
+            </div>
+
+            <div class="section-content slide" id="contentSlide">
+                <strong id="contentTitle">Course Section</strong>
+                <div id="contentBody" style="margin-top:0.75rem; color:var(--text-secondary); line-height:1.6;">
+                    <p>Select a section from the navigation above to open that lesson.</p>
+                </div>
+            </div>
+
+            <div class="section-content slide" id="practiceSlide">
+                    <strong id="practiceTitle">Practice: Vocabulary Introduction and Practice</strong>
+                <div id="practiceBody" style="margin-top:0.75rem; color:var(--text-secondary); line-height:1.6;">
+                    <div style="margin-bottom:1rem; color:var(--text-secondary);">Below are all three practice activities presented one after another for a faster, more natural flow.</div>
+                    <hr style="margin:1rem 0; border:none; border-top:1px solid rgba(91,91,255,0.18)">
+
+                    <!-- Exercise containers -->
+                    <div id="ex1" class="practice-exercise">
+                        <div class="exercise-title">Exercise 1 — Meaning in Context</div>
+                        <div id="ex1Progress" style="margin-bottom:0.6rem; color:var(--text-secondary);"></div>
+                        <div id="ex1Sentence" style="font-size:1.05rem; margin-bottom:0.75rem;"></div>
+                        <div id="ex1Options" style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:0.75rem;"></div>
+                        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                            <button class="action-btn" id="ex1Prev">Prev</button>
+                            <button class="action-btn" id="ex1Next">Next</button>
+                            <div id="ex1Feedback" class="feedback-message" style="margin-left:12px; align-self:center;"></div>
+                        </div>
+                    </div>
+
+                    <div id="ex2" class="practice-exercise">
+                        <div class="exercise-title">Exercise 2 — Word to Gap</div>
+                        <div id="ex2Instructions" style="margin-bottom:0.6rem; color:var(--text-secondary);">Click a word from the bank, then click the gap to place it. Use all words once.</div>
+                        <div id="wordBank" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.75rem;"></div>
+                        <div id="ex2ModeNote" style="margin-bottom:0.75rem; color: var(--accent-pink); font-weight:700; display:none;">Memory challenge active: fill gaps from recall.</div>
+                        <div id="gapSentences" style="display:flex; flex-direction:column; gap:0.6rem; color:var(--text-main);"></div>
+                        <div style="margin-top:0.75rem; display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+                            <button class="action-btn" id="ex2Check">Check Answers</button>
+                            <button class="action-btn" id="ex2Challenge">Challenge me</button>
+                            <span id="ex2Score" style="margin-left:0.6rem;color:var(--text-secondary);"></span>
+                        </div>
+                    </div>
+
+                    <div id="ex3" class="practice-exercise">
+                        <div class="exercise-title">Exercise 3 — Paraphrase</div>
+                        <div style="margin-bottom:0.6rem; color:var(--text-secondary);">Paraphrase each sentence using the target vocabulary. Use the Hint button if you need a prompt. Click Check to reveal a model answer.</div>
+                        <div id="paraphraseList" style="display:flex; flex-direction:column; gap:0.8rem;"></div>
+                    </div>
+
+                    <div id="ex4" class="practice-exercise">
+                        <div class="exercise-title">Exercise 4 — Match Sentences</div>
+                        <div style="margin-bottom:0.6rem; color:var(--text-secondary);">Click an answer on the right, then click the matching sentence on the left. Click a sentence again to clear it.</div>
+                        <div class="match-grid">
+                            <div id="matchList" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+                            <div class="match-bank" id="matchBank"></div>
+                        </div>
+                        <div style="margin-top:0.75rem; display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+                            <button class="action-btn" id="ex4Check">Check Answers</button>
+                            <span id="ex4Score" style="margin-left:0.6rem;color:var(--text-secondary);"></span>
+                        </div>
+                        <div id="ex4Feedback" style="margin-top:0.85rem; color:var(--text-secondary);"></div>
+                    </div>
+
+                    <div id="ex5" class="practice-exercise">
+                        <div class="exercise-title">Exercise 5 — Collocations</div>
+                        <div style="margin-bottom:0.6rem; color:var(--text-secondary);">Build collocations by selecting one word from column A and one word from column B, then click the sentence to place them.</div>
+                        <div class="colloc-grid">
+                            <div class="colloc-bank">
+                                <div class="colloc-bank-title">A</div>
+                                <div id="collocABank"></div>
+                            </div>
+                            <div class="colloc-bank">
+                                <div class="colloc-bank-title">B</div>
+                                <div id="collocBBank"></div>
+                            </div>
+                        </div>
+                        <div id="collocList" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+                        <div style="margin-top:0.75rem; display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+                            <button class="action-btn" id="ex5Check">Check Answers</button>
+                            <span id="ex5Score" style="margin-left:0.6rem;color:var(--text-secondary);"></span>
+                        </div>
+                        <div id="ex5Feedback" style="margin-top:0.85rem; color:var(--text-secondary);"></div>
+                    </div>
+
+                    <div id="ex6" class="practice-exercise">
+                        <div class="exercise-title">Exercise 6 — Complete and Categorize</div>
+                        <div style="margin-bottom:0.6rem; color:var(--text-secondary);">Guess the two missing words, then click a shuffled word and add it to the correct group.</div>
+                        <div class="ex6-layout">
+                            <div class="ex6-column">
+                                <div class="ex6-hint-label">L_____</div>
+                                <input id="ex6InputA" type="text" placeholder="" style="width: 100%; padding: 0.75rem 0.9rem; border:1px solid rgba(91,91,255,0.2); border-radius:14px; background:#fff; color:var(--text-main);">
+                                <div class="ex6-group-box" id="ex6GroupAContainer">
+                                    <div class="colloc-bank-title">Group A</div>
+                                    <div id="ex6GroupA" style="display:flex; flex-wrap:wrap; gap:0.4rem; min-height:120px;"></div>
+                                </div>
+                            </div>
+                            <div class="ex6-column">
+                                <div class="ex6-hint-label">C_____</div>
+                                <input id="ex6InputB" type="text" placeholder="" style="width: 100%; padding: 0.75rem 0.9rem; border:1px solid rgba(91,91,255,0.2); border-radius:14px; background:#fff; color:var(--text-main);">
+                                <div class="ex6-group-box" id="ex6GroupBContainer">
+                                    <div class="colloc-bank-title">Group B</div>
+                                    <div id="ex6GroupB" style="display:flex; flex-wrap:wrap; gap:0.4rem; min-height:120px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="colloc-bank" style="margin-bottom:0.75rem;">
+                            <div class="colloc-bank-title">Shuffled words</div>
+                            <div id="ex6WordBank" style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;"></div>
+                        </div>
+                        <div id="ex6FillFeedback" style="margin-top:0.5rem; color:var(--accent-pink);"></div>
+                        <div id="ex6Instructions" style="margin-top:0.75rem; color:var(--text-secondary);">Fill both words correctly, then select a word and place it in a group.</div>
+                        <div style="margin-top:0.75rem; display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+                            <button class="action-btn" id="ex6Check">Check Answers</button>
+                            <span id="ex6Score" style="margin-left:0.6rem;color:var(--text-secondary);"></span>
+                        </div>
+                        <div id="ex6Feedback" style="margin-top:0.85rem; color:var(--text-secondary);"></div>
+                    </div>
+
+                    <div id="ex7" class="practice-exercise">
+                        <div class="exercise-title">Exercise 7 — Same or Different</div>
+                        <div style="margin-bottom:0.6rem; color:var(--text-secondary);">Write S if the pair has the same meaning and D if they are different. If the meaning differs, add a short note.</div>
+                        <div id="ex7List" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+                        <div style="margin-top:0.75rem; display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+                            <button class="action-btn" id="ex7Check">Check Answers</button>
+                            <span id="ex7Score" style="margin-left:0.6rem;color:var(--text-secondary);"></span>
+                        </div>
+                        <div id="ex7Feedback" style="margin-top:0.85rem; color:var(--text-secondary);"></div>
+                    </div>
+                </div>
+                <div class="section-actions">
+                    <button class="action-btn" id="backToVocabBtn">Back to Vocabulary</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-bar" id="statsBar">
+            <div class="stat-item">
+                <div class="count" id="totalCount">34</div>
+                <div class="label">Total Words</div>
+            </div>
+            <div class="stat-item">
+                <div class="count" id="adjectivesCount">12</div>
+                <div class="label">Adjectives</div>
+            </div>
+            <div class="stat-item">
+                <div class="count" id="phrasesCount">8</div>
+                <div class="label">Phrases</div>
+            </div>
+            <div class="stat-item">
+                <div class="count" id="nounsCount">10</div>
+                <div class="label">Nouns & Verbs</div>
+            </div>
+        </div>
+
+        <div class="filter-buttons" id="filterButtons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="adj">Adjectives</button>
+            <button class="filter-btn" data-filter="noun">Nouns</button>
+            <button class="filter-btn" data-filter="verb">Verbs / Phrasal</button>
+            <button class="filter-btn" data-filter="phrase">Phrases</button>
+        </div>
+
+        <div class="vocabulary-grid" id="vocabGrid"></div>
+
+        <div class="section-actions" id="practiceLaunchAction" style="justify-content:center; margin-top:2rem;">
+            <button class="action-btn" id="goToPracticeBtn">Start Practice</button>
+        </div>
+    </div>
+
+    <script>
+        const vocabularyData = [
+            {
+                word: "sought-after",
+                transcription: "/ˌsɔːtˈɑːftə(r)/",
+                type: "adj",
+                examples: [
+                    "She's one of the most <span class='highlight'>sought-after</span> designers in the country.",
+                    "<span class='highlight'>Sought-after</span> employees often have multiple job offers.",
+                    "Tickets to the concert are highly <span class='highlight'>sought-after</span>."
+                ],
+                meanings: ["востребованный", "пользующийся спросом", "желанный", "пользующийся популярностью"]
+            },
+            {
+                word: "helpful",
+                transcription: "/ˈhelpfʊl/",
+                type: "adj",
+                examples: [
+                    "The staff were very <span class='highlight'>helpful</span> when we had a problem.",
+                    "She gave me some really <span class='highlight'>helpful</span> advice.",
+                    "I found the tutorial extremely <span class='highlight'>helpful</span>."
+                ],
+                meanings: ["полезный", "готовый помочь", "оказывающий помощь"]
+            },
+            {
+                word: "adaptable",
+                transcription: "/əˈdæptəbl/",
+                type: "adj",
+                examples: [
+                    "Children are remarkably <span class='highlight'>adaptable</span>.",
+                    "A good leader should be <span class='highlight'>adaptable</span> to change.",
+                    "These tools are easily <span class='highlight'>adaptable</span> for different purposes."
+                ],
+                meanings: ["приспосабливаемый", "гибкий", "адаптивный", "умеющий приспосабливаться"]
+            },
+            {
+                word: "passionate",
+                transcription: "/ˈpæʃənət/",
+                type: "adj",
+                examples: [
+                    "She is <span class='highlight'>passionate</span> about animal rights.",
+                    "He gave a <span class='highlight'>passionate</span> speech about equality.",
+                    "A <span class='highlight'>passionate</span> interest in music drove his career."
+                ],
+                meanings: ["страстный", "увлечённый", "горячо любящий"]
+            },
+            {
+                word: "monotonous",
+                transcription: "/məˈnɒtənəs/",
+                type: "adj",
+                examples: [
+                    "The job became <span class='highlight'>monotonous</span> after a few months.",
+                    "His voice was so <span class='highlight'>monotonous</span> that everyone fell asleep.",
+                    "Factory work can be highly <span class='highlight'>monotonous</span> and repetitive."
+                ],
+                meanings: ["монотонный", "однообразный", "скучный", "неизменный"]
+            },
+            {
+                word: "repetitive",
+                transcription: "/rɪˈpetɪtɪv/",
+                type: "adj",
+                examples: [
+                    "Assembly-line work is often very <span class='highlight'>repetitive</span>.",
+                    "She complained about the <span class='highlight'>repetitive</span> nature of the tasks.",
+                    "Doing the same thing every day is <span class='highlight'>repetitive</span>."
+                ],
+                meanings: ["повторяющийся", "однообразный", "монотонный"]
+            },
+            {
+                word: "rewarding",
+                transcription: "/rɪˈwɔːdɪŋ/",
+                type: "adj",
+                examples: [
+                    "Teaching is incredibly <span class='highlight'>rewarding</span> work.",
+                    "It was a <span class='highlight'>rewarding</span> experience to volunteer abroad.",
+                    "Nothing is more <span class='highlight'>rewarding</span> than seeing students succeed."
+                ],
+                meanings: ["приносящий удовлетворение", "благодарный", "полезный", "вознаграждающий"]
+            },
+            {
+                word: "fulfilling",
+                transcription: "/fʊlˈfɪlɪŋ/",
+                type: "adj",
+                examples: [
+                    "She found her career very <span class='highlight'>fulfilling</span>.",
+                    "Helping others is the most <span class='highlight'>fulfilling</span> thing you can do.",
+                    "He wanted a more <span class='highlight'>fulfilling</span> job."
+                ],
+                meanings: ["приносящий удовлетворение", "наполняющий смыслом", "дающий ощущение полноты жизни"]
+            },
+            {
+                word: "demanding",
+                transcription: "/dɪˈmændɪŋ/",
+                type: "adj",
+                examples: [
+                    "The job is physically <span class='highlight'>demanding</span>.",
+                    "She's a very <span class='highlight'>demanding</span> boss.",
+                    "Medical school is incredibly <span class='highlight'>demanding</span>."
+                ],
+                meanings: ["требовательный", "сложный", "энергозатратный", "предъявляющий высокие требования"]
+            },
+            {
+                word: "tedious",
+                transcription: "/ˈtiːdiəs/",
+                type: "adj",
+                examples: [
+                    "Data entry can be a <span class='highlight'>tedious</span> task.",
+                    "The lecture was long and <span class='highlight'>tedious</span>.",
+                    "He found the paperwork utterly <span class='highlight'>tedious</span>."
+                ],
+                meanings: ["утомительный", "нудный", "скучный", "унылый"]
+            },
+            {
+                word: "dead-end",
+                transcription: "/ˌded ˈend/",
+                type: "adj",
+                examples: [
+                    "I don't want a <span class='highlight'>dead-end</span> job.",
+                    "He felt trapped in a <span class='highlight'>dead-end</span> career.",
+                    "She quit her <span class='highlight'>dead-end</span> position to study."
+                ],
+                meanings: ["бесперспективный", "безвыходный", "без будущего", "не ведущий к успеху"]
+            },
+            {
+                word: "high-powered",
+                transcription: "/ˌhaɪ ˈpaʊəd/",
+                type: "adj",
+                examples: [
+                    "She's a <span class='highlight'>high-powered</span> executive at a multinational.",
+                    "He works in a <span class='highlight'>high-powered</span> law firm.",
+                    "The team consists of <span class='highlight'>high-powered</span> professionals."
+                ],
+                meanings: ["высокоэффективный", "влиятельный", "высокооплачиваемый", "с высокими амбициями"]
+            },
+            {
+                word: "compassionate",
+                transcription: "/kəmˈpæʃənət/",
+                type: "adj",
+                examples: [
+                    "She's a <span class='highlight'>compassionate</span> nurse who truly cares for her patients.",
+                    "The government introduced a <span class='highlight'>compassionate</span> policy for refugees.",
+                    "He was known for being kind and <span class='highlight'>compassionate</span>."
+                ],
+                meanings: ["сострадательный", "милосердный", "сочувствующий"]
+            },
+            {
+                word: "zero-hours",
+                transcription: "/ˌzɪərəʊ ˈaʊəz/",
+                type: "noun",
+                examples: [
+                    "He's on a <span class='highlight'>zero-hours</span> contract and never knows his schedule.",
+                    "<span class='highlight'>Zero-hours</span> contracts offer no guaranteed income.",
+                    "Many workers on <span class='highlight'>zero-hours</span> contracts struggle financially."
+                ],
+                meanings: ["контракт с нулевым рабочим днём", "без гарантированных часов", "свободный график без обязательств"]
+            },
+            {
+                word: "perks",
+                transcription: "/pɜːks/",
+                type: "noun",
+                examples: [
+                    "One of the <span class='highlight'>perks</span> of the job is free gym membership.",
+                    "The company offers great <span class='highlight'>perks</span> for employees.",
+                    "A company car is one of the main <span class='highlight'>perks</span> of the position."
+                ],
+                meanings: ["льготы", "преимущества", "бонусы", "дополнительные выгоды"]
+            },
+            {
+                word: "civil service",
+                transcription: "/ˌsɪvl ˈsɜːvɪs/",
+                type: "noun",
+                examples: [
+                    "He's been working in the <span class='highlight'>civil service</span> for twenty years.",
+                    "The <span class='highlight'>civil service</span> employs thousands of people.",
+                    "She passed the <span class='highlight'>civil service</span> exam last year."
+                ],
+                meanings: ["государственная служба", "чиновничество", "государственный аппарат"]
+            },
+            {
+                word: "commute",
+                transcription: "/kəˈmjuːt/",
+                type: "verb",
+                examples: [
+                    "I <span class='highlight'>commute</span> to London every morning by train.",
+                    "She spends two hours <span class='highlight'>commuting</span> to work.",
+                    "He <span class='highlight'>commutes</span> from the suburbs to the city centre."
+                ],
+                meanings: ["ездить на работу", "добираться (регулярно)", "пригородное сообщение"]
+            },
+            {
+                word: "set about",
+                transcription: "/set əˈbaʊt/",
+                type: "verb",
+                examples: [
+                    "She <span class='highlight'>set about</span> organising the event immediately.",
+                    "How should we <span class='highlight'>set about</span> this project?",
+                    "They <span class='highlight'>set about</span> fixing the roof as soon as it stopped raining."
+                ],
+                meanings: ["приступать к", "начинать что-либо делать", "браться за"]
+            },
+            {
+                word: "sanity",
+                transcription: "/ˈsænɪti/",
+                type: "noun",
+                examples: [
+                    "She reads to keep her <span class='highlight'>sanity</span> during lockdown.",
+                    "I need some exercise for the sake of my <span class='highlight'>sanity</span>.",
+                    "He questioned his own <span class='highlight'>sanity</span> after hearing the news."
+                ],
+                meanings: ["рассудок", "здравомыслие", "душевное равновесие"]
+            },
+            {
+                word: "miss the point",
+                transcription: "/mɪs ðə pɔɪnt/",
+                type: "phrase",
+                examples: [
+                    "You're <span class='highlight'>missing the point</span> entirely.",
+                    "I think you <span class='highlight'>missed the point</span> of what I was saying.",
+                    "Critics completely <span class='highlight'>miss the point</span> of this film."
+                ],
+                meanings: ["не понимать сути", "упускать главное", "не улавливать смысл"]
+            },
+            {
+                word: "bloke",
+                transcription: "/bləʊk/",
+                type: "noun",
+                examples: [
+                    "He's a really nice <span class='highlight'>bloke</span>.",
+                    "Some <span class='highlight'>bloke</span> at the pub told me a funny story.",
+                    "He's just an ordinary <span class='highlight'>bloke</span> from Manchester."
+                ],
+                meanings: ["парень", "мужик", "чувак", "типаж"]
+            },
+            {
+                word: "tomboy",
+                transcription: "/ˈtɒmbɔɪ/",
+                type: "noun",
+                examples: [
+                    "She was a real <span class='highlight'>tomboy</span> when she was young.",
+                    "As a <span class='highlight'>tomboy</span>, she preferred climbing trees to playing with dolls.",
+                    "Her parents didn't mind that she was a <span class='highlight'>tomboy</span>."
+                ],
+                meanings: ["девочка-сорванец", "пацанка", "девушка с мальчишеским характером"]
+            },
+            {
+                word: "solitude",
+                transcription: "/ˈsɒlɪtjuːd/",
+                type: "noun",
+                examples: [
+                    "She found peace in the <span class='highlight'>solitude</span> of the countryside.",
+                    "He enjoyed his <span class='highlight'>solitude</span> and rarely invited guests.",
+                    "Long periods of <span class='highlight'>solitude</span> can affect mental health."
+                ],
+                meanings: ["одиночество", "уединение", "затворничество"]
+            },
+            {
+                word: "patter",
+                transcription: "/ˈpætə(r)/",
+                type: "noun/verb",
+                examples: [
+                    "The salesman's <span class='highlight'>patter</span> convinced everyone to buy.",
+                    "I could hear the <span class='highlight'>patter</span> of rain against the window.",
+                    "He <span class='highlight'>pattered</span> on about his latest project."
+                ],
+                meanings: ["болтовня", "трёп", "быстрая речь", "стук/барабанить"]
+            },
+            {
+                word: "perpetuate",
+                transcription: "/pəˈpetʃueɪt/",
+                type: "verb",
+                examples: [
+                    "The media can <span class='highlight'>perpetuate</span> harmful stereotypes.",
+                    "This policy only <span class='highlight'>perpetuates</span> inequality.",
+                    "We need to stop <span class='highlight'>perpetuating</span> these myths."
+                ],
+                meanings: ["увековечивать", "сохранять (часто негативное)", "продолжать поддерживать"]
+            },
+            {
+                word: "intercom",
+                transcription: "/ˈɪntəkɒm/",
+                type: "noun",
+                examples: [
+                    "She buzzed him in through the <span class='highlight'>intercom</span>.",
+                    "The announcement came over the <span class='highlight'>intercom</span>.",
+                    "Don't forget to lock the <span class='highlight'>intercom</span> door."
+                ],
+                meanings: ["домофон", "внутренняя связь", "интерком"]
+            },
+            {
+                word: "commuter traffic",
+                transcription: "/ˈkɒmjuːtə ˈtræfɪk/",
+                type: "noun",
+                examples: [
+                    "<span class='highlight'>Commuter traffic</span> is terrible during rush hour.",
+                    "The new highway is designed to ease <span class='highlight'>commuter traffic</span>.",
+                    "Avoid the city centre because of heavy <span class='highlight'>commuter traffic</span>."
+                ],
+                meanings: ["движение пригородных пассажиров", "поток маятниковых мигрантов", "час пик (трафик)"]
+            },
+            {
+                word: "fraternize",
+                transcription: "/ˈfrætənaɪz/",
+                type: "verb",
+                examples: [
+                    "Employees aren't allowed to <span class='highlight'>fraternize</span> with clients.",
+                    "She loves <span class='highlight'>fraternizing</span> with people from different cultures.",
+                    "The manager was warned not to <span class='highlight'>fraternize</span> with subordinates."
+                ],
+                meanings: ["дружески общаться", "водиться", "фратернизировать", "общаться на равных"]
+            },
+            {
+                word: "keep sb's nose to the grindstone",
+                transcription: "/kiːp sʌmwʌnz nəʊz tə ˈɡraɪndstəʊn/",
+                type: "phrase",
+                examples: [
+                    "If you want to pass the exam, you need to <span class='highlight'>keep your nose to the grindstone</span>.",
+                    "She's been <span class='highlight'>keeping her nose to the grindstone</span> for months.",
+                    "There's no time to relax — we have to <span class='highlight'>keep our noses to the grindstone</span>."
+                ],
+                meanings: ["усердно работать", "не покладая рук", "вкалывать", "трудиться без отдыха"]
+            },
+            {
+                word: "maternity/paternity leave",
+                transcription: "/məˈtɜːnɪti/pəˈtɜːnɪti liːv/",
+                type: "noun",
+                examples: [
+                    "She's currently on <span class='highlight'>maternity leave</span>.",
+                    "More fathers are taking <span class='highlight'>paternity leave</span>.",
+                    "The company offers generous <span class='highlight'>maternity and paternity leave</span>."
+                ],
+                meanings: ["декретный отпуск", "отпуск по беременности и родам", "отцовский отпуск"]
+            },
+            {
+                word: "compassionate leave",
+                transcription: "/kəmˈpæʃənət liːv/",
+                type: "noun",
+                examples: [
+                    "He was granted <span class='highlight'>compassionate leave</span> after his mother passed away.",
+                    "Employees can request <span class='highlight'>compassionate leave</span> for family emergencies.",
+                    "She took three days of <span class='highlight'>compassionate leave</span>."
+                ],
+                meanings: ["отпуск по семейным обстоятельствам", "отпуск в связи с тяжёлой утратой", "отпуск по уважительной причине"]
+            },
+            {
+                word: "freelance",
+                transcription: "/ˈfriːlɑːns/",
+                type: "adj/verb/noun",
+                examples: [
+                    "She works as a <span class='highlight'>freelance</span> graphic designer.",
+                    "He decided to go <span class='highlight'>freelance</span> after ten years at a firm.",
+                    "Many writers earn a living through <span class='highlight'>freelance</span> work."
+                ],
+                meanings: ["внештатный", "фрилансерский", "работающий на себя"]
+            },
+            {
+                word: "a temporary/part-time/fixed-term contract",
+                transcription: "/ə ˈtemprəri/pɑːt taɪm/fɪkst tɜːm ˈkɒntrækt/",
+                type: "noun",
+                examples: [
+                    "She was offered a <span class='highlight'>temporary contract</span> for six months.",
+                    "He's on a <span class='highlight'>part-time contract</span> working 20 hours a week.",
+                    "Many academics work on <span class='highlight'>fixed-term contracts</span>."
+                ],
+                meanings: ["временный договор", "договор частичной занятости", "срочный трудовой договор"]
+            },
+            {
+                word: "zero hours",
+                transcription: "/ˌzɪərəʊ ˈaʊəz/",
+                type: "noun",
+                examples: [
+                    "Many retail workers are on <span class='highlight'>zero hours</span>.",
+                    "The union is campaigning against <span class='highlight'>zero hours</span> practices.",
+                    "She earns very little because of her <span class='highlight'>zero hours</span> arrangement."
+                ],
+                meanings: ["контракт без гарантированных часов", "нулевой рабочий день", "свободный график без обязательств"]
+            }
+        ];
+
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        function renderVocabulary() {
+            const grid = document.getElementById('vocabGrid');
+            grid.innerHTML = '';
+
+            const filtered = vocabularyData.filter(item => {
+                const matchesFilter = currentFilter === 'all' || item.type === currentFilter;
+                const matchesSearch = item.word.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                    item.meanings.some(m => m.toLowerCase().includes(searchTerm.toLowerCase()));
+                return matchesFilter && matchesSearch;
+            });
+
+            document.getElementById('totalCount').textContent = vocabularyData.length;
+            document.getElementById('adjectivesCount').textContent = vocabularyData.filter(v => v.type === 'adj').length;
+            document.getElementById('phrasesCount').textContent = vocabularyData.filter(v => v.type === 'phrase' || v.type === 'noun').length;
+            document.getElementById('nounsCount').textContent = vocabularyData.filter(v => v.type === 'noun' || v.type === 'verb' || v.type === 'noun/verb' || v.type === 'adj/verb/noun').length;
+
+            filtered.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'vocab-card';
+                card.setAttribute('data-index', index);
+                card.style.animationDelay = `${index * 0.03}s`;
+
+                card.innerHTML = `
+                    <div class="vocab-header">
+                        <span class="vocab-word">${item.word}</span>
+                        <div class="vocab-controls">
+                            <button class="btn-speak" onclick="speakWord(event, '${item.word.replace(/'/g, "\\'")}')">🔊</button>
+                        </div>
+                    </div>
+                    <div class="transcription">${item.transcription}</div>
+                    <ul class="examples-list">
+                        ${item.examples.map(ex => `<li>${ex}</li>`).join('')}
+                    </ul>
+                    <div class="click-hint">
+                        <span class="expand-icon">▼</span> Click for Russian meanings
+                    </div>
+                    <div class="russian-meanings">
+                        <h4>Russian Equivalents</h4>
+                        <div class="meaning-list">
+                            ${item.meanings.map((m, i) => `<span class="meaning-tag">${m}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+
+                card.addEventListener('click', (e) => {
+                    if (!e.target.closest('.btn-speak')) {
+                        card.classList.toggle('expanded');
+                    }
+                });
+
+                grid.appendChild(card);
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-secondary);">
+                        <p style="font-size: 3rem; margin-bottom: 1rem;">🔍</p>
+                        <p>No vocabulary found matching your search.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Store currently playing audio to allow stopping
+        let currentAudio = null;
+
+        function speakWord(event, word) {
+            event.stopPropagation();
+            const btn = event.currentTarget;
+            
+            // Stop any currently playing audio
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            btn.classList.add('speaking');
+            btn.textContent = '🔊';
+
+            // Use Google Translate TTS for British English pronunciation
+            // This is a free service that provides high-quality speech synthesis
+            const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(word)}&tl=en-GB&client=tw-ob`;
+            
+            const audio = new Audio(audioUrl);
+            currentAudio = audio;
+
+            audio.onended = () => {
+                btn.classList.remove('speaking');
+                currentAudio = null;
+            };
+
+            audio.onerror = () => {
+                btn.classList.remove('speaking');
+                currentAudio = null;
+                // Fallback to Web Speech API if Google TTS fails
+                fallbackSpeech(word);
+            };
+
+            audio.play().catch(() => {
+                // If audio fails to play, use fallback
+                fallbackSpeech(word);
+                btn.classList.remove('speaking');
+            });
+        }
+
+        function fallbackSpeech(word) {
+            if (!window.speechSynthesis) return;
+
+            const utterance = new SpeechSynthesisUtterance(word);
+            utterance.lang = 'en-GB';
+            utterance.rate = 0.85;
+            utterance.pitch = 1;
+
+            const voices = window.speechSynthesis.getVoices();
+            let selectedVoice = voices.find(v => v.lang === 'en-GB') || 
+                               voices.find(v => v.lang.startsWith('en-GB')) ||
+                               voices.find(v => v.lang.startsWith('en'));
+            
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+            }
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Initialize voices for fallback
+        if (window.speechSynthesis) {
+            window.speechSynthesis.getVoices();
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.getVoices();
+            };
+        }
+
+        function showSlide(slideName) {
+            document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
+            const slideId = slideName === 'practice' ? 'practiceSlide' : slideName === 'content' ? 'contentSlide' : 'vocabSlide';
+            const slide = document.getElementById(slideId);
+            if (slide) slide.classList.add('active');
+
+            const grid = document.getElementById('vocabGrid');
+            const filters = document.getElementById('filterButtons');
+            const stats = document.getElementById('statsBar');
+            const launchAction = document.getElementById('practiceLaunchAction');
+            const backToVocabBtn = document.getElementById('backToVocabBtn');
+
+            if (slideName === 'practice') {
+                if (backToVocabBtn) backToVocabBtn.classList.add('pulse-button');
+            } else {
+                if (backToVocabBtn) backToVocabBtn.classList.remove('pulse-button');
+            }
+
+            if (slideName === 'vocabulary') {
+                if (grid) grid.classList.remove('hidden');
+                if (filters) filters.classList.remove('hidden');
+                if (stats) stats.classList.remove('hidden');
+                if (launchAction) launchAction.classList.remove('hidden');
+            } else {
+                if (grid) grid.classList.add('hidden');
+                if (filters) filters.classList.add('hidden');
+                if (stats) stats.classList.add('hidden');
+                if (launchAction) launchAction.classList.add('hidden');
+            }
+        }
+
+        document.getElementById('backToVocabBtn').addEventListener('click', () => {
+            showSlide('vocabulary');
+        });
+
+        /* ------------------ New practice exercises JS ------------------ */
+        const ex1Data = [
+            {word: 'sought-after', sentence: 'She is one of the most <span class="highlight">sought-after</span> architects in the industry.', correct: 'in high demand; very popular'},
+            {word: 'adaptable', sentence: 'Good leaders must be <span class="highlight">adaptable</span> when projects change direction suddenly.', correct: 'able to adjust easily to new conditions'},
+            {word: 'monotonous', sentence: 'After months of the same routine the work became <span class="highlight">monotonous</span>.', correct: 'boring because of sameness'},
+            {word: 'repetitive', sentence: 'Assembly-line tasks were painfully <span class="highlight">repetitive</span>.', correct: 'repeating the same actions many times'},
+            {word: 'fulfilling', sentence: 'Volunteering at the shelter felt deeply <span class="highlight">fulfilling</span>.', correct: 'providing a sense of satisfaction'},
+            {word: 'demanding', sentence: 'The role is very <span class="highlight">demanding</span> and requires long hours.', correct: 'requiring a lot of effort or attention'},
+            {word: 'tedious', sentence: 'Filling out the forms was a <span class="highlight">tedious</span> task that took all afternoon.', correct: 'boring and time-consuming'},
+            {word: 'dead-end', sentence: 'She didn’t want to stay in a <span class="highlight">dead-end</span> position with no prospects.', correct: 'offering no future opportunities'},
+            {word: 'high-powered', sentence: 'He works for a <span class="highlight">high-powered</span> law firm in the city.', correct: 'very influential or important'},
+            {word: 'perpetuate', sentence: 'These myths only serve to <span class="highlight">perpetuate</span> inequality.', correct: 'cause to continue indefinitely'}
+        ];
+
+        // Generate three options for each ex1 item (one correct, two plausible distractors)
+        function getEx1Options(correctDef) {
+            // Simple distractors pool - concise definitions used elsewhere
+            const pool = [
+                'able to adjust easily to new conditions',
+                'boring and time-consuming',
+                'providing a sense of satisfaction',
+                'in high demand; very popular',
+                'requiring a lot of effort or attention',
+                'offering no future opportunities',
+                'repeating the same actions many times',
+                'very influential or important',
+                'cause to continue indefinitely',
+                'boring because of sameness'
+            ];
+            const opts = new Set([correctDef]);
+            while (opts.size < 3) {
+                const cand = pool[Math.floor(Math.random() * pool.length)];
+                opts.add(cand);
+            }
+            return Array.from(opts).sort(() => Math.random() - 0.5);
+        }
+
+        // EX1 state and UI
+        let ex1Index = 0; let ex1Score = 0; let ex1Answered = [];
+        function buildEx1() {
+            ex1Index = 0; ex1Score = 0; ex1Answered = Array(ex1Data.length).fill(false);
+            document.getElementById('ex1').style.display = 'block';
+            renderEx1();
+        }
+
+        function renderEx1() {
+            const item = ex1Data[ex1Index];
+            document.getElementById('ex1Progress').textContent = `Question ${ex1Index+1} of ${ex1Data.length}`;
+            document.getElementById('ex1Sentence').innerHTML = item.sentence;
+            const opts = getEx1Options(item.correct);
+            const optsContainer = document.getElementById('ex1Options');
+            optsContainer.innerHTML = '';
+            opts.forEach(o => {
+                const btn = document.createElement('button');
+                btn.className = 'action-btn';
+                btn.style.background = 'rgba(255,255,255,0.04)';
+                btn.style.color = 'var(--text-main)';
+                btn.textContent = o;
+                btn.onclick = () => {
+                    if (ex1Answered[ex1Index]) return;
+                    ex1Answered[ex1Index] = true;
+                    const feedback = document.getElementById('ex1Feedback');
+                    feedback.classList.remove('feedback-success', 'feedback-error');
+                    if (o === item.correct) {
+                        ex1Score++;
+                        feedback.textContent = 'Great job! ✅ That’s the right answer.';
+                        feedback.classList.add('feedback-success');
+                    } else {
+                        feedback.textContent = `Ooops, you did it again 😅 The best match is: ${item.correct}`;
+                        feedback.classList.add('feedback-error');
+                    }
+                };
+                optsContainer.appendChild(btn);
+            });
+            const feedback = document.getElementById('ex1Feedback');
+            feedback.textContent = '';
+            feedback.classList.remove('feedback-success', 'feedback-error');
+        }
+
+        document.getElementById('ex1Prev').addEventListener('click', () => {
+            if (ex1Index > 0) { ex1Index--; renderEx1(); }
+        });
+        document.getElementById('ex1Next').addEventListener('click', () => {
+            if (ex1Index < ex1Data.length - 1) { ex1Index++; renderEx1(); }
+            else { document.getElementById('ex1Feedback').textContent = `Finished — score: ${ex1Score} / ${ex1Data.length}`; }
+        });
+
+        // EX2 data (word bank and sentences with gaps)
+        const ex2Words = ['sought-after','adaptable','compassionate','commute','perks','freelance','dead-end','rewarding','upskill','passive income'];
+        const ex2Sentences = [
+            {text: 'Many employees value extra _____ such as gym memberships and flexible hours.', answer: 'perks'},
+            {text: 'After moving farther from the city she has a 90-minute _____ each way.', answer: 'commute'},
+            {text: 'Freelancers often enjoy the freedom of _____ work.', answer: 'freelance'},
+            {text: 'A job with no prospects is often called a _____ position.', answer: 'dead-end'},
+            {text: 'She received an offer because she was a highly _____ candidate.', answer: 'sought-after'},
+            {text: 'To remain competitive, workers must _____ regularly.', answer: 'upskill'},
+            {text: 'Teaching can be extremely _____ when students make progress.', answer: 'rewarding'},
+            {text: 'He prefers hiring someone _____ who shows understanding when clients are distressed.', answer: 'compassionate'},
+            {text: 'Experienced employees tend to generate a steady _____ through consulting.', answer: 'passive income'},
+            {text: 'A small team must be _____ and take on varied roles.', answer: 'adaptable'}
+        ];
+
+        let ex2Selected = null;
+        let ex2Filled = {};
+        let ex2ChallengeMode = false;
+
+        function buildEx2() {
+            const bank = document.getElementById('wordBank');
+            const modeNote = document.getElementById('ex2ModeNote');
+            bank.innerHTML = '';
+
+            ex2Words.forEach(w => {
+                const chip = document.createElement('button');
+                chip.className = 'action-btn word-chip';
+                chip.textContent = w;
+                chip.dataset.word = w;
+                const placedIndex = Object.keys(ex2Filled).find(index => ex2Filled[index] === w);
+                if (placedIndex !== undefined) {
+                    chip.classList.add('placed');
+                }
+                chip.onclick = () => {
+                    if (placedIndex !== undefined) {
+                        delete ex2Filled[placedIndex];
+                        ex2Selected = null;
+                        buildEx2();
+                        return;
+                    }
+                    const alreadySelected = chip.classList.contains('selected');
+                    document.querySelectorAll('#wordBank .word-chip').forEach(c => c.classList.remove('selected'));
+                    if (alreadySelected) {
+                        ex2Selected = null;
+                    } else {
+                        chip.classList.add('selected');
+                        ex2Selected = w;
+                    }
+                };
+                bank.appendChild(chip);
+            });
+
+            if (ex2ChallengeMode) {
+                bank.style.display = 'none';
+                modeNote.style.display = 'block';
+            } else {
+                bank.style.display = 'flex';
+                modeNote.style.display = 'none';
+            }
+
+            const gaps = document.getElementById('gapSentences');
+            gaps.innerHTML = '';
+            ex2Sentences.forEach((s, i) => {
+                const div = document.createElement('div');
+                div.style.padding = '8px';
+                div.style.borderBottom = '1px dashed rgba(255,255,255,0.03)';
+                const parts = s.text.split('_____');
+                div.appendChild(document.createTextNode(parts[0]));
+
+                if (ex2ChallengeMode) {
+                    const input = document.createElement('input');
+                    input.className = 'gap-input';
+                    input.placeholder = 'Type the word';
+                    input.value = ex2Filled[i] || '';
+                    input.oninput = () => {
+                        const value = input.value.trim();
+                        if (value) ex2Filled[i] = value;
+                        else delete ex2Filled[i];
+                    };
+                    div.appendChild(input);
+                } else {
+                    const gap = document.createElement('span');
+                    gap.className = 'gap';
+                    gap.style.borderBottom = '2px dashed var(--primary)';
+                    gap.style.margin = '0 6px';
+                    gap.style.cursor = 'pointer';
+                    gap.textContent = ex2Filled[i] || '______';
+                    gap.dataset.idx = i;
+
+                    gap.onclick = () => {
+                        const currentValue = ex2Filled[i];
+                        if (!ex2Selected) {
+                            if (currentValue) {
+                                delete ex2Filled[i];
+                                buildEx2();
+                            }
+                            return;
+                        }
+
+                        if (currentValue) {
+                            delete ex2Filled[i];
+                        }
+                        ex2Filled[i] = ex2Selected;
+                        ex2Selected = null;
+                        buildEx2();
+                    };
+                    div.appendChild(gap);
+                }
+
+                div.appendChild(document.createTextNode(parts[1] || ''));
+                gaps.appendChild(div);
+            });
+
+            document.getElementById('ex2Score').textContent = '';
+        }
+
+        function activateEx2Challenge() {
+            ex2ChallengeMode = true;
+            ex2Selected = null;
+            ex2Filled = {};
+            buildEx2();
+        }
+
+        document.getElementById('ex2Check').addEventListener('click', () => {
+            let correct = 0;
+            ex2Sentences.forEach((s,i) => {
+                const answer = s.answer;
+                const filled = ex2Filled[i] || '';
+                const div = document.querySelector(`#gapSentences div:nth-child(${i+1})`);
+                if (filled.toLowerCase() === answer.toLowerCase()) {
+                    correct++;
+                    div.style.background = 'rgba(44,182,125,0.06)';
+                } else {
+                    div.style.background = 'rgba(255,100,100,0.04)';
+                }
+            });
+            document.getElementById('ex2Score').textContent = `Score: ${correct} / ${ex2Sentences.length}`;
+        });
+
+        document.getElementById('ex2Challenge').addEventListener('click', () => {
+            activateEx2Challenge();
+        });
+
+        // EX3 paraphrase tasks
+        const ex3Items = [
+            {prompt: 'The job was boring and lacked variety.', hint: 'use: monotonous / repetitive', model: 'The job was monotonous.'},
+            {prompt: 'She earns extra money by selling courses online.', hint: 'use: passive income / side hustle', model: 'She generates passive income from selling courses.'},
+            {prompt: 'You should learn new skills to stay employable.', hint: 'use: upskill / adapt', model: 'You should upskill to remain employable.'},
+            {prompt: 'The position offers little chance of promotion.', hint: 'use: dead-end', model: 'The position is a dead-end job.'},
+            {prompt: 'Many people prefer working for themselves rather than a company.', hint: 'use: freelance', model: 'Many people choose to freelance instead of working for a company.'},
+            {prompt: 'The company gives staff memberships and extra benefits.', hint: 'use: perks', model: 'The company offers staff perks such as memberships.'}
+        ];
+
+        function buildEx3() {
+            const list = document.getElementById('paraphraseList'); list.innerHTML = '';
+            ex3Items.forEach((it, i) => {
+                const card = document.createElement('div'); card.style.border='1px solid rgba(255,255,255,0.03)'; card.style.padding='12px'; card.style.borderRadius='8px';
+                card.innerHTML = `
+                    <div style="font-weight:600;">${i+1}. ${it.prompt}</div>
+                    <textarea id="par-${i}" placeholder="Write your paraphrase here..." style="width:100%; margin-top:8px; min-height:64px; background:transparent; color:var(--text-main); border:1px solid rgba(255,255,255,0.04); padding:8px; border-radius:6px;"></textarea>
+                    <div style="margin-top:8px; display:flex; gap:0.5rem;">
+                        <button class="action-btn" onclick="document.getElementById('hint-${i}').style.display='block'">Hint</button>
+                        <button class="action-btn" onclick="document.getElementById('ans-${i}').style.display='block'">Check</button>
+                    </div>
+                    <div id="hint-${i}" style="display:none; margin-top:8px; color:var(--text-secondary);">Hint: ${it.hint}</div>
+                    <div id="ans-${i}" style="display:none; margin-top:8px; color:var(--text-secondary);">Model answer: ${it.model}</div>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        const ex4Items = [
+            {sentence: 'My job as a divorce lawyer is very challenging.', answer: 'C'},
+            {sentence: 'Working as a checkout assistant can be a bit monotonous and repetitive.', answer: 'E'},
+            {sentence: 'I’m a primary school teacher; I find working with children very rewarding.', answer: 'F'},
+            {sentence: 'I work in a small design company and my job’s really motivating.', answer: 'D'},
+            {sentence: 'Being a surgeon is very demanding.', answer: 'H'},
+            {sentence: 'I always wanted an exciting job, but sadly, mine is incredibly tedious.', answer: 'A'},
+            {sentence: 'He’s in a dead-end job in the local factory.', answer: 'G'},
+            {sentence: 'She’s got a very high-powered job in finance.', answer: 'B'}
+        ];
+
+        const ex4Options = {
+            A: 'I have to do exactly the same thing every day.',
+            B: 'I never mind having to work overtime.',
+            C: 'It tests my abilities in a way that keeps me interested.',
+            D: 'It’s important and comes with a lot of responsibility.',
+            E: 'It’s really boring and it makes me feel impatient all the time.',
+            F: 'It makes me happy because it’s useful and important.',
+            G: 'The wages are low and there’s no hope of promotion.',
+            H: 'It’s very high pressure and you have to work long hours.'
+        };
+
+        let ex4Answers = {};
+        let ex4SelectedLetter = '';
+
+        function updateMatchSelection(bankItems) {
+            bankItems.forEach(item => {
+                const letter = item.dataset.letter;
+                item.classList.toggle('selected', letter === ex4SelectedLetter);
+            });
+        }
+
+        function buildEx4() {
+            const matchList = document.getElementById('matchList');
+            const matchBank = document.getElementById('matchBank');
+            const feedback = document.getElementById('ex4Feedback');
+            matchList.innerHTML = '';
+            matchBank.innerHTML = '';
+            feedback.textContent = '';
+            ex4SelectedLetter = '';
+
+            ex4Items.forEach((item, index) => {
+                const row = document.createElement('div');
+                row.className = 'match-row';
+                row.dataset.index = index;
+
+                const number = document.createElement('div');
+                number.className = 'match-row-number';
+                number.textContent = `${index + 1}`;
+
+                const text = document.createElement('div');
+                text.className = 'match-row-text';
+                text.textContent = item.sentence;
+
+                const assigned = document.createElement('div');
+                assigned.className = 'match-assigned';
+                assigned.textContent = ex4Answers[index] || '';
+
+                row.appendChild(number);
+                row.appendChild(text);
+                row.appendChild(assigned);
+
+                row.onclick = () => {
+                    const selectedLetter = ex4SelectedLetter;
+                    if (!selectedLetter) {
+                        if (ex4Answers[index]) {
+                            delete ex4Answers[index];
+                            buildEx4();
+                        }
+                        return;
+                    }
+
+                    const previousIndex = Object.keys(ex4Answers).find(i => ex4Answers[i] === selectedLetter);
+                    if (previousIndex !== undefined) {
+                        delete ex4Answers[previousIndex];
+                    }
+                    ex4Answers[index] = selectedLetter;
+                    ex4SelectedLetter = '';
+                    buildEx4();
+                };
+
+                matchList.appendChild(row);
+            });
+
+            Object.entries(ex4Options).forEach(([letter, text]) => {
+                const option = document.createElement('div');
+                option.className = 'match-option';
+                option.dataset.letter = letter;
+                option.innerHTML = `<span class="match-option-letter">${letter}</span><span class="match-option-text">${text}</span>`;
+                option.onclick = () => {
+                    if (ex4SelectedLetter === letter) {
+                        ex4SelectedLetter = '';
+                    } else {
+                        ex4SelectedLetter = letter;
+                    }
+                    updateMatchSelection(Array.from(document.querySelectorAll('.match-option')));
+                };
+                matchBank.appendChild(option);
+            });
+
+            updateMatchSelection(Array.from(document.querySelectorAll('.match-option')));
+            document.getElementById('ex4Score').textContent = '';
+            document.getElementById('ex4Feedback').textContent = '';
+            Array.from(document.querySelectorAll('.match-row')).forEach(row => {
+                const index = row.dataset.index;
+                row.classList.toggle('assigned', !!ex4Answers[index]);
+                row.querySelector('.match-assigned').textContent = ex4Answers[index] || '';
+            });
+        }
+
+        document.getElementById('ex4Check').addEventListener('click', () => {
+            let correctCount = 0;
+            ex4Items.forEach((item, index) => {
+                const selected = ex4Answers[index] || '';
+                if (selected === item.answer) correctCount++;
+            });
+            const scoreText = `Score: ${correctCount} / ${ex4Items.length}`;
+            document.getElementById('ex4Score').textContent = scoreText;
+            document.getElementById('ex4Feedback').textContent = correctCount === ex4Items.length
+                ? 'Great job! All answers are correct.'
+                : 'Check the sentences where the meaning did not match the option.';
+        });
+
+        const ex5A = ['academic', 'career', 'civil', 'events', 'fast', 'career', 'job', 'work'];
+        const ex5B = ['experience', 'hunting', 'ladder', 'manager', 'move', 'qualifications', 'servants', 'track'];
+        const ex5Items = [
+            { prompt: "I'm hoping it'll be a good", continuation: 'to go from publishing to advertising.', answerA: 'career', answerB: 'move' },
+            { prompt: "I've been unemployed for six months now, so I spend most of my time", continuation: '.', answerA: 'fast', answerB: 'track' },
+            { prompt: 'My brother works as an', continuation: ', organizing conferences.', answerA: 'events', answerB: 'manager' },
+            { prompt: 'I left school at 15, so I had to look for a job that didn\'t require any', continuation: '.', answerA: 'academic', answerB: 'qualifications' },
+            { prompt: 'My problem is that all the jobs I want to apply for ask for some', continuation: ', and as I\'ve just finished university, I don\'t have any.', answerA: 'work', answerB: 'experience' },
+            { prompt: 'I\'m a junior doctor, and if I want to move up the', continuation: ', I need to work in several different hospitals and departments.', answerA: 'career', answerB: 'ladder' },
+            { prompt: 'In Britain, people who work for government departments are called', continuation: '.', answerA: 'civil', answerB: 'servants' },
+            { prompt: 'In some careers, people with very good qualifications are put onto a', continuation: 'so they get promoted more quickly.', answerA: 'fast', answerB: 'track' }
+        ];
+
+        let ex5Answers = {};
+        let ex5SelectedA = null;
+        let ex5SelectedB = null;
+
+        function buildEx5() {
+            const collocABank = document.getElementById('collocABank');
+            const collocBBank = document.getElementById('collocBBank');
+            const collocList = document.getElementById('collocList');
+            const feedback = document.getElementById('ex5Feedback');
+            collocABank.innerHTML = '';
+            collocBBank.innerHTML = '';
+            collocList.innerHTML = '';
+            feedback.textContent = '';
+            ex5SelectedA = null;
+            ex5SelectedB = null;
+
+            const usedA = new Set(Object.values(ex5Answers).map(ans => ans.aIndex));
+            const usedB = new Set(Object.values(ex5Answers).map(ans => ans.bIndex));
+
+            ex5A.forEach((word, index) => {
+                const item = document.createElement('div');
+                item.className = 'colloc-item';
+                item.textContent = word;
+                item.dataset.index = index;
+                if (usedA.has(index)) {
+                    item.classList.add('used');
+                }
+                item.onclick = () => {
+                    if (usedA.has(index)) return;
+                    if (ex5SelectedA === index) {
+                        ex5SelectedA = null;
+                    } else {
+                        ex5SelectedA = index;
+                    }
+                    updateCollocSelection();
+                };
+                collocABank.appendChild(item);
+            });
+
+            ex5B.forEach((word, index) => {
+                const item = document.createElement('div');
+                item.className = 'colloc-item';
+                item.textContent = word;
+                item.dataset.index = index;
+                if (usedB.has(index)) {
+                    item.classList.add('used');
+                }
+                item.onclick = () => {
+                    if (usedB.has(index)) return;
+                    if (ex5SelectedB === index) {
+                        ex5SelectedB = null;
+                    } else {
+                        ex5SelectedB = index;
+                    }
+                    updateCollocSelection();
+                };
+                collocBBank.appendChild(item);
+            });
+
+            ex5Items.forEach((item, index) => {
+                const row = document.createElement('div');
+                row.className = 'colloc-row';
+                row.dataset.index = index;
+                if (ex5Answers[index]) row.classList.add('assigned');
+
+                const number = document.createElement('div');
+                number.className = 'colloc-row-number';
+                number.textContent = index + 1;
+
+                const text = document.createElement('div');
+                text.className = 'colloc-row-text';
+                const aText = ex5Answers[index] ? ex5Answers[index].a : '______';
+                const bText = ex5Answers[index] ? ex5Answers[index].b : '______';
+                text.innerHTML = `${item.prompt} <span class="colloc-slot">${aText}</span> <span class="colloc-slot">${bText}</span> ${item.continuation}`;
+
+                row.onclick = () => {
+                    if (ex5SelectedA !== null && ex5SelectedB !== null) {
+                        ex5Answers[index] = {
+                            aIndex: ex5SelectedA,
+                            bIndex: ex5SelectedB,
+                            a: ex5A[ex5SelectedA],
+                            b: ex5B[ex5SelectedB]
+                        };
+                        ex5SelectedA = null;
+                        ex5SelectedB = null;
+                        buildEx5();
+                        return;
+                    }
+                    if (ex5Answers[index]) {
+                        delete ex5Answers[index];
+                        buildEx5();
+                    }
+                };
+
+                row.appendChild(number);
+                row.appendChild(text);
+                collocList.appendChild(row);
+            });
+
+            updateCollocSelection();
+            document.getElementById('ex5Score').textContent = '';
+        }
+
+        function updateCollocSelection() {
+            document.querySelectorAll('#collocABank .colloc-item').forEach(item => {
+                item.classList.toggle('selected', Number(item.dataset.index) === ex5SelectedA);
+            });
+            document.querySelectorAll('#collocBBank .colloc-item').forEach(item => {
+                item.classList.toggle('selected', Number(item.dataset.index) === ex5SelectedB);
+            });
+        }
+
+        document.getElementById('ex5Check').addEventListener('click', () => {
+            let score = 0;
+            ex5Items.forEach((item, index) => {
+                const answer = ex5Answers[index];
+                if (answer && answer.a === item.answerA && answer.b === item.answerB) {
+                    score += 1;
+                }
+            });
+            document.getElementById('ex5Score').textContent = `Score: ${score} / ${ex5Items.length}`;
+            document.getElementById('ex5Feedback').textContent = score === ex5Items.length
+                ? 'Well done! All collocations are correct.'
+                : 'Some answers are incorrect or missing. Try again.';
+        });
+
+        const ex6A = ['maternity', 'paternity', 'sick', 'compassionate', 'unpaid'];
+        const ex6B = ['freelance', 'permanent', 'full-time', 'zero-hours'];
+        const ex6Correct = { a: 'leave', b: 'contract' };
+        let ex6Assignments = {};
+        let ex6SelectedWord = '';
+        let ex6ShuffledWords = [];
+
+        function shuffleArray(arr) {
+            return [...arr].sort(() => Math.random() - 0.5);
+        }
+
+        function isEx6Ready() {
+            const aValue = document.getElementById('ex6InputA').value.trim().toLowerCase();
+            const bValue = document.getElementById('ex6InputB').value.trim().toLowerCase();
+            return aValue === ex6Correct.a && bValue === ex6Correct.b;
+        }
+
+        function updateEx6Status() {
+            const ready = isEx6Ready();
+            const fillFeedback = document.getElementById('ex6FillFeedback');
+            fillFeedback.textContent = ready ? 'Great! Now categorise the words by clicking a word and then the correct group.' : 'Fill both words correctly to activate the word bank.';
+            fillFeedback.style.color = ready ? 'var(--accent-green)' : 'var(--accent-pink)';
+            document.getElementById('ex6Instructions').textContent = ready
+                ? 'Select a word, then click the correct group. Click an assigned word to remove it.'
+                : 'Complete the words first; the bank is locked until both are correct.';
+            renderEx6Words();
+        }
+
+        function renderEx6Words() {
+            const bank = document.getElementById('ex6WordBank');
+            const ready = isEx6Ready();
+            bank.innerHTML = '';
+            ex6ShuffledWords.forEach(word => {
+                const item = document.createElement('div');
+                item.className = 'colloc-item';
+                item.textContent = word;
+                item.dataset.word = word;
+                if (!ready) item.classList.add('used');
+                if (ex6SelectedWord === word) item.classList.add('selected');
+                if (ex6Assignments[word]) item.classList.add('used');
+                item.onclick = () => {
+                    if (!ready) return;
+                    if (ex6Assignments[word]) {
+                        delete ex6Assignments[word];
+                        ex6SelectedWord = '';
+                        renderEx6Words();
+                        renderEx6Groups();
+                        return;
+                    }
+                    ex6SelectedWord = ex6SelectedWord === word ? '' : word;
+                    renderEx6Words();
+                };
+                bank.appendChild(item);
+            });
+        }
+
+        function renderEx6Groups() {
+            const groupA = document.getElementById('ex6GroupA');
+            const groupB = document.getElementById('ex6GroupB');
+            groupA.innerHTML = '';
+            groupB.innerHTML = '';
+            Object.entries(ex6Assignments).forEach(([word, group]) => {
+                const tag = document.createElement('div');
+                tag.className = 'colloc-item used';
+                tag.textContent = word;
+                tag.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    delete ex6Assignments[word];
+                    ex6SelectedWord = '';
+                    renderEx6Words();
+                    renderEx6Groups();
+                });
+                if (group === 'A') groupA.appendChild(tag);
+                if (group === 'B') groupB.appendChild(tag);
+            });
+        }
+
+        function buildEx6() {
+            ex6Assignments = {};
+            ex6SelectedWord = '';
+            ex6ShuffledWords = shuffleArray([...ex6A, ...ex6B]);
+            document.getElementById('ex6InputA').value = '';
+            document.getElementById('ex6InputB').value = '';
+            renderEx6Words();
+            renderEx6Groups();
+            updateEx6Status();
+            document.getElementById('ex6Score').textContent = '';
+            document.getElementById('ex6Feedback').textContent = '';
+        }
+
+        document.getElementById('ex6InputA').addEventListener('input', updateEx6Status);
+        document.getElementById('ex6InputB').addEventListener('input', updateEx6Status);
+
+        function assignWordToGroup(group) {
+            const ready = isEx6Ready();
+            if (!ready || !ex6SelectedWord) return;
+            ex6Assignments[ex6SelectedWord] = group;
+            ex6SelectedWord = '';
+            renderEx6Words();
+            renderEx6Groups();
+        }
+
+        document.getElementById('ex6GroupAContainer').addEventListener('click', () => assignWordToGroup('A'));
+        document.getElementById('ex6GroupBContainer').addEventListener('click', () => assignWordToGroup('B'));
+
+        document.getElementById('ex6Check').addEventListener('click', () => {
+            const aValue = document.getElementById('ex6InputA').value.trim().toLowerCase();
+            const bValue = document.getElementById('ex6InputB').value.trim().toLowerCase();
+            let score = 0;
+            if (aValue === ex6Correct.a) score += 1;
+            if (bValue === ex6Correct.b) score += 1;
+            ex6A.forEach(word => {
+                if (ex6Assignments[word] === 'A') score += 1;
+            });
+            ex6B.forEach(word => {
+                if (ex6Assignments[word] === 'B') score += 1;
+            });
+            document.getElementById('ex6Score').textContent = `Score: ${score} / ${2 + ex6A.length + ex6B.length}`;
+            document.getElementById('ex6Feedback').textContent = score === 2 + ex6A.length + ex6B.length
+                ? 'Excellent — all words are completed and grouped correctly.'
+                : 'Some answers are still incorrect or some words are in the wrong group.';
+        });
+
+        const ex7Items = [
+            { prompt: 'I get on very well with my colleagues / co-workers.', answer: 'S' },
+            { prompt: 'I’ve had enough of my job. I think I’m going to quit / resign.', answer: 'S' },
+            { prompt: 'Three-quarters of the staff / workforce are women.', answer: 'S' },
+            { prompt: '400 workers have been laid off / made redundant.', answer: 'S' },
+            { prompt: 'He’s been out of work / off work for nearly six months.', answer: 'D' },
+            { prompt: 'She was sacked / was fired for refusing to work on Sundays.', answer: 'S' },
+            { prompt: 'Fantastic news! I’m going to get promoted / get a pay rise!', answer: 'D' },
+            { prompt: 'What skills / qualifications do you have?', answer: 'D' },
+            { prompt: 'We’re too busy – we need to hire / employ more staff.', answer: 'S' },
+            { prompt: 'The salary’s a bit low, but we have some great perks / benefits.', answer: 'S' }
+        ];
+
+        let ex7Answers = {};
+
+        function buildEx7() {
+            const list = document.getElementById('ex7List');
+            list.innerHTML = '';
+            ex7Answers = {};
+            ex7Items.forEach((item, index) => {
+                const row = document.createElement('div');
+                row.className = 'sd-row';
+
+                const number = document.createElement('div');
+                number.className = 'sd-number';
+                number.textContent = index + 1;
+
+                const content = document.createElement('div');
+                content.className = 'sd-content';
+                content.textContent = item.prompt;
+
+                const select = document.createElement('select');
+                select.className = 'sd-select';
+                select.innerHTML = '<option value="">Select</option><option value="S">S</option><option value="D">D</option>';
+                select.onchange = () => {
+                    ex7Answers[index] = select.value;
+                };
+
+                const note = document.createElement('input');
+                note.className = 'sd-note';
+                note.placeholder = 'Difference/register note (optional)';
+                note.type = 'text';
+                note.oninput = () => {
+                    ex7Answers[index] = ex7Answers[index] || '';
+                };
+
+                row.appendChild(number);
+                row.appendChild(content);
+                row.appendChild(select);
+                row.appendChild(note);
+                list.appendChild(row);
+            });
+            document.getElementById('ex7Score').textContent = '';
+            document.getElementById('ex7Feedback').textContent = '';
+        }
+
+        document.getElementById('ex7Check').addEventListener('click', () => {
+            let correct = 0;
+            ex7Items.forEach((item, index) => {
+                if (ex7Answers[index] === item.answer) correct += 1;
+            });
+            document.getElementById('ex7Score').textContent = `Score: ${correct} / ${ex7Items.length}`;
+            document.getElementById('ex7Feedback').textContent = correct === ex7Items.length
+                ? 'Nice work! All pairs are marked correctly.'
+                : 'Some answers are incorrect. Review the meaning of the bold pairs again.';
+        });
+
+        // Render all practice exercises without tabs
+        function renderPracticeExercises() {
+            buildEx1();
+            buildEx2();
+            buildEx3();
+            buildEx4();
+            buildEx5();
+            buildEx6();
+            buildEx7();
+        }
+
+        document.getElementById('goToPracticeBtn').addEventListener('click', () => {
+            renderPracticeExercises();
+            showSlide('practice');
+            const firstExercise = document.getElementById('ex1');
+            if (firstExercise) {
+                firstExercise.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+
+
+        // Course navigation handling
+        const courseSections = [
+            'Warm-up',
+            'Vocabulary Introduction and Practice',
+            'Reading and Listening',
+            'Pronunciation and Speaking',
+            'Reading',
+            'Grammar',
+            'Writing'
+        ];
+
+        const sectionSummaries = {
+            'Reading and Listening': 'This section will help you practice reading and listening with text-based activities and audio support.',
+            'Pronunciation and Speaking': 'This section focuses on pronunciation and speaking drills to help you use the vocabulary confidently.',
+            'Reading': 'This section provides reading passages and focused vocabulary tasks for comprehension practice.',
+            'Grammar': 'This section introduces grammar points related to the vocabulary and sentence structure.',
+            'Writing': 'This section includes writing prompts and tasks to help you use new vocabulary in context.'
+        };
+
+        let currentSection = 'Vocabulary Introduction and Practice';
+
+        function initCourseNav() {
+            const nav = document.getElementById('courseNav');
+            if (!nav) return;
+
+            nav.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const targetSection = item.getAttribute('data-section');
+                    // If Warm-up, navigate to the warmup page
+                    if (targetSection === 'Warm-up') {
+                        nav.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                        item.classList.add('active');
+                        window.location.href = 'warmup/Earnmoney.html';
+                        return;
+                    }
+
+                    nav.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    currentSection = targetSection;
+
+                    if (targetSection === 'Vocabulary Introduction and Practice') {
+                        document.getElementById('sectionTitle').textContent = currentSection;
+                        document.getElementById('sectionBody').textContent = 'Study the vocabulary cards below, then click the button to open the practice slide.';
+                        showSlide('vocabulary');
+                    } else {
+                        document.getElementById('contentTitle').textContent = currentSection;
+                        document.getElementById('contentBody').textContent = sectionSummaries[targetSection] || 'This section is coming soon. Please continue to the next lesson when ready.';
+                        showSlide('content');
+                    }
+                });
+            });
+        }
+
+        // Initialize course nav after DOM is ready
+        initCourseNav();
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.getAttribute('data-filter');
+                renderVocabulary();
+            });
+        });
+
+        // Search
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchTerm = e.target.value;
+            renderVocabulary();
+        });
+
+        // Initial render
+        renderVocabulary();
+    </script>
+</body>
+</html>
+

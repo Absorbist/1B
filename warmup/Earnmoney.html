@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is It Easier to Earn Money in 2026?</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap');
+ 
+  :root {
+    --primary: #6C5CE7;
+    --primary-light: #a29bfe;
+    --secondary: #00cec9;
+    --accent: #fdcb6e;
+    --danger: #d63031;
+    --success: #00b894;
+    --bg: #f8f9fc;
+    --card: #ffffff;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --shadow: 0 4px 24px rgba(108,92,231,0.10);
+    --radius: 16px;
+  }
+ 
+  * { margin:0; padding:0; box-sizing:border-box; }
+ 
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+ 
+  /* ── Progress Bar ── */
+  .progress-bar {
+    position: fixed; top:0; left:0; width:100%; height:5px;
+    background: #e0e0e0; z-index:1000;
+  }
+  .progress-fill {
+    height:100%; background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: width .4s ease;
+  }
+ 
+  /* ── Navigation ── */
+  nav {
+    position: fixed; top:5px; left:0; width:100%;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+    padding: 12px 24px; z-index:999;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .nav-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--primary);
+  }
+  .nav-dots { display:flex; gap:8px; }
+  .nav-dot {
+    width:12px; height:12px; border-radius:50%;
+    background: #ddd; cursor:pointer; transition:.3s;
+    border: 2px solid transparent;
+  }
+  .nav-dot.active { background: var(--primary); transform: scale(1.2); }
+  .nav-dot.visited { background: var(--primary-light); }
+  .nav-arrows { display:flex; gap:8px; }
+  .nav-btn {
+    background: var(--primary); color:#fff; border:none;
+    width:40px; height:40px; border-radius:50%;
+    cursor:pointer; font-size:1.2rem;
+    display:flex; align-items:center; justify-content:center;
+    transition:.2s;
+  }
+  .nav-btn:hover { transform:scale(1.1); }
+  .nav-btn:disabled { background:#ccc; cursor:default; transform:none; }
+ 
+  /* ── Slides ── */
+  .slides-container {
+    padding-top: 80px;
+    min-height: 100vh;
+  }
+  .slide {
+    display: none;
+    animation: fadeIn .5s ease;
+    padding: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .slide.active { display: block; }
+ 
+  @keyframes fadeIn {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+ 
+  /* ── Slide Header ── */
+  .slide-header {
+    text-align:center; margin-bottom:36px;
+  }
+  .slide-header .tag {
+    display:inline-block; background: var(--primary);
+    color:#fff; padding:4px 16px; border-radius:20px;
+    font-size:.75rem; font-weight:600; letter-spacing:1px;
+    text-transform:uppercase; margin-bottom:12px;
+  }
+  .slide-header h1 {
+    font-family:'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--text); line-height:1.3;
+  }
+  .slide-header p {
+    color: var(--text-light); margin-top:8px; font-size:.95rem;
+  }
+ 
+  /* ── Vocabulary Cards ── */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .vocab-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow:hidden;
+    cursor:pointer;
+    transition: transform .3s, box-shadow .3s;
+    position:relative;
+  }
+  .vocab-card:hover { transform:translateY(-4px); box-shadow:0 8px 32px rgba(108,92,231,0.18); }
+  .vocab-card .illustration {
+    height:140px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:3.5rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .vocab-card .illustration::before {
+    content:'';
+    position:absolute; inset:0;
+    opacity:.12;
+  }
+  .vocab-card .card-body {
+    padding:16px 20px 20px;
+  }
+  .vocab-card .word {
+    font-weight:700; font-size:1.15rem; color:var(--primary);
+    margin-bottom:2px;
+  }
+  .vocab-card .pos {
+    font-size:.75rem; color:var(--text-light); font-style:italic;
+    margin-bottom:8px;
+  }
+  .vocab-card .definition {
+    font-size:.9rem; color:var(--text); line-height:1.5;
+  }
+  .vocab-card .example {
+    display:none;
+    margin-top:10px; padding-top:10px;
+    border-top:1px dashed #e0e0e0;
+    font-size:.85rem; color:var(--text-light);
+    font-style:italic; line-height:1.5;
+  }
+  .vocab-card.flipped .example { display:block; }
+  .vocab-card .flip-hint {
+    position:absolute; top:10px; right:12px;
+    font-size:.7rem; color:var(--text-light);
+    background:rgba(255,255,255,0.85); padding:2px 8px;
+    border-radius:8px;
+  }
+  .vocab-card .audio-btn {
+    position:absolute; top:10px; left:12px;
+    background:rgba(255,255,255,0.9); border:none;
+    width:32px; height:32px; border-radius:50%;
+    cursor:pointer; font-size:1rem;
+    display:flex; align-items:center; justify-content:center;
+    transition:.2s;
+  }
+  .vocab-card .audio-btn:hover { transform:scale(1.15); }
+ 
+  /* Card colors */
+  .vocab-card:nth-child(1) .illustration { background: linear-gradient(135deg, #a29bfe, #6c5ce7); }
+  .vocab-card:nth-child(2) .illustration { background: linear-gradient(135deg, #81ecec, #00cec9); }
+  .vocab-card:nth-child(3) .illustration { background: linear-gradient(135deg, #ffeaa7, #fdcb6e); }
+  .vocab-card:nth-child(4) .illustration { background: linear-gradient(135deg, #fab1a0, #e17055); }
+  .vocab-card:nth-child(5) .illustration { background: linear-gradient(135deg, #55efc4, #00b894); }
+  .vocab-card:nth-child(6) .illustration { background: linear-gradient(135deg, #fd79a8, #e84393); }
+  .vocab-card:nth-child(7) .illustration { background: linear-gradient(135deg, #74b9ff, #0984e3); }
+  .vocab-card:nth-child(8) .illustration { background: linear-gradient(135deg, #dfe6e9, #b2bec3); }
+  .vocab-card:nth-child(9) .illustration { background: linear-gradient(135deg, #ffeaa7, #e17055); }
+  .vocab-card:nth-child(10) .illustration { background: linear-gradient(135deg, #55efc4, #6c5ce7); }
+  .vocab-card:nth-child(11) .illustration { background: linear-gradient(135deg, #fd79a8, #0984e3); }
+  .vocab-card:nth-child(12) .illustration { background: linear-gradient(135deg, #a29bfe, #00cec9); }
+ 
+  /* ── Article ── */
+  .article-container {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 40px 48px;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height:1.85;
+    font-size:1.05rem;
+  }
+  .article-container h2 {
+    font-family:'Playfair Display',serif;
+    font-size:1.6rem; margin-bottom:20px;
+    color:var(--text);
+  }
+  .article-container p { margin-bottom:16px; }
+  .vocab-highlight {
+    background: linear-gradient(120deg, rgba(108,92,231,0.12) 0%, rgba(0,206,201,0.12) 100%);
+    padding: 2px 6px; border-radius:4px;
+    font-weight:600; color:var(--primary);
+    cursor:pointer; position:relative;
+    transition:.2s; border-bottom: 2px solid var(--primary-light);
+  }
+  .vocab-highlight:hover {
+    background: linear-gradient(120deg, rgba(108,92,231,0.25) 0%, rgba(0,206,201,0.25) 100%);
+  }
+  .tooltip {
+    display:none; position:absolute; bottom:calc(100% + 8px); left:50%;
+    transform:translateX(-50%);
+    background: var(--text); color:#fff;
+    padding:10px 14px; border-radius:10px;
+    font-size:.82rem; font-weight:400;
+    white-space:normal; width:260px;
+    z-index:10; line-height:1.4;
+    box-shadow:0 4px 16px rgba(0,0,0,0.2);
+  }
+  .tooltip::after {
+    content:''; position:absolute; top:100%; left:50%;
+    transform:translateX(-50%);
+    border:6px solid transparent;
+    border-top-color:var(--text);
+  }
+  .vocab-highlight:hover .tooltip { display:block; }
+ 
+  /* ── Exercises ── */
+  .exercise-section {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px 36px;
+    max-width: 800px;
+    margin: 0 auto 24px;
+  }
+  .exercise-section h3 {
+    font-size:1.15rem; margin-bottom:20px; color:var(--primary);
+    display:flex; align-items:center; gap:8px;
+  }
+  .exercise-section h3 .icon { font-size:1.3rem; }
+ 
+  /* Matching exercise */
+  .match-container {
+    display:flex; gap:24px; flex-wrap:wrap;
+    justify-content:center;
+  }
+  .match-col {
+    display:flex; flex-direction:column; gap:10px;
+    min-width:200px; flex:1;
+  }
+  .match-item {
+    padding:12px 16px; border-radius:10px;
+    cursor:pointer; transition:.2s;
+    font-size:.9rem; text-align:center;
+    user-select:none;
+  }
+  .match-word {
+    background: #f0edff; border:2px solid var(--primary-light);
+    color: var(--primary); font-weight:600;
+  }
+  .match-def {
+    background: #e8fffe; border:2px solid var(--secondary);
+    color: #00838f;
+  }
+  .match-item.selected {
+    transform:scale(1.05);
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+  .match-item.correct {
+    background: #d4edda !important; border-color: var(--success) !important;
+    color: #155724 !important;
+  }
+  .match-item.incorrect {
+    background: #f8d7da !important; border-color: var(--danger) !important;
+    color: #721c24 !important;
+    animation: shake .4s;
+  }
+  @keyframes shake {
+    0%,100% { transform:translateX(0); }
+    25% { transform:translateX(-6px); }
+    75% { transform:translateX(6px); }
+  }
+ 
+  /* Fill-in-the-blank */
+  .fib-question {
+    margin-bottom:20px; padding-bottom:20px;
+    border-bottom:1px solid #eee;
+  }
+  .fib-question:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .fib-question p {
+    margin-bottom:10px; line-height:1.7; font-size:.95rem;
+  }
+  .fib-blank {
+    display:inline-block;
+    border-bottom:2px dashed var(--primary);
+    min-width:140px; padding:2px 8px;
+    font-weight:600; color:var(--primary);
+    transition:.3s;
+  }
+  .fib-options {
+    display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;
+  }
+  .fib-opt {
+    padding:8px 16px; border-radius:20px;
+    background:#f0edff; border:2px solid var(--primary-light);
+    color:var(--primary); font-weight:500;
+    cursor:pointer; font-size:.85rem;
+    transition:.2s;
+  }
+  .fib-opt:hover { background: var(--primary-light); color:#fff; }
+  .fib-opt.selected { background:var(--primary); color:#fff; }
+  .fib-opt.correct { background:var(--success)!important; color:#fff!important; border-color:var(--success)!important; }
+  .fib-opt.incorrect { background:var(--danger)!important; color:#fff!important; border-color:var(--danger)!important; }
+  .fib-opt.disabled { pointer-events:none; opacity:.6; }
+ 
+  /* Multiple Choice */
+  .mc-question {
+    margin-bottom:28px;
+  }
+  .mc-question p {
+    font-size:.95rem; margin-bottom:12px; line-height:1.6;
+    font-weight:500;
+  }
+  .mc-options {
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .mc-opt {
+    padding:12px 18px; border-radius:12px;
+    background: #f8f9fc; border:2px solid #e0e0e0;
+    cursor:pointer; font-size:.9rem;
+    transition:.2s; display:flex; align-items:center; gap:10px;
+  }
+  .mc-opt:hover { border-color:var(--primary); background:#f0edff; }
+  .mc-opt .letter {
+    width:28px; height:28px; border-radius:50%;
+    background:var(--primary-light); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:.8rem; flex-shrink:0;
+  }
+  .mc-opt.correct { background:#d4edda!important; border-color:var(--success)!important; }
+  .mc-opt.correct .letter { background:var(--success)!important; }
+  .mc-opt.incorrect { background:#f8d7da!important; border-color:var(--danger)!important; }
+  .mc-opt.incorrect .letter { background:var(--danger)!important; }
+  .mc-opt.disabled { pointer-events:none; }
+ 
+  /* Discussion */
+  .discussion-card {
+    background: linear-gradient(135deg, #f0edff, #e8fffe);
+    border-radius:12px; padding:20px 24px;
+    margin-bottom:16px;
+  }
+  .discussion-card p {
+    font-size:.95rem; line-height:1.6; margin-bottom:10px;
+  }
+  .discussion-card textarea {
+    width:100%; min-height:80px; border:2px solid var(--primary-light);
+    border-radius:10px; padding:12px; font-family:inherit;
+    font-size:.9rem; resize:vertical; transition:.2s;
+  }
+  .discussion-card textarea:focus {
+    outline:none; border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(108,92,231,0.15);
+  }
+ 
+  /* Score & Check Buttons */
+  .check-btn {
+    display:inline-flex; align-items:center; gap:8px;
+    background: var(--primary); color:#fff;
+    border:none; padding:12px 28px;
+    border-radius:30px; font-size:.95rem;
+    font-weight:600; cursor:pointer;
+    transition:.2s; margin-top:16px;
+  }
+  .check-btn:hover { background:#5a4bd1; transform:translateY(-2px); }
+  .check-btn:active { transform:translateY(0); }
+ 
+  .score-display {
+    text-align:center; margin-top:20px;
+    padding:16px; border-radius:12px;
+    background:linear-gradient(135deg, var(--primary), var(--secondary));
+    color:#fff; font-size:1.1rem; font-weight:600;
+    display:none;
+  }
+  .score-display.visible { display:block; animation:fadeIn .5s; }
+ 
+  /* ── Word bank for vocab slide ── */
+  .word-bank-hint {
+    text-align:center; margin-top:12px;
+    font-size:.85rem; color:var(--text-light);
+  }
+ 
+  /* ── Responsive ── */
+  @media (max-width:600px) {
+    .slide { padding:16px; }
+    .article-container { padding:24px 20px; }
+    .exercise-section { padding:20px; }
+    .match-container { flex-direction:column; }
+    nav { padding:10px 16px; }
+    .nav-title { font-size:.9rem; }
+  }
+ 
+  /* ── Final slide ── */
+  .final-score-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding:48px;
+    max-width:500px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .final-score-card .big-score {
+    font-size:4rem; font-weight:800;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .final-score-card p {
+    margin-top:12px; font-size:1.05rem; color:var(--text-light);
+  }
+  .restart-btn {
+    margin-top:24px;
+    background:var(--primary); color:#fff;
+    border:none; padding:14px 36px;
+    border-radius:30px; font-size:1rem;
+    font-weight:600; cursor:pointer; transition:.2s;
+  }
+  .restart-btn:hover { background:#5a4bd1; transform:translateY(-2px); }
+ 
+  /* SVG illustrations */
+  .illust-svg { width:64px; height:64px; filter: drop-shadow(0 2px 4px rgba(0,0,0,.15)); }
+</style>
+</head>
+<body>
+ 
+<!-- Progress Bar -->
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+ 
+<!-- Navigation -->
+<nav>
+  <div class="nav-title">English Lesson: Money in 2026</div>
+  <div class="nav-dots" id="navDots"></div>
+  <div class="nav-arrows">
+    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">&#8592;</button>
+    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">&#8594;</button>
+    <!-- Course navigation: Back to main course (same tab) -->
+    <a class="nav-btn" id="backToCourse" href="../index.html" title="Back to course">🏠</a>
+    <!-- Open main course in a new tab -->
+        <button class="nav-btn" id="openCourseNewTab" title="Open course in new tab">⇱</button>
+        <script>
+        const openCourseBtn = document.getElementById('openCourseNewTab');
+        if (openCourseBtn) {
+          openCourseBtn.addEventListener('click', () => {
+            window.open('../index.html', '_blank');
+          });
+        }
+        </script>
+  </div>
+</nav>
+ 
+<div class="slides-container">
+ 
+<!-- ═══════════ SLIDE 1 — VOCABULARY ═══════════ -->
+<div class="slide active" id="slide-0">
+  <div class="slide-header">
+    <span class="tag">Vocabulary</span>
+    <h1>Key Words &amp; Expressions</h1>
+    <p>Click each card to see an example sentence. Master these words before reading the article.</p>
+  </div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+  <p class="word-bank-hint">Tip: Hover over highlighted words in the article to see definitions.</p>
+</div>
+ 
+<!-- ═══════════ SLIDE 2 — ARTICLE ═══════════ -->
+<div class="slide" id="slide-1">
+  <div class="slide-header">
+    <span class="tag">Reading</span>
+    <h1>Is It Easier to Earn Money in 2026?</h1>
+    <p>Read the article and pay attention to the highlighted vocabulary.</p>
+  </div>
+  <div class="article-container">
+    <h2>The Shifting Landscape of Income</h2>
+ 
+    <p>The question of whether it is easier to earn money in 2026 does not have a straightforward answer. On the one hand, the rise of the <span class="vocab-highlight" data-word="gig economy">gig economy<span class="tooltip">A labor market characterized by short-term, freelance, or on-demand work rather than permanent jobs.</span></span> has given millions of people access to flexible work that was unimaginable a decade ago. Platforms for ride-sharing, freelance design, tutoring, and content creation allow almost anyone with a smartphone to generate a <span class="vocab-highlight" data-word="revenue stream">revenue stream<span class="tooltip">A source of income for a business or individual, e.g., advertising, subscriptions, or sales.</span></span> within hours.</p>
+ 
+    <p>Technology, especially <span class="vocab-highlight" data-word="AI-driven">AI-driven<span class="tooltip">Powered or guided by artificial intelligence technology.</span></span> tools, has dramatically lowered the barrier to <span class="vocab-highlight" data-word="entrepreneurship">entrepreneurship<span class="tooltip">The process of creating, launching, and running a new business venture.</span></span>. A solo founder can now build, market, and sell a digital product without a large team, thanks to automated copywriting, code-generation assistants, and no-code platforms. In addition, the normalization of <span class="vocab-highlight" data-word="remote work">remote work<span class="tooltip">Working from a location other than a traditional office, often from home or while traveling.</span></span> means that talented professionals in lower-cost regions can compete for high-paying positions globally, effectively erasing geographic pay gaps.</p>
+ 
+    <p>However, earning money has also become more challenging in several respects. <span class="vocab-highlight" data-word="Inflation">Inflation<span class="tooltip">A general increase in prices and fall in the purchasing value of money over time.</span></span> has driven up the <span class="vocab-highlight" data-word="cost of living">cost of living<span class="tooltip">The level of prices relating to a range of everyday expenses such as housing, food, and transport.</span></span> in most developed countries, meaning that even those who earn more in nominal terms may feel poorer in real terms. The same technology that creates opportunities also eliminates traditional jobs, forcing workers to constantly <span class="vocab-highlight" data-word="upskill">upskill<span class="tooltip">To learn new skills or train in new areas to remain competitive in the job market.</span></span> to stay relevant.</p>
+ 
+    <p>Many financial advisors now stress the importance of <span class="vocab-highlight" data-word="financial literacy">financial literacy<span class="tooltip">The ability to understand and effectively use various financial skills, including budgeting, investing, and managing debt.</span></span>. Understanding how to <span class="vocab-highlight" data-word="diversify">diversify<span class="tooltip">To expand or vary the range of products, investments, or activities to reduce risk.</span></span> one's income — through investments, a <span class="vocab-highlight" data-word="side hustle">side hustle<span class="tooltip">A secondary job or business alongside one's main employment, often pursued for extra income or passion.</span></span>, or <span class="vocab-highlight" data-word="passive income">passive income<span class="tooltip">Earnings derived from investments, royalties, or automated businesses requiring minimal active effort.</span></span> from digital products — is considered essential in 2026. <span class="vocab-highlight" data-word="Cryptocurrency">Cryptocurrency<span class="tooltip">A digital or virtual currency that uses cryptography for security, operating on decentralized blockchain technology.</span></span>, once a niche interest, has become a mainstream asset class, though its volatility still carries significant risk.</p>
+ 
+    <p>In summary, the tools and pathways to earn money in 2026 are more abundant than ever, yet the competition is fiercer, the economy is more unpredictable, and the skills required are constantly evolving. Whether it is "easier" ultimately depends on one's willingness to adapt, learn, and embrace the new economic landscape.</p>
+  </div>
+</div>
+ 
+<!-- ═══════════ SLIDE 3 — EXERCISE 1: MATCHING ═══════════ -->
+<div class="slide" id="slide-2">
+  <div class="slide-header">
+    <span class="tag">Exercise 1</span>
+    <h1>Match the Vocabulary</h1>
+    <p>Select a word on the left, then click its correct definition on the right.</p>
+  </div>
+  <div class="exercise-section">
+    <h3><span class="icon">🔗</span> Match words to definitions</h3>
+    <div class="match-container" id="matchContainer"></div>
+    <div style="text-align:center;">
+      <button class="check-btn" onclick="resetMatch()">↻ Reset</button>
+    </div>
+    <div class="score-display" id="matchScore"></div>
+  </div>
+</div>
+ 
+<!-- ═══════════ SLIDE 4 — EXERCISE 2: FILL IN THE BLANK ═══════════ -->
+<div class="slide" id="slide-3">
+  <div class="slide-header">
+    <span class="tag">Exercise 2</span>
+    <h1>Fill in the Blanks</h1>
+    <p>Choose the correct word to complete each sentence.</p>
+  </div>
+  <div class="exercise-section" id="fibSection"></div>
+</div>
+ 
+<!-- ═══════════ SLIDE 5 — EXERCISE 3: READING COMPREHENSION ═══════════ -->
+<div class="slide" id="slide-4">
+  <div class="slide-header">
+    <span class="tag">Exercise 3</span>
+    <h1>Reading Comprehension</h1>
+    <p>Answer the questions based on the article.</p>
+  </div>
+  <div class="exercise-section" id="mcSection"></div>
+</div>
+ 
+<!-- ═══════════ SLIDE 6 — EXERCISE 4: DISCUSSION ═══════════ -->
+<div class="slide" id="slide-5">
+  <div class="slide-header">
+    <span class="tag">Exercise 4</span>
+    <h1>Discussion &amp; Writing</h1>
+    <p>Use the target vocabulary to answer these open-ended questions.</p>
+  </div>
+  <div class="exercise-section" id="discussionSection"></div>
+</div>
+ 
+<!-- ═══════════ SLIDE 7 — RESULTS ═══════════ -->
+<div class="slide" id="slide-6">
+  <div class="slide-header">
+    <span class="tag">Results</span>
+    <h1>Your Score</h1>
+  </div>
+  <div class="final-score-card">
+    <div class="big-score" id="finalScoreNum">0 / 0</div>
+    <p id="finalScoreMsg">Complete the exercises to see your score!</p>
+    <button class="restart-btn" onclick="restartAll()">Start Over</button>
+  </div>
+</div>
+ 
+</div><!-- slides-container -->
+ 
+<script>
+// ─── DATA ───
+const vocabData = [
+  {
+    word: "Side hustle",
+    pos: "noun phrase",
+    def: "A secondary job or business alongside one's main employment, often pursued for extra income or passion.",
+    example: "\"She started a side hustle selling handmade candles and now earns an extra $1,200 a month.\"",
+    icon: "💼"
+  },
+  {
+    word: "Gig economy",
+    pos: "noun phrase",
+    def: "A labor market characterized by short-term, freelance, or on-demand work rather than permanent jobs.",
+    example: "\"The gig economy has reshaped the way people think about career stability and employment benefits.\"",
+    icon: "📱"
+  },
+  {
+    word: "Passive income",
+    pos: "noun phrase",
+    def: "Earnings derived from investments, royalties, or automated businesses requiring minimal active effort.",
+    example: "\"His rental properties generate enough passive income to cover his monthly expenses.\"",
+    icon: "💰"
+  },
+  {
+    word: "Entrepreneurship",
+    pos: "noun",
+    def: "The process of creating, launching, and running a new business venture, often involving financial risk.",
+    example: "\"Entrepreneurship requires resilience — most successful founders have failed at least once.\"",
+    icon: "🚀"
+  },
+  {
+    word: "Inflation",
+    pos: "noun",
+    def: "A general increase in prices and fall in the purchasing value of money over time.",
+    example: "\"Inflation eroded the value of their savings, so they began investing in index funds.\"",
+    icon: "📈"
+  },
+  {
+    word: "Cost of living",
+    pos: "noun phrase",
+    def: "The level of prices relating to a range of everyday expenses such as housing, food, and transport.",
+    example: "\"The cost of living in major cities has pushed many young professionals to work remotely from smaller towns.\"",
+    icon: "🏠"
+  },
+  {
+    word: "Cryptocurrency",
+    pos: "noun",
+    def: "A digital or virtual currency that uses cryptography for security, operating on decentralized blockchain technology.",
+    example: "\"She diversified her portfolio by allocating 10% of her investments to cryptocurrency.\"",
+    icon: "₿"
+  },
+  {
+    word: "Remote work",
+    pos: "noun phrase",
+    def: "Working from a location other than a traditional office, often from home or while traveling.",
+    example: "\"Remote work allowed him to relocate to Bali while keeping his London salary.\"",
+    icon: "🌍"
+  },
+  {
+    word: "AI-driven",
+    pos: "adjective",
+    def: "Powered or guided by artificial intelligence technology.",
+    example: "\"AI-driven tools have automated tedious tasks that once required entire departments.\"",
+    icon: "🤖"
+  },
+  {
+    word: "Diversify",
+    pos: "verb",
+    def: "To expand or vary the range of products, investments, or activities to reduce risk.",
+    example: "\"Financial experts recommend that you diversify your income streams to weather economic downturns.\"",
+    icon: "🔀"
+  },
+  {
+    word: "Revenue stream",
+    pos: "noun phrase",
+    def: "A source of income for a business or individual, e.g., advertising, subscriptions, or sales.",
+    example: "\"Adding an online course as a new revenue stream boosted the company's profits by 30%.\"",
+    icon: "💸"
+  },
+  {
+    word: "Financial literacy",
+    pos: "noun phrase",
+    def: "The ability to understand and effectively use various financial skills, including budgeting, investing, and managing debt.",
+    example: "\"Schools are beginning to teach financial literacy as a core subject alongside mathematics.\"",
+    icon: "📚"
+  }
+];
+ 
+const matchWords = [
+  { word: "Side hustle", def: "A secondary job alongside main employment" },
+  { word: "Gig economy", def: "A market of short-term, freelance work" },
+  { word: "Passive income", def: "Earnings requiring minimal active effort" },
+  { word: "Inflation", def: "A general increase in prices over time" },
+  { word: "Diversify", def: "To vary investments to reduce risk" },
+  { word: "Upskill", def: "To learn new skills to stay competitive" }
+];
+ 
+const fibQuestions = [
+  {
+    sentence: 'She started a _____ selling illustrations online, earning an extra $800 each month on top of her regular salary.',
+    answer: "side hustle",
+    options: ["side hustle", "revenue stream", "passive income", "gig economy"]
+  },
+  {
+    sentence: 'Many workers in the _____ lack traditional benefits like health insurance and paid leave.',
+    answer: "gig economy",
+    options: ["entrepreneurship", "gig economy", "cost of living", "inflation"]
+  },
+  {
+    sentence: 'His YouTube channel now generates enough _____ that he barely needs to upload new content.',
+    answer: "passive income",
+    options: ["financial literacy", "passive income", "cryptocurrency", "side hustle"]
+  },
+  {
+    sentence: 'To protect herself from market volatility, she decided to _____ her investment portfolio across stocks, bonds, and real estate.',
+    answer: "diversify",
+    options: ["upskill", "diversify", "inflate", "monetize"]
+  },
+  {
+    sentence: '_____ tools now write marketing copy, generate images, and even compose code within seconds.',
+    answer: "AI-driven",
+    options: ["Remote work", "AI-driven", "Cryptocurrency", "Side hustle"]
+  },
+  {
+    sentence: 'Rising _____ has made everyday groceries and rent significantly more expensive than five years ago.',
+    answer: "inflation",
+    options: ["inflation", "diversify", "revenue stream", "entrepreneurship"]
+  }
+];
+ 
+const mcQuestions = [
+  {
+    q: "According to the article, what has made entrepreneurship more accessible in 2026?",
+    opts: [
+      "Government subsidies for startups",
+      "AI-driven tools, code-generation assistants, and no-code platforms",
+      "Lower university tuition fees",
+      "The decline of large corporations"
+    ],
+    correct: 1
+  },
+  {
+    q: "Why does the article suggest that earning more money may not feel like an improvement?",
+    opts: [
+      "Taxes have risen dramatically",
+      "People are working fewer hours",
+      "Inflation has raised the cost of living, reducing real purchasing power",
+      "Cryptocurrency has lost all its value"
+    ],
+    correct: 2
+  },
+  {
+    q: "What does the article identify as 'essential' for individuals in 2026?",
+    opts: [
+      "Owning cryptocurrency",
+      "Having a university degree",
+      "Financial literacy and income diversification",
+      "Working in a traditional office"
+    ],
+    correct: 2
+  },
+  {
+    q: "How has remote work affected geographic pay gaps, according to the text?",
+    opts: [
+      "It has widened them by concentrating wealth in cities",
+      "It has had no significant effect",
+      "It has effectively erased them by letting people compete globally",
+      "It has only benefited workers in developed countries"
+    ],
+    correct: 2
+  },
+  {
+    q: "What is the article's overall conclusion about earning money in 2026?",
+    opts: [
+      "It is definitively easier than ever before",
+      "It is impossible for most people",
+      "Tools are more abundant, but competition and required skills make the answer complex",
+      "Only tech workers can earn a decent living"
+    ],
+    correct: 2
+  }
+];
+ 
+const discussionQuestions = [
+  "Do you think the <strong>gig economy</strong> provides genuine freedom, or does it simply shift risk from employers to workers? Use examples from your own country.",
+  "What <strong>side hustle</strong> would you consider starting in 2026, and why? How would you ensure it becomes a sustainable <strong>revenue stream</strong>?",
+  "Is <strong>financial literacy</strong> something that should be taught in schools? At what age should students start learning about investments and <strong>passive income</strong>?",
+  "How might <strong>AI-driven</strong> technology change the job market over the next five years? Should workers be worried, or is the key to <strong>upskill</strong> and adapt?"
+];
+ 
+// ─── STATE ───
+let currentSlide = 0;
+const totalSlides = 7;
+let matchSelected = null;
+let matchPairs = 0;
+let scores = { match:0, fib:0, mc:0 };
+ 
+// ─── INIT ───
+function init() {
+  buildVocab();
+  buildNav();
+  buildMatch();
+  buildFIB();
+  buildMC();
+  buildDiscussion();
+  updateSlide();
+}
+ 
+// Build vocabulary cards
+function buildVocab() {
+  const grid = document.getElementById('vocabGrid');
+  vocabData.forEach((v, i) => {
+    const card = document.createElement('div');
+    card.className = 'vocab-card';
+    card.onclick = () => card.classList.toggle('flipped');
+    card.innerHTML = `
+      <div class="illustration">
+        <span style="font-size:3.5rem;">${v.icon}</span>
+        <span class="flip-hint">click to flip</span>
+      </div>
+      <div class="card-body">
+        <div class="word">${v.word}</div>
+        <div class="pos">${v.pos}</div>
+        <div class="definition">${v.def}</div>
+        <div class="example">${v.example}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+ 
+// Build navigation dots
+function buildNav() {
+  const dots = document.getElementById('navDots');
+  const labels = ['Vocab','Article','Match','Fill-in','Comprehension','Discussion','Results'];
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.title = labels[i];
+    dot.onclick = () => goToSlide(i);
+    dots.appendChild(dot);
+  }
+}
+ 
+// Build matching exercise
+function buildMatch() {
+  const container = document.getElementById('matchContainer');
+  const shuffledDefs = [...matchWords].sort(() => Math.random() - 0.5);
+ 
+  const wordCol = document.createElement('div');
+  wordCol.className = 'match-col';
+  wordCol.id = 'matchWords';
+ 
+  const defCol = document.createElement('div');
+  defCol.className = 'match-col';
+  defCol.id = 'matchDefs';
+ 
+  matchWords.forEach((item, i) => {
+    const w = document.createElement('div');
+    w.className = 'match-item match-word';
+    w.textContent = item.word;
+    w.dataset.word = item.word;
+    w.onclick = () => selectMatchWord(w);
+    wordCol.appendChild(w);
+  });
+ 
+  shuffledDefs.forEach((item, i) => {
+    const d = document.createElement('div');
+    d.className = 'match-item match-def';
+    d.textContent = item.def;
+    d.dataset.word = item.word;
+    d.onclick = () => selectMatchDef(d);
+    defCol.appendChild(d);
+  });
+ 
+  container.appendChild(wordCol);
+  container.appendChild(defCol);
+}
+ 
+function selectMatchWord(el) {
+  if (el.classList.contains('correct')) return;
+  document.querySelectorAll('.match-word').forEach(w => w.classList.remove('selected'));
+  el.classList.add('selected');
+  matchSelected = el.dataset.word;
+}
+ 
+function selectMatchDef(el) {
+  if (!matchSelected || el.classList.contains('correct')) return;
+  const wordEl = document.querySelector('.match-word.selected');
+  if (el.dataset.word === matchSelected) {
+    el.classList.add('correct');
+    wordEl.classList.add('correct');
+    wordEl.classList.remove('selected');
+    matchPairs++;
+    scores.match++;
+    if (matchPairs === matchWords.length) {
+      const sc = document.getElementById('matchScore');
+      sc.textContent = `Perfect! All ${matchWords.length} pairs matched correctly!`;
+      sc.classList.add('visible');
+    }
+  } else {
+    el.classList.add('incorrect');
+    setTimeout(() => el.classList.remove('incorrect'), 600);
+  }
+  matchSelected = null;
+}
+ 
+function resetMatch() {
+  matchPairs = 0;
+  scores.match = 0;
+  matchSelected = null;
+  document.getElementById('matchScore').classList.remove('visible');
+  document.getElementById('matchContainer').innerHTML = '';
+  buildMatch();
+}
+ 
+// Build fill-in-the-blank
+function buildFIB() {
+  const section = document.getElementById('fibSection');
+  section.innerHTML = '<h3><span class="icon">✏️</span> Complete the sentences</h3>';
+  fibQuestions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'fib-question';
+    const parts = q.sentence.split('_____');
+    div.innerHTML = `
+      <p>${i+1}. ${parts[0]}<span class="fib-blank" id="blank-${i}">______</span>${parts[1]}</p>
+      <div class="fib-options" id="fib-opts-${i}">
+        ${q.options.map(o => `<span class="fib-opt" data-q="${i}" data-val="${o}" onclick="selectFIB(this)">${o}</span>`).join('')}
+      </div>
+    `;
+    section.appendChild(div);
+  });
+  const btn = document.createElement('button');
+  btn.className = 'check-btn';
+  btn.innerHTML = '✓ Check Answers';
+  btn.onclick = checkFIB;
+  section.appendChild(btn);
+ 
+  const sc = document.createElement('div');
+  sc.className = 'score-display';
+  sc.id = 'fibScore';
+  section.appendChild(sc);
+}
+ 
+function selectFIB(el) {
+  if (el.classList.contains('disabled')) return;
+  const qIdx = el.dataset.q;
+  document.querySelectorAll(`#fib-opts-${qIdx} .fib-opt`).forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById(`blank-${qIdx}`).textContent = el.dataset.val;
+}
+ 
+function checkFIB() {
+  let correct = 0;
+  fibQuestions.forEach((q, i) => {
+    const selected = document.querySelector(`#fib-opts-${i} .fib-opt.selected`);
+    const opts = document.querySelectorAll(`#fib-opts-${i} .fib-opt`);
+    opts.forEach(o => {
+      o.classList.add('disabled');
+      if (o.dataset.val === q.answer) o.classList.add('correct');
+    });
+    if (selected) {
+      if (selected.dataset.val === q.answer) {
+        correct++;
+      } else {
+        selected.classList.add('incorrect');
+      }
+    }
+  });
+  scores.fib = correct;
+  const sc = document.getElementById('fibScore');
+  sc.textContent = `You got ${correct} out of ${fibQuestions.length} correct!`;
+  sc.classList.add('visible');
+}
+ 
+// Build multiple choice
+function buildMC() {
+  const section = document.getElementById('mcSection');
+  section.innerHTML = '<h3><span class="icon">📖</span> Choose the best answer</h3>';
+  mcQuestions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'mc-question';
+    div.innerHTML = `
+      <p>${i+1}. ${q.q}</p>
+      <div class="mc-options" id="mc-opts-${i}">
+        ${q.opts.map((o, j) => `
+          <div class="mc-opt" data-q="${i}" data-idx="${j}" onclick="selectMC(this)">
+            <span class="letter">${String.fromCharCode(65+j)}</span>
+            <span>${o}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    section.appendChild(div);
+  });
+  const btn = document.createElement('button');
+  btn.className = 'check-btn';
+  btn.innerHTML = '✓ Check Answers';
+  btn.onclick = checkMC;
+  section.appendChild(btn);
+ 
+  const sc = document.createElement('div');
+  sc.className = 'score-display';
+  sc.id = 'mcScore';
+  section.appendChild(sc);
+}
+ 
+function selectMC(el) {
+  if (el.classList.contains('disabled')) return;
+  const qIdx = el.dataset.q;
+  document.querySelectorAll(`#mc-opts-${qIdx} .mc-opt`).forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  el.style.borderColor = 'var(--primary)';
+  el.style.background = '#f0edff';
+}
+ 
+function checkMC() {
+  let correct = 0;
+  mcQuestions.forEach((q, i) => {
+    const opts = document.querySelectorAll(`#mc-opts-${i} .mc-opt`);
+    const selected = document.querySelector(`#mc-opts-${i} .mc-opt.selected`);
+    opts.forEach(o => {
+      o.classList.add('disabled');
+      if (parseInt(o.dataset.idx) === q.correct) o.classList.add('correct');
+    });
+    if (selected && parseInt(selected.dataset.idx) === q.correct) {
+      correct++;
+    } else if (selected) {
+      selected.classList.add('incorrect');
+    }
+  });
+  scores.mc = correct;
+  const sc = document.getElementById('mcScore');
+  sc.textContent = `You got ${correct} out of ${mcQuestions.length} correct!`;
+  sc.classList.add('visible');
+}
+ 
+// Build discussion
+function buildDiscussion() {
+  const section = document.getElementById('discussionSection');
+  section.innerHTML = '<h3><span class="icon">💬</span> Reflect and write</h3>';
+  discussionQuestions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'discussion-card';
+    card.innerHTML = `
+      <p><strong>${i+1}.</strong> ${q}</p>
+      <textarea placeholder="Write your answer here using the target vocabulary..."></textarea>
+    `;
+    section.appendChild(card);
+  });
+}
+ 
+// ─── NAVIGATION ───
+function updateSlide() {
+  document.querySelectorAll('.slide').forEach((s, i) => {
+    s.classList.toggle('active', i === currentSlide);
+  });
+  const dots = document.querySelectorAll('.nav-dot');
+  dots.forEach((d, i) => {
+    d.classList.toggle('active', i === currentSlide);
+    if (i < currentSlide) d.classList.add('visited');
+  });
+  document.getElementById('prevBtn').disabled = currentSlide === 0;
+  document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+  document.getElementById('progressFill').style.width =
+    ((currentSlide + 1) / totalSlides * 100) + '%';
+ 
+  if (currentSlide === totalSlides - 1) updateFinalScore();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+ 
+function changeSlide(dir) {
+  const next = currentSlide + dir;
+  if (next >= 0 && next < totalSlides) {
+    currentSlide = next;
+    updateSlide();
+  }
+}
+ 
+function goToSlide(i) {
+  currentSlide = i;
+  updateSlide();
+}
+ 
+function updateFinalScore() {
+  const total = matchWords.length + fibQuestions.length + mcQuestions.length;
+  const got = scores.match + scores.fib + scores.mc;
+  document.getElementById('finalScoreNum').textContent = `${got} / ${total}`;
+  const pct = total > 0 ? Math.round(got / total * 100) : 0;
+  let msg = '';
+  if (pct === 100) msg = 'Outstanding! You have mastered this topic!';
+  else if (pct >= 80) msg = 'Excellent work! Just a few areas to review.';
+  else if (pct >= 60) msg = 'Good effort! Review the vocabulary and try again.';
+  else if (pct > 0) msg = 'Keep practicing! Re-read the article and study the vocabulary cards.';
+  else msg = 'Complete the exercises to see your score!';
+  document.getElementById('finalScoreMsg').textContent = msg;
+}
+ 
+function restartAll() {
+  scores = { match:0, fib:0, mc:0 };
+  matchPairs = 0;
+  matchSelected = null;
+  currentSlide = 0;
+ 
+  // Rebuild exercises
+  document.getElementById('matchContainer').innerHTML = '';
+  document.getElementById('matchScore').classList.remove('visible');
+  buildMatch();
+  buildFIB();
+  buildMC();
+  buildDiscussion();
+  updateSlide();
+}
+ 
+// ─── KEYBOARD NAV ───
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') changeSlide(1);
+  if (e.key === 'ArrowLeft') changeSlide(-1);
+});
+ 
+// Init
+init();
+</script>
+</body>
+</html>
