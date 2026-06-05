@@ -621,6 +621,42 @@
             background: rgba(236,252,245,0.96);
         }
 
+        .match-row.wrong {
+            animation: blinkWrong 0.5s ease;
+            border-color: rgba(248,113,113,0.8);
+            background: rgba(254,226,226,0.95);
+        }
+
+        .match-row.correct {
+            animation: flashCorrect 0.5s ease;
+            border-color: rgba(34,197,94,0.6);
+            background: rgba(236,252,245,0.96);
+        }
+
+        .match-option.correct {
+            background: rgba(34,197,94,0.12);
+            border-color: rgba(34,197,94,0.25);
+        }
+
+        .match-option.wrong {
+            background: rgba(254,226,226,0.95);
+            border-color: rgba(248,113,113,0.8);
+        }
+
+        @keyframes blinkWrong {
+            0%, 100% { background: rgba(254,226,226,0.95); }
+            50% { background: rgba(248,113,113,0.2); }
+        }
+
+        @keyframes flashCorrect {
+            0%,100% { background: rgba(236,252,245,0.96); }
+            50% { background: rgba(34,197,94,0.12); }
+        }
+
+        .match-row.selected-left {
+            outline: 3px solid rgba(96,165,250,0.14);
+        }
+
         .match-row-number {
             min-width: 30px;
             color: var(--primary);
@@ -1618,6 +1654,11 @@
                 if (stats) stats.classList.add('hidden');
                 if (launchAction) launchAction.classList.add('hidden');
             }
+            try {
+                localStorage.setItem('lastSlide', slideName);
+            } catch (e) {
+                // ignore storage errors (e.g. private mode)
+            }
         }
 
         document.getElementById('backToVocabBtn').addEventListener('click', () => {
@@ -1905,12 +1946,19 @@
         };
 
         let ex4Answers = {};
-        let ex4SelectedLetter = '';
+        let ex4SelectedIndex = null; // index of left sentence selected
+        let ex4SelectedLetter = null; // letter selected on right when needed
 
-        function updateMatchSelection(bankItems) {
+        function updateRightSelection(bankItems) {
             bankItems.forEach(item => {
                 const letter = item.dataset.letter;
                 item.classList.toggle('selected', letter === ex4SelectedLetter);
+            });
+        }
+
+        function updateLeftSelection() {
+            Array.from(document.querySelectorAll('.match-row')).forEach(row => {
+                row.classList.toggle('selected-left', String(row.dataset.index) === String(ex4SelectedIndex));
             });
         }
 
@@ -1923,7 +1971,18 @@
             feedback.textContent = '';
             ex4SelectedLetter = '';
 
+            const orderedItems = [];
+            const remainingItems = [];
             ex4Items.forEach((item, index) => {
+                if (ex4Answers[index] === item.answer) {
+                    orderedItems.push({ item, index });
+                } else {
+                    remainingItems.push({ item, index });
+                }
+            });
+            orderedItems.push(...remainingItems);
+
+            orderedItems.forEach(({ item, index }) => {
                 const row = document.createElement('div');
                 row.className = 'match-row';
                 row.dataset.index = index;
@@ -1944,23 +2003,16 @@
                 row.appendChild(text);
                 row.appendChild(assigned);
 
+                // clicking a left sentence selects it for matching
                 row.onclick = () => {
-                    const selectedLetter = ex4SelectedLetter;
-                    if (!selectedLetter) {
-                        if (ex4Answers[index]) {
-                            delete ex4Answers[index];
-                            buildEx4();
-                        }
+                    // if row already has an assignment, clicking clears it
+                    if (ex4SelectedIndex === index) {
+                        ex4SelectedIndex = null;
+                        updateLeftSelection();
                         return;
                     }
-
-                    const previousIndex = Object.keys(ex4Answers).find(i => ex4Answers[i] === selectedLetter);
-                    if (previousIndex !== undefined) {
-                        delete ex4Answers[previousIndex];
-                    }
-                    ex4Answers[index] = selectedLetter;
-                    ex4SelectedLetter = '';
-                    buildEx4();
+                    ex4SelectedIndex = index;
+                    updateLeftSelection();
                 };
 
                 matchList.appendChild(row);
@@ -1971,18 +2023,49 @@
                 option.className = 'match-option';
                 option.dataset.letter = letter;
                 option.innerHTML = `<span class="match-option-letter">${letter}</span><span class="match-option-text">${text}</span>`;
+                // if this letter is already assigned to a left sentence, mark it correct
+                const isAssigned = Object.values(ex4Answers).includes(letter);
+                if (isAssigned) option.classList.add('correct');
+
                 option.onclick = () => {
-                    if (ex4SelectedLetter === letter) {
-                        ex4SelectedLetter = '';
+                    // require left sentence selected first
+                    if (ex4SelectedIndex === null) return;
+                    const selectedIndex = ex4SelectedIndex;
+                    const item = ex4Items[selectedIndex];
+                    // correct match
+                    if (letter === item.answer) {
+                        // clear any previous assignment of this letter
+                        const previousIndex = Object.keys(ex4Answers).find(i => ex4Answers[i] === letter);
+                        if (previousIndex !== undefined) delete ex4Answers[previousIndex];
+                        ex4Answers[selectedIndex] = letter;
+                        // visual feedback: flash green on both elements
+                        const rowEl = document.querySelector(`.match-row[data-index="${selectedIndex}"]`);
+                        option.classList.add('correct');
+                        if (rowEl) rowEl.classList.add('correct');
+                        setTimeout(() => {
+                            if (rowEl) rowEl.classList.remove('correct');
+                            option.classList.remove('correct');
+                            ex4SelectedIndex = null;
+                            buildEx4();
+                        }, 500);
                     } else {
-                        ex4SelectedLetter = letter;
+                        // wrong: flash red on both, keep positions
+                        const rowEl = document.querySelector(`.match-row[data-index="${selectedIndex}"]`);
+                        option.classList.add('wrong');
+                        if (rowEl) rowEl.classList.add('wrong');
+                        setTimeout(() => {
+                            option.classList.remove('wrong');
+                            if (rowEl) rowEl.classList.remove('wrong');
+                            ex4SelectedIndex = null;
+                            updateRightSelection(Array.from(document.querySelectorAll('.match-option')));
+                            updateLeftSelection();
+                        }, 500);
                     }
-                    updateMatchSelection(Array.from(document.querySelectorAll('.match-option')));
                 };
                 matchBank.appendChild(option);
             });
 
-            updateMatchSelection(Array.from(document.querySelectorAll('.match-option')));
+            updateRightSelection(Array.from(document.querySelectorAll('.match-option')));
             document.getElementById('ex4Score').textContent = '';
             document.getElementById('ex4Feedback').textContent = '';
             Array.from(document.querySelectorAll('.match-row')).forEach(row => {
@@ -2429,6 +2512,27 @@
 
         // Initial render
         renderVocabulary();
+
+        // Restore last-open slide on page load (so refresh keeps the same view)
+        (function restoreLastSlide() {
+            try {
+                const last = localStorage.getItem('lastSlide');
+                if (last === 'practice') {
+                    // make sure practice exercises are rendered before showing the slide
+                    try { renderPracticeExercises(); } catch(e) { /* ignore if unavailable */ }
+                    showSlide('practice');
+                    return;
+                }
+                if (last === 'content' || last === 'vocabulary') {
+                    showSlide(last);
+                    return;
+                }
+            } catch (e) {
+                // ignore
+            }
+            // default
+            showSlide('vocabulary');
+        })();
     </script>
 </body>
 </html>
