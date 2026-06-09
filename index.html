@@ -368,6 +368,7 @@
             body { padding: 1rem; }
             header h1 { font-size: 1.75rem; }
             .vocabulary-grid { grid-template-columns: 1fr; }
+            .photo-grid { grid-template-columns: 1fr; }
         }
 
         .expand-icon {
@@ -696,6 +697,326 @@
             border-radius: 16px;
             background: rgba(247,249,255,0.95);
             min-height: 100px;
+        }
+
+        .reading-intro {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .photo-card {
+            border: 1px solid rgba(91,91,255,0.14);
+            border-radius: 18px;
+            background: rgba(255,255,255,0.95);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .photo-number {
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+            color: var(--primary);
+        }
+
+        .photo-placeholder {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(91,91,255,0.05);
+            border-radius: 16px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .reading-image {
+            width: 100%;
+            border-radius: 18px;
+            margin-bottom: 0.75rem;
+            border: 1px solid rgba(91,91,255,0.16);
+        }
+
+        .photo-caption {
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .reading-activity {
+            padding: 1rem;
+            border: 1px dashed rgba(91,91,255,0.16);
+            border-radius: 18px;
+            background: rgba(247,249,255,0.95);
+        }
+
+        .reading-activity h3 {
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .reading-text {
+            background: rgba(255,255,255,0.95);
+            border: 1px solid rgba(91,91,255,0.12);
+            border-radius: 14px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .article-card {
+            margin-bottom: 1rem;
+        }
+
+        .article-card h4 {
+            margin: 0 0 0.75rem;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        .reading-text mark {
+            background: rgba(255,237,112,0.45);
+            color: var(--text-main);
+            padding: 0 0.15rem;
+            border-radius: 0.25rem;
+        }
+
+        .audio-task {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid rgba(91,91,255,0.16);
+            border-radius: 14px;
+            background: rgba(247,249,255,0.96);
+        }
+
+        .audio-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .audio-label {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+            min-width: 1.5rem;
+        }
+
+        .audio-title {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .audio-task audio {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .pronunciation-box,
+        .rhythm-box {
+            padding: 1rem;
+            border: 1px solid rgba(91,91,255,0.16);
+            border-radius: 14px;
+            background: rgba(247,249,255,0.96);
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .pronunciation-box h3,
+        .rhythm-box strong {
+            color: var(--text-main);
+        }
+
+        .pronunciation-list,
+        .rhythm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .pronunciation-item,
+        .rhythm-item {
+            padding: 0.85rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(91,91,255,0.12);
+            background: rgba(255,255,255,0.96);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .pronunciation-item span {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-decoration-color: rgba(91,91,255,0.35);
+        }
+
+        .speaking-task {
+            margin-bottom: 1rem;
+        }
+
+        .speaking-task p {
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box {
+            padding: 1rem;
+            background: rgba(217,235,255,0.6);
+            border: 1px solid rgba(91,91,255,0.18);
+            border-radius: 14px;
+            color: var(--text-main);
+        }
+
+        .highlight-box ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            line-height: 1.7;
+        }
+
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        .glossary-box {
+            padding: 1rem;
+            border: 1px solid rgba(91,91,255,0.16);
+            border-radius: 14px;
+            background: rgba(247,249,255,0.96);
+            margin-bottom: 1rem;
+        }
+
+        .glossary-box h4 {
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        .glossary-item {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .question-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .question-item {
+            padding: 0.9rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(91,91,255,0.12);
+            background: rgba(255,255,255,0.96);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .question-item strong {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .note-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0.85rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(91,91,255,0.12);
+            background: rgba(255,255,255,0.96);
+        }
+
+        .note-group label {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .note-input {
+            width: 100%;
+            min-height: 5rem;
+            padding: 0.85rem 1rem;
+            border: 1px solid rgba(91,91,255,0.17);
+            border-radius: 12px;
+            resize: vertical;
+            background: rgba(247,249,255,0.96);
+            color: var(--text-main);
+            font: inherit;
+        }
+
+        .note-input:focus {
+            outline: 2px solid rgba(91,91,255,0.28);
+            outline-offset: 2px;
+        }
+
+        .choice-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(91,91,255,0.12);
+            background: rgba(255,255,255,0.96);
+        }
+
+        .choice-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.5rem 0.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(91,91,255,0.12);
+            background: rgba(247,249,255,0.96);
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .choice-label input {
+            margin-top: 0.25rem;
+        }
+
+        .choice-label:hover {
+            border-color: rgba(91,91,255,0.3);
+            background: rgba(235,240,255,0.96);
+        }
+
+        .answer-key {
+            padding: 0.9rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(91,91,255,0.16);
+            background: rgba(247,249,255,0.96);
+            color: var(--text-main);
+        }
+
+        .answer-item {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .correct {
+            background: rgba(220,255,226,0.9);
+            border-color: rgba(29,184,84,0.65);
+        }
+
+        .incorrect {
+            background: rgba(255,231,231,0.95);
+            border-color: rgba(255,94,94,0.65);
+        }
+
+        .hidden {
+            display: none;
         }
 
         .match-option {
@@ -2450,12 +2771,228 @@
         ];
 
         const sectionSummaries = {
-            'Reading and Listening': 'This section will help you practice reading and listening with text-based activities and audio support.',
             'Pronunciation and Speaking': 'This section focuses on pronunciation and speaking drills to help you use the vocabulary confidently.',
             'Reading': 'This section provides reading passages and focused vocabulary tasks for comprehension practice.',
             'Grammar': 'This section introduces grammar points related to the vocabulary and sentence structure.',
             'Writing': 'This section includes writing prompts and tasks to help you use new vocabulary in context.'
         };
+
+        function getSectionContent(section) {
+            if (section === 'Reading and Listening') {
+                return `
+                    <div class="reading-intro">
+                        <p>Look at the photo below. It shows the same woman doing four different jobs. Read the article once and check your answers to a. Then answer the questions with a partner.</p>
+                    </div>
+                    <div class="photo-card full-width">
+                        <div class="photo-number">Photos 1–4</div>
+                        <img src="images/4jobs.png" alt="Four jobs" class="reading-image">
+                        <div class="photo-caption">The image contains four photos of the same woman at work.</div>
+                    </div>
+                    <div class="reading-activity">
+                        <h3>Article and discussion</h3>
+                        <p>Read the article once and check your answers to a. Then answer the questions with a partner.</p>
+                        <div class="reading-text">
+                            <p><strong>Emma Rosen</strong> had one of the best, most sought-after graduate jobs in the country, in the civil service. 20,000 people apply, but fewer than 1,000 are offered jobs. But it turned out that she didn’t like commuting and she didn’t like sitting at a desk all day, and she struggled to see how what she was doing would make much difference to anything. ‘I thought, “Get over it, you’re being a snowflake millennial,” she says. ‘I had a job for life. I thought, “I’m so lucky to be here, I can’t believe I’m not enjoying it. What’s wrong with me? Why am I so ungrateful and selfish?”’</p>
+                            <p>Emma could have gone to work every day and complained about her job until she reached retirement age. Instead, she decided to find out what made her happy, what her skills were, and what sort of career would use them. She wrote a bucket list of the jobs she had wanted to do since childhood and set about getting two-week placements in all of them, over the course of a year. She was 24 years old, and before her 25th birthday she wanted to have tried out at least 25 different jobs. She spent the months before she resigned from the civil service saving up her salary to cover the cost of her year off, and spent all her free time setting up the different jobs.</p>
+                            <p>‘There was archaeology in Transylvania, property development for a company in London, alpaca farming in Cornwall, wedding photography, travel writing, interior design, journalism, landscape gardening, marketing, TV production, publishing – all things that I thought I might want to do.’</p>
+                        </div>
+                        <div class="glossary-box">
+                            <h4>Glossary</h4>
+                            <div class="glossary-item"><strong>snowflake</strong> /ˈsnəʊfleɪk/ (informal, disapproving) a person who is too sensitive to criticism and easily upset</div>
+                            <div class="glossary-item"><strong>millennial</strong> /mɪˈlɛnɪəl/ a person who became an adult in the early 21st century</div>
+                            <div class="glossary-item"><strong>bucket list</strong> /ˈbʌkɪt lɪst/ a list of things people want to do in their lifetime, e.g. places they’d like to travel to</div>
+                        </div>
+                        <div class="audio-task">
+                            <div class="audio-header"><span class="audio-label">c</span></div>
+                            <p>You're going to listen to an interview with Emma. Which of the jobs she mentions in the last paragraph of the article do you think she liked the most / the least? Listen to Part 1 and check.</p>
+                            <audio controls src="audios/1.13.mp3"></audio>
+                        </div>
+                        <div class="question-list">
+                            <div class="question-item"><strong>d</strong> With a partner, look at the points below and see if you can remember any of the information from Emma's answers. Then listen again and make notes in the boxes.</div>
+                            <div class="note-group">
+                                <label><strong>1.</strong> How she got the jobs.</label>
+                                <textarea class="note-input" placeholder="Write your notes here..."></textarea>
+                            </div>
+                            <div class="note-group">
+                                <label><strong>2.</strong> What she could find out about a job in two weeks.</label>
+                                <textarea class="note-input" placeholder="Write your notes here..."></textarea>
+                            </div>
+                            <div class="note-group">
+                                <label><strong>3.</strong> Why it didn’t matter that she didn’t have qualifications for the jobs.</label>
+                                <textarea class="note-input" placeholder="Write your notes here..."></textarea>
+                            </div>
+                            <div class="note-group">
+                                <label><strong>4.</strong> What the job she liked best involved.</label>
+                                <textarea class="note-input" placeholder="Write your notes here..."></textarea>
+                            </div>
+                            <div class="note-group">
+                                <label><strong>5.</strong> What she didn’t like about her least favourite job.</label>
+                                <textarea class="note-input" placeholder="Write your notes here..."></textarea>
+                            </div>
+                            <button id="showDAnswers" class="action-btn" style="margin-top:0.75rem;">Show suggested answers</button>
+                            <div id="dAnswers" class="answer-key hidden" style="margin-top:1rem;">
+                                <div class="answer-item"><strong>1.</strong> By networking and cold-calling – making applications, writing letters and emails, sending her CV, speaking to people.</div>
+                                <div class="answer-item"><strong>2.</strong> She got a flavour of the jobs; she found out whether she wanted to learn more about them or not.</div>
+                                <div class="answer-item"><strong>3.</strong> Because she wasn’t actually working, she was shadowing people.</div>
+                                <div class="answer-item"><strong>4.</strong> Being a farmer, i.e. feeding, looking after, and shearing alpacas; also being an entrepreneur, making children’s clothes from the wool and selling them to shops.</div>
+                                <div class="answer-item"><strong>5.</strong> Finding spelling and grammar mistakes in texts.</div>
+                            </div>
+                        </div>
+                        <div class="audio-task">
+                            <div class="audio-header"><span class="audio-label">e</span></div>
+                            <p>Now listen to Part 2. Choose a, b, or c.</p>
+                            <audio controls src="audios/1.14.mp3"></audio>
+                        </div>
+                        <div class="question-list">
+                            <div class="choice-group">
+                                <div class="question-item"><strong>1.</strong> One thing Emma learned from the experience was that ___ .</div>
+                                <label class="choice-label"><input type="radio" name="q1" value="a"> a she enjoyed things that she was good at</label>
+                                <label class="choice-label"><input type="radio" name="q1" value="b"> b she discovered what her ideal job was</label>
+                                <label class="choice-label"><input type="radio" name="q1" value="c"> c she might end up doing many different jobs</label>
+                            </div>
+                            <div class="choice-group">
+                                <div class="question-item"><strong>2.</strong> She thinks that in the future ___ .</div>
+                                <label class="choice-label"><input type="radio" name="q2" value="a"> a young people will still be doing 9–5 jobs</label>
+                                <label class="choice-label"><input type="radio" name="q2" value="b"> b people will no longer retire in their 60s</label>
+                                <label class="choice-label"><input type="radio" name="q2" value="c"> c people will need many more technical skills</label>
+                            </div>
+                            <div class="choice-group">
+                                <div class="question-item"><strong>3.</strong> One thing she thinks young people need to learn is how to ___ that might help them in their career.</div>
+                                <label class="choice-label"><input type="radio" name="q3" value="a"> a form relationships</label>
+                                <label class="choice-label"><input type="radio" name="q3" value="b"> b choose subjects</label>
+                                <label class="choice-label"><input type="radio" name="q3" value="c"> c get qualifications</label>
+                            </div>
+                            <div class="choice-group">
+                                <div class="question-item"><strong>4.</strong> At the moment Emma ___ .</div>
+                                <label class="choice-label"><input type="radio" name="q4" value="a"> a only works as a writer</label>
+                                <label class="choice-label"><input type="radio" name="q4" value="b"> b teaches journalism in a public school</label>
+                                <label class="choice-label"><input type="radio" name="q4" value="c"> c doesn’t have one specific job</label>
+                            </div>
+                            <div class="choice-group">
+                                <div class="question-item"><strong>5.</strong> Emma believes that what jobs she does in the future may depend on ___ .</div>
+                                <label class="choice-label"><input type="radio" name="q5" value="a"> a where she decides to live</label>
+                                <label class="choice-label"><input type="radio" name="q5" value="b"> b how old she is</label>
+                                <label class="choice-label"><input type="radio" name="q5" value="c"> c how many children she has</label>
+                            </div>
+                            <button id="checkListeningAnswers" class="action-btn" style="margin-top:0.75rem;">Check answers</button>
+                            <div id="listeningFeedback" class="answer-key hidden" style="margin-top:1rem;"></div>
+                        </div>
+                        <div class="question-list">
+                            <div class="question-item"><strong>f</strong> Imagine you have decided to do the same thing as Emma. Make a list of five jobs you would like to try. Then compare with a partner and explain why you chose the jobs. Do you both agree with Emma’s view that a career for life no longer exists?</div>
+                        </div>
+                    </div>
+                `;
+            }
+            if (section === 'Reading') {
+                return `
+                    <div class="reading-intro">
+                        <p>The Guardian runs a weekly series called <em>What I’m really thinking</em>, where people in different jobs or situations reveal their true feelings. Look at the titles of the three articles below. What do you think each person might like and dislike about their job?</p>
+                    </div>
+                    <div class="reading-activity">
+                        <div class="article-card">
+                            <h4>A The female boxing coach</h4>
+                            <div class="reading-text">
+                                <p>Apparently, I don’t look like a boxer. I get told that a lot. I’ve lost count of the number of times people have exclaimed, ‘What about your nose?’ and ‘What if you mess up your face?’ They’ve <mark>missed the point</mark>: I’m not a model, so what does it matter if my nose isn’t straight? And anyway, boxing means more to me than that: it’s my structure and my sanity. Cheaper than therapy, that’s what we say. Injuries are part of the game, but I’ve been lucky so far.</p>
+                                <p>As the only girl in my gym, I’m aware that I’m a novelty. I’ve always been a tomboy, though, so it doesn’t bother me to train with the blokes. Some men don’t like to box with a woman, and that’s <mark>fair enough</mark>. But mostly they get used to it.</p>
+                                <p>When I’m not in the mood and consider giving up, I think about the children I help teach. There are a couple of young girls coming up who are really good and I want to be an example. Every time I <mark>hold my own</mark> in the ring, I challenge someone’s expectations a little bit, and I’m proud of myself for that.</p>
+                            </div>
+                        </div>
+                        <div class="article-card">
+                            <h4>B The night receptionist</h4>
+                            <div class="reading-text">
+                                <p>People assume I get bored, but I enjoy the solitude. I like the hourly walks through the quiet corridors and listening to the patter of the rain on the windows while enjoying a cup of tea. I enjoy finishing a good book or watching the birds in the car park feeding on the muffins I put out yesterday.</p>
+                                <p>The tiredness is the hardest. Sometimes I have a good routine and my sleep is not affected. Other times, I walk into doors, zombie-like, and occasionally I’ve been surprised to find that I’ve actually <mark>made it home</mark>. My husband tells me I should find a new job, and I have been applying for some since I began working here, but ‘night receptionist’ is not a good thing to put on a CV.</p>
+                                <p>I’m good with people; I just don’t like a lot of them. But though my job often perpetuates this dislike, I am compassionate towards those in need. I never <mark>think twice</mark> about letting someone in from the cold, or giving away a free room if it is a genuine cause. But if the intercom goes off at 2 a.m. and I see a couple who can hardly stand, I’ll probably say the hotel is full, even when it isn’t, especially if I’ve just made a tea.</p>
+                            </div>
+                        </div>
+                        <div class="article-card">
+                            <h4>C The orchestral musician</h4>
+                            <div class="reading-text">
+                                <p>I have done this for so long, my mind is free to wander while I play. The thrill of this being a fresh challenge <mark>has long gone</mark>. I just want to get to the end of the concert and go home. <mark>Travelling against commuter traffic is great</mark>, but it’s also a reminder that most people are on their way to relax and I’m only just getting started.</p>
+                                <p>We’re not all friends. The person on my right had an affair with the person on my left, and the ex sits close by. People fraternize exclusively according to the instrument they play, especially on tour.</p>
+                                <p>Late nights and out-of-town work mean I often get home after midnight, but I sleep only around six hours or I’ll miss the family in the only half-hour we have together. I work most weekends and holidays, then have <mark>random weekdays off</mark>. The freelance pay structure and low fees <mark>keep my nose to the grindstone</mark>, with almost zero opportunities to develop broader interests or a social life outside.</p>
+                            </div>
+                        </div>
+                        <div class="question-list">
+                            <div class="question-item"><strong>b</strong> Read the articles and check your answers to a. Which person, A–C, ...?</div>
+                            <div class="question-item">1 enjoys their job the most</div>
+                            <div class="question-item">2 enjoys their job the least</div>
+                            <div class="question-item">3 doesn’t have a good relationship with some of their colleagues</div>
+                            <div class="question-item">4 trains others as part of their job</div>
+                            <div class="question-item">5 struggles with the lack of sleep</div>
+                            <div class="question-item">6 helps people in need</div>
+                        </div>
+                        <div class="question-list">
+                            <div class="question-item"><strong>c</strong> Read the articles again. With a partner, say what you think the people mean by the following phrases or sentences.</div>
+                            <div class="question-item">1 …it’s my structure and my sanity.</div>
+                            <div class="question-item">2 …I challenge someone’s expectations a little bit…</div>
+                            <div class="question-item">3 …’night receptionist’ is not a good thing to put on a CV.</div>
+                            <div class="question-item">4 Travelling against commuter traffic is great…</div>
+                            <div class="question-item">5 …have random weekdays off.</div>
+                            <div class="question-item">6 …with almost zero opportunities to develop broader interests…</div>
+                        </div>
+                        <div class="question-list">
+                            <div class="question-item"><strong>d</strong> Look at the highlighted phrases in the articles and work out their meaning from the context. Then match them to definitions 1–7.</div>
+                            <div class="question-item">1 ______ = managed to arrive</div>
+                            <div class="question-item">2 ______ = not understood the most important fact</div>
+                            <div class="question-item">3 ______ = do things spontaneously, without reflecting</div>
+                            <div class="question-item">4 ______ = defend myself</div>
+                            <div class="question-item">5 ______ = continue working hard without respite</div>
+                            <div class="question-item">6 ______ = ended a long time ago</div>
+                            <div class="question-item">7 ______ = reasonable, acceptable</div>
+                        </div>
+                        <div class="question-list">
+                            <div class="question-item"><strong>e</strong> Were you surprised by anything the three people said?</div>
+                        </div>
+                    </div>
+                `;
+            }
+            if (section === 'Pronunciation and Speaking') {
+                return `
+                    <div class="pronunciation-box">
+                        <h3>Fine-tuning your pronunciation: the rhythm of English</h3>
+                        <p>In spoken English, words with two or more syllables have one main stressed syllable. In sentences, some words have stronger stress and other words are weaker. This pattern of strong and weak stress gives English its rhythm. Stressed words in a sentence are usually <strong>content words</strong>, e.g. nouns, verbs, adjectives, and adverbs. Unstressed words tend to be <strong>function words</strong> and include auxiliary verbs, prepositions, conjunctions, determiners, and possessive adjectives.</p>
+                    </div>
+                    <div class="audio-task">
+                        <div class="audio-header"><span class="audio-label">a</span></div>
+                        <p>Listen to some extracts from Emma’s interview in 2. Then practise saying them, trying to copy the rhythm as exactly as possible.</p>
+                        <audio controls src="audios/1.15.mp3"></audio>
+                    </div>
+                    <div class="pronunciation-list">
+                        <div class="pronunciation-item"><strong>1.</strong> It was <span>just enough</span> to get a <span>flavour</span> of it.</div>
+                        <div class="pronunciation-item"><strong>2.</strong> I wasn’t <span>expected</span> to <span>have qualifications</span> or to <span>lead</span> my own work.</div>
+                        <div class="pronunciation-item"><strong>3.</strong> The first <span>half</span> of each <span>day</span> was <span>traditional farming jobs</span>…</div>
+                        <div class="pronunciation-item"><strong>4.</strong> <span>Networking</span> was a <span>big part</span> of it, too.</div>
+                        <div class="pronunciation-item"><strong>5.</strong> But what I <span>found out</span> was that that’s <span>not necessarily true</span> at all.</div>
+                    </div>
+                    <div class="speaking-task">
+                        <div class="question-item"><strong>b</strong> Choose two people you know: one who really likes their job and one who doesn’t. Think about:</div>
+                        <div class="highlight-box">
+                            <ul>
+                                <li>what their job is and what it involves.</li>
+                                <li>what kind of company or organization they work for, or whether they are self-employed.</li>
+                                <li>how long they have been doing the job, and what they did before.</li>
+                                <li>how they feel about their job and why.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="speaking-task">
+                        <div class="question-item"><strong>c</strong> In small groups, describe the people in b. Try to use natural rhythm.</div>
+                    </div>
+                    <div class="speaking-task">
+                        <div class="question-item"><strong>d</strong> Of the jobs that you have all described in your group, each say if there is one that…</div>
+                        <div class="highlight-box">
+                            <ul>
+                                <li>you would quite like to try.</li>
+                                <li>you might consider trying if you needed the money.</li>
+                                <li>you would never do under any circumstances.</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }
+            return `<p>${sectionSummaries[section] || 'This section is coming soon. Please continue to the next lesson when ready.'}</p>`;
+        }
 
         let currentSection = 'Vocabulary Introduction and Practice';
 
@@ -2484,11 +3021,79 @@
                         showSlide('vocabulary');
                     } else {
                         document.getElementById('contentTitle').textContent = currentSection;
-                        document.getElementById('contentBody').textContent = sectionSummaries[targetSection] || 'This section is coming soon. Please continue to the next lesson when ready.';
+                        document.getElementById('contentBody').innerHTML = getSectionContent(targetSection);
+                        afterSectionRender(targetSection);
                         showSlide('content');
                     }
                 });
             });
+        }
+
+        function afterSectionRender(section) {
+            if (section === 'Reading and Listening') {
+                bindReadingListeningEvents();
+            }
+        }
+
+        function bindReadingListeningEvents() {
+            const showDAnswers = document.getElementById('showDAnswers');
+            const dAnswers = document.getElementById('dAnswers');
+            const checkBtn = document.getElementById('checkListeningAnswers');
+            const feedback = document.getElementById('listeningFeedback');
+
+            if (showDAnswers && dAnswers) {
+                showDAnswers.addEventListener('click', () => {
+                    dAnswers.classList.toggle('hidden');
+                    showDAnswers.textContent = dAnswers.classList.contains('hidden')
+                        ? 'Show suggested answers'
+                        : 'Hide suggested answers';
+                });
+            }
+
+            if (checkBtn && feedback) {
+                const correctAnswers = {
+                    q1: 'c',
+                    q2: 'b',
+                    q3: 'a',
+                    q4: 'c',
+                    q5: 'b'
+                };
+
+                checkBtn.addEventListener('click', () => {
+                    let score = 0;
+                    const results = [];
+
+                    Object.keys(correctAnswers).forEach(key => {
+                        const selected = document.querySelector(`input[name="${key}"]:checked`);
+                        const selectedValue = selected ? selected.value : null;
+                        const questionGroup = selected ? selected.closest('.choice-group') : document.querySelector(`input[name="${key}"]`)?.closest('.choice-group');
+
+                        if (questionGroup) {
+                            questionGroup.classList.remove('correct', 'incorrect');
+                        }
+
+                        if (selectedValue === correctAnswers[key]) {
+                            score += 1;
+                            if (questionGroup) {
+                                questionGroup.classList.add('correct');
+                            }
+                            results.push(`Question ${key.slice(1)}: correct`);
+                        } else {
+                            if (questionGroup) {
+                                questionGroup.classList.add('incorrect');
+                            }
+                            results.push(`Question ${key.slice(1)}: ${selectedValue ? 'incorrect' : 'no answer selected'}`);
+                        }
+                    });
+
+                    feedback.classList.remove('hidden');
+                    feedback.innerHTML = `
+                        <div class="answer-item"><strong>Score:</strong> ${score} / ${Object.keys(correctAnswers).length}</div>
+                        <div class="answer-item">${results.join('<br>')}</div>
+                        <div class="answer-item"><strong>Correct answers:</strong> 1c, 2b, 3a, 4c, 5b.</div>
+                    `;
+                });
+            }
         }
 
         // Initialize course nav after DOM is ready
