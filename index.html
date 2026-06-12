@@ -783,6 +783,16 @@
             font-size: 1.05rem;
         }
 
+        .article-card .article-image {
+            width: 100%;
+            display: block;
+            border-radius: 16px;
+            border: 1px solid rgba(91,91,255,0.12);
+            margin-bottom: 0.85rem;
+            object-fit: cover;
+            max-height: 210px;
+        }
+
         .reading-text mark {
             background: rgba(255,237,112,0.45);
             color: var(--text-main);
@@ -917,16 +927,237 @@
 
         .question-item {
             padding: 0.9rem 1rem;
+            border-radius: 18px;
+            border: 1px solid rgba(91,91,255,0.16);
+            background: rgba(234,242,255,0.82);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.85);
+            position: relative;
+        }
+
+        .question-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            bottom: 0.5rem;
+            width: 6px;
+            background: linear-gradient(180deg, var(--primary), rgba(91,91,255,0.7));
+            border-radius: 99px;
+        }
+
+        .question-item.question-task {
+            background: #ffffff;
+            border-color: rgba(91,91,255,0.24);
+            color: var(--text-main);
+            box-shadow: 0 6px 20px rgba(31, 56, 138, 0.06);
+        }
+
+        .question-item.question-task::before {
+            background: linear-gradient(180deg, var(--primary), rgba(91,91,255,0.85));
+        }
+
+        .exercise-subheader {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin: 0 0 0.25rem 0.5rem;
+        }
+
+        .meaning-item {
+            padding: 0.75rem 1rem;
             border-radius: 14px;
             border: 1px solid rgba(91,91,255,0.12);
-            background: rgba(255,255,255,0.96);
+            background: rgba(250,251,255,0.96);
             color: var(--text-main);
             line-height: 1.6;
+            font-size: 0.96rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .meaning-item span {
+            display: block;
+        }
+
+        .meaning-btn {
+            align-self: flex-start;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(91,91,255,0.3);
+            border-radius: 12px;
+            background: rgba(91,91,255,0.08);
+            color: var(--primary);
+            font: inherit;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .meaning-btn:hover {
+            background: rgba(91,91,255,0.15);
+            border-color: rgba(91,91,255,0.5);
+        }
+
+        .meaning-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .meaning-explanation {
+            padding: 0.75rem;
+            border-radius: 12px;
+            background: rgba(217,235,255,0.6);
+            border-left: 4px solid var(--primary);
+            color: var(--text-main);
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .meaning-explanation.hidden {
+            display: none;
+        }
+
+        .definition-item {
+            padding: 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(91,91,255,0.12);
+            background: rgba(250,251,255,0.96);
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .definition-text {
+            font-size: 0.96rem;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .definition-input {
+            width: 100%;
+            min-width: 0;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(91,91,255,0.2);
+            border-radius: 12px;
+            background: #ffffff;
+            color: var(--text-main);
+            font: inherit;
+            font-size: 0.96rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .definition-input:focus {
+            outline: none;
+            border-color: rgba(91,91,255,0.35);
+            box-shadow: 0 0 0 4px rgba(91,91,255,0.08);
+        }
+
+        .definition-input.correct {
+            border-color: rgba(29,184,84,0.45);
+            background: rgba(236,252,245,0.95);
+        }
+
+        .definition-input.incorrect {
+            border-color: rgba(255,94,94,0.45);
+            background: rgba(255,231,231,0.9);
+        }
+
+        .definition-feedback {
+            grid-column: 2;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.5rem 0;
+        }
+
+        .definition-feedback.hidden {
+            display: none;
+        }
+
+        .definition-feedback.correct {
+            color: rgba(29,184,84,0.85);
+        }
+
+        .definition-feedback.incorrect {
+            color: rgba(255,94,94,0.85);
+        }
+
+        .meaning-item:not(:first-child) {
+            margin-top: 0.4rem;
         }
 
         .question-item strong {
             margin-right: 0.5rem;
             color: var(--primary);
+        }
+
+        .reading-select-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 240px;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.95rem 1rem;
+            border-radius: 18px;
+            border: 1px solid rgba(91,91,255,0.22);
+            background: #ffffff;
+            box-shadow: 0 18px 32px rgba(31, 56, 138, 0.08);
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .reading-select-row:hover {
+            transform: translateY(-1px);
+            border-color: rgba(91,91,255,0.3);
+            background: rgba(255,255,255,0.98);
+        }
+
+        .reading-select-prompt {
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.4;
+            font-size: 0.96rem;
+            white-space: normal;
+        }
+
+        .reading-choice {
+            width: 100%;
+            min-width: 0;
+            padding: 0.85rem 1rem;
+            border: 1px solid rgba(91,91,255,0.2);
+            border-radius: 14px;
+            background: #ffffff;
+            color: var(--text-main);
+            font: inherit;
+            appearance: none;
+            background-image: linear-gradient(45deg, transparent 50%, rgba(91,91,255,0.55) 50%), linear-gradient(135deg, rgba(91,91,255,0.55) 50%, transparent 50%);
+            background-position: calc(100% - 1rem) center, calc(100% - 0.6rem) center;
+            background-size: 8px 8px, 8px 8px;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .reading-choice:focus,
+        .reading-choice:hover {
+            border-color: rgba(91,91,255,0.35);
+            box-shadow: 0 0 0 4px rgba(91,91,255,0.08);
+            outline: none;
+        }
+
+        .reading-select-row.correct {
+            border-color: rgba(29,184,84,0.45);
+            background: rgba(236,252,245,0.95);
+        }
+
+        .reading-select-row.incorrect {
+            border-color: rgba(255,94,94,0.45);
+            background: rgba(255,231,231,0.9);
         }
 
         .note-group {
@@ -1194,7 +1425,7 @@
 
         .sd-row {
             display: grid;
-            grid-template-columns: 32px 1fr 90px 1fr;
+            grid-template-columns: 32px 1fr 140px;
             gap: 0.8rem;
             align-items: start;
             padding: 0.95rem 1rem;
@@ -1227,14 +1458,29 @@
             color: var(--text-main);
         }
 
-        .sd-note {
-            width: 100%;
-            padding: 0.65rem 0.75rem;
-            border: 1px solid rgba(91,91,255,0.2);
-            border-radius: 12px;
-            background: #ffffff;
-            color: var(--text-main);
+        .sd-response {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
         }
+
+        .sd-feedback {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            min-height: 1.2rem;
+            line-height: 1.3;
+        }
+
+        .sd-row.correct {
+            border-color: rgba(29,184,84,0.45);
+            background: rgba(236,252,245,0.95);
+        }
+
+        .sd-row.incorrect {
+            border-color: rgba(255,94,94,0.45);
+            background: rgba(255,237,237,0.95);
+        }
+
     </style>
 </head>
 <body>
@@ -1977,6 +2223,9 @@
             }
             try {
                 localStorage.setItem('lastSlide', slideName);
+                if (slideName === 'content' && typeof currentSection !== 'undefined') {
+                    localStorage.setItem('lastSection', currentSection);
+                }
             } catch (e) {
                 // ignore storage errors (e.g. private mode)
             }
@@ -2672,19 +2921,88 @@
         });
 
         const ex7Items = [
-            { prompt: 'I get on very well with my colleagues / co-workers.', answer: 'S' },
-            { prompt: 'I’ve had enough of my job. I think I’m going to quit / resign.', answer: 'S' },
-            { prompt: 'Three-quarters of the staff / workforce are women.', answer: 'S' },
-            { prompt: '400 workers have been laid off / made redundant.', answer: 'S' },
-            { prompt: 'He’s been out of work / off work for nearly six months.', answer: 'D' },
-            { prompt: 'She was sacked / was fired for refusing to work on Sundays.', answer: 'S' },
-            { prompt: 'Fantastic news! I’m going to get promoted / get a pay rise!', answer: 'D' },
-            { prompt: 'What skills / qualifications do you have?', answer: 'D' },
-            { prompt: 'We’re too busy – we need to hire / employ more staff.', answer: 'S' },
-            { prompt: 'The salary’s a bit low, but we have some great perks / benefits.', answer: 'S' }
+            {
+                prompt: 'I get on very well with my colleagues / co-workers.',
+                answer: 'S',
+                feedback: 'Both colleagues and co-workers mean the same group of people you work with.'
+            },
+            {
+                prompt: 'I’ve had enough of my job. I think I’m going to quit / resign.',
+                answer: 'S',
+                feedback: 'Quit and resign are both ways of saying you leave your job.'
+            },
+            {
+                prompt: 'Three-quarters of the staff / workforce are women.',
+                answer: 'S',
+                feedback: 'Staff and workforce refer to the same group of employees.'
+            },
+            {
+                prompt: '400 workers have been laid off / made redundant.',
+                answer: 'S',
+                feedback: 'Laid off and made redundant both mean losing your job for economic reasons.'
+            },
+            {
+                prompt: 'He’s been out of work / off work for nearly six months.',
+                answer: 'D',
+                feedback: 'Out of work means unemployed, while off work means temporarily not working.'
+            },
+            {
+                prompt: 'She was sacked / was fired for refusing to work on Sundays.',
+                answer: 'S',
+                feedback: 'Sacked and fired have the same meaning: dismissed from a job.'
+            },
+            {
+                prompt: 'Fantastic news! I’m going to get promoted / get a pay rise!',
+                answer: 'D',
+                feedback: 'Promoted means a higher role; a pay rise means more money but not necessarily a new position.'
+            },
+            {
+                prompt: 'What skills / qualifications do you have?',
+                answer: 'D',
+                feedback: 'Skills are abilities; qualifications are certificates or formal credentials.'
+            },
+            {
+                prompt: 'We’re too busy – we need to hire / employ more staff.',
+                answer: 'S',
+                feedback: 'Hire and employ both mean to take someone on to work for you.'
+            },
+            {
+                prompt: 'The salary’s a bit low, but we have some great perks / benefits.',
+                answer: 'S',
+                feedback: 'Perks and benefits both describe extra advantages provided by the job.'
+            }
         ];
 
         let ex7Answers = {};
+
+        function validateEx7Row(select, item, row, feedbackField) {
+            const selected = select.value;
+            row.classList.remove('correct', 'incorrect');
+            if (!selected) {
+                feedbackField.textContent = '';
+                return;
+            }
+
+            if (selected === item.answer) {
+                row.classList.add('correct');
+                feedbackField.textContent = item.feedback;
+            } else {
+                row.classList.add('incorrect');
+                feedbackField.textContent = `Not quite. ${item.feedback}`;
+            }
+
+            updateEx7Score();
+        }
+
+        function updateEx7Score() {
+            const correctCount = ex7Items.reduce((count, item, index) => {
+                return count + (ex7Answers[index] === item.answer ? 1 : 0);
+            }, 0);
+            document.getElementById('ex7Score').textContent = `Score: ${correctCount} / ${ex7Items.length}`;
+            document.getElementById('ex7Feedback').textContent = correctCount === ex7Items.length
+                ? 'Great work! Every pair is correct.'
+                : '';
+        }
 
         function buildEx7() {
             const list = document.getElementById('ex7List');
@@ -2702,25 +3020,26 @@
                 content.className = 'sd-content';
                 content.textContent = item.prompt;
 
+                const response = document.createElement('div');
+                response.className = 'sd-response';
+
                 const select = document.createElement('select');
                 select.className = 'sd-select';
                 select.innerHTML = '<option value="">Select</option><option value="S">S</option><option value="D">D</option>';
+
+                const responseText = document.createElement('div');
+                responseText.className = 'sd-feedback';
+
                 select.onchange = () => {
                     ex7Answers[index] = select.value;
+                    validateEx7Row(select, item, row, responseText);
                 };
 
-                const note = document.createElement('input');
-                note.className = 'sd-note';
-                note.placeholder = 'Difference/register note (optional)';
-                note.type = 'text';
-                note.oninput = () => {
-                    ex7Answers[index] = ex7Answers[index] || '';
-                };
-
+                response.appendChild(select);
+                response.appendChild(responseText);
                 row.appendChild(number);
                 row.appendChild(content);
-                row.appendChild(select);
-                row.appendChild(note);
+                row.appendChild(response);
                 list.appendChild(row);
             });
             document.getElementById('ex7Score').textContent = '';
@@ -2728,12 +3047,9 @@
         }
 
         document.getElementById('ex7Check').addEventListener('click', () => {
-            let correct = 0;
-            ex7Items.forEach((item, index) => {
-                if (ex7Answers[index] === item.answer) correct += 1;
-            });
-            document.getElementById('ex7Score').textContent = `Score: ${correct} / ${ex7Items.length}`;
-            document.getElementById('ex7Feedback').textContent = correct === ex7Items.length
+            updateEx7Score();
+            const correctCount = ex7Items.reduce((count, item, index) => count + (ex7Answers[index] === item.answer ? 1 : 0), 0);
+            document.getElementById('ex7Feedback').textContent = correctCount === ex7Items.length
                 ? 'Nice work! All pairs are marked correctly.'
                 : 'Some answers are incorrect. Review the meaning of the bold pairs again.';
         });
@@ -2891,6 +3207,7 @@
                     <div class="reading-activity">
                         <div class="article-card">
                             <h4>A The female boxing coach</h4>
+                            <img src="images/boxingcoach.png" alt="Female boxing coach" class="article-image">
                             <div class="reading-text">
                                 <p>Apparently, I don’t look like a boxer. I get told that a lot. I’ve lost count of the number of times people have exclaimed, ‘What about your nose?’ and ‘What if you mess up your face?’ They’ve <mark>missed the point</mark>: I’m not a model, so what does it matter if my nose isn’t straight? And anyway, boxing means more to me than that: it’s my structure and my sanity. Cheaper than therapy, that’s what we say. Injuries are part of the game, but I’ve been lucky so far.</p>
                                 <p>As the only girl in my gym, I’m aware that I’m a novelty. I’ve always been a tomboy, though, so it doesn’t bother me to train with the blokes. Some men don’t like to box with a woman, and that’s <mark>fair enough</mark>. But mostly they get used to it.</p>
@@ -2899,6 +3216,7 @@
                         </div>
                         <div class="article-card">
                             <h4>B The night receptionist</h4>
+                            <img src="images/nightreceptionist.png" alt="Night receptionist" class="article-image">
                             <div class="reading-text">
                                 <p>People assume I get bored, but I enjoy the solitude. I like the hourly walks through the quiet corridors and listening to the patter of the rain on the windows while enjoying a cup of tea. I enjoy finishing a good book or watching the birds in the car park feeding on the muffins I put out yesterday.</p>
                                 <p>The tiredness is the hardest. Sometimes I have a good routine and my sleep is not affected. Other times, I walk into doors, zombie-like, and occasionally I’ve been surprised to find that I’ve actually <mark>made it home</mark>. My husband tells me I should find a new job, and I have been applying for some since I began working here, but ‘night receptionist’ is not a good thing to put on a CV.</p>
@@ -2907,6 +3225,7 @@
                         </div>
                         <div class="article-card">
                             <h4>C The orchestral musician</h4>
+                            <img src="images/orchestralmusicion.png" alt="Orchestral musician" class="article-image">
                             <div class="reading-text">
                                 <p>I have done this for so long, my mind is free to wander while I play. The thrill of this being a fresh challenge <mark>has long gone</mark>. I just want to get to the end of the concert and go home. <mark>Travelling against commuter traffic is great</mark>, but it’s also a reminder that most people are on their way to relax and I’m only just getting started.</p>
                                 <p>We’re not all friends. The person on my right had an affair with the person on my left, and the ex sits close by. People fraternize exclusively according to the instrument they play, especially on tour.</p>
@@ -2915,31 +3234,133 @@
                         </div>
                         <div class="question-list">
                             <div class="question-item"><strong>b</strong> Read the articles and check your answers to a. Which person, A–C, ...?</div>
-                            <div class="question-item">1 enjoys their job the most</div>
-                            <div class="question-item">2 enjoys their job the least</div>
-                            <div class="question-item">3 doesn’t have a good relationship with some of their colleagues</div>
-                            <div class="question-item">4 trains others as part of their job</div>
-                            <div class="question-item">5 struggles with the lack of sleep</div>
-                            <div class="question-item">6 helps people in need</div>
+                            <div class="reading-select-row">
+                                <div class="reading-select-prompt"><strong>1.</strong> enjoys their job the most</div>
+                                <select class="reading-choice" name="reading_b_1">
+                                    <option value="">Choose person</option>
+                                    <option value="A">A The female boxing coach</option>
+                                    <option value="B">B The night receptionist</option>
+                                    <option value="C">C The orchestral musician</option>
+                                </select>
+                            </div>
+                            <div class="reading-select-row">
+                                <div class="reading-select-prompt"><strong>2.</strong> enjoys their job the least</div>
+                                <select class="reading-choice" name="reading_b_2">
+                                    <option value="">Choose person</option>
+                                    <option value="A">A The female boxing coach</option>
+                                    <option value="B">B The night receptionist</option>
+                                    <option value="C">C The orchestral musician</option>
+                                </select>
+                            </div>
+                            <div class="reading-select-row">
+                                <div class="reading-select-prompt"><strong>3.</strong> doesn’t have a good relationship with some of their colleagues</div>
+                                <select class="reading-choice" name="reading_b_3">
+                                    <option value="">Choose person</option>
+                                    <option value="A">A The female boxing coach</option>
+                                    <option value="B">B The night receptionist</option>
+                                    <option value="C">C The orchestral musician</option>
+                                </select>
+                            </div>
+                            <div class="reading-select-row">
+                                <div class="reading-select-prompt"><strong>4.</strong> trains others as part of their job</div>
+                                <select class="reading-choice" name="reading_b_4">
+                                    <option value="">Choose person</option>
+                                    <option value="A">A The female boxing coach</option>
+                                    <option value="B">B The night receptionist</option>
+                                    <option value="C">C The orchestral musician</option>
+                                </select>
+                            </div>
+                            <div class="reading-select-row">
+                                <div class="reading-select-prompt"><strong>5.</strong> struggles with the lack of sleep</div>
+                                <select class="reading-choice" name="reading_b_5">
+                                    <option value="">Choose person</option>
+                                    <option value="A">A The female boxing coach</option>
+                                    <option value="B">B The night receptionist</option>
+                                    <option value="C">C The orchestral musician</option>
+                                </select>
+                            </div>
+                            <div class="reading-select-row">
+                                <div class="reading-select-prompt"><strong>6.</strong> helps people in need</div>
+                                <select class="reading-choice" name="reading_b_6">
+                                    <option value="">Choose person</option>
+                                    <option value="A">A The female boxing coach</option>
+                                    <option value="B">B The night receptionist</option>
+                                    <option value="C">C The orchestral musician</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="question-list">
-                            <div class="question-item"><strong>c</strong> Read the articles again. With a partner, say what you think the people mean by the following phrases or sentences.</div>
-                            <div class="question-item">1 …it’s my structure and my sanity.</div>
-                            <div class="question-item">2 …I challenge someone’s expectations a little bit…</div>
-                            <div class="question-item">3 …’night receptionist’ is not a good thing to put on a CV.</div>
-                            <div class="question-item">4 Travelling against commuter traffic is great…</div>
-                            <div class="question-item">5 …have random weekdays off.</div>
-                            <div class="question-item">6 …with almost zero opportunities to develop broader interests…</div>
+                            <div class="question-item question-task"><strong>c</strong> Read the articles again. With a partner, say what you think the people mean by the following phrases or sentences.</div>
+                            <div class="exercise-subheader">Meanings</div>
+                            <div class="meaning-item">
+                                <span>1 …it's my structure and my sanity.</span>
+                                <button class="meaning-btn">Show meaning</button>
+                                <div class="meaning-explanation hidden">It's the thing that gives my life a pattern, and it stops me going mad.</div>
+                            </div>
+                            <div class="meaning-item">
+                                <span>2 …I challenge someone's expectations a little bit…</span>
+                                <button class="meaning-btn">Show meaning</button>
+                                <div class="meaning-explanation hidden">I make people think about their beliefs.</div>
+                            </div>
+                            <div class="meaning-item">
+                                <span>3 …'night receptionist' is not a good thing to put on a CV.</span>
+                                <button class="meaning-btn">Show meaning</button>
+                                <div class="meaning-explanation hidden">Night receptionist isn't a very impressive job.</div>
+                            </div>
+                            <div class="meaning-item">
+                                <span>4 Travelling against commuter traffic is great…</span>
+                                <button class="meaning-btn">Show meaning</button>
+                                <div class="meaning-explanation hidden">It's great to be traveling in the opposite direction to most of the traffic.</div>
+                            </div>
+                            <div class="meaning-item">
+                                <span>5 …have random weekdays off.</span>
+                                <button class="meaning-btn">Show meaning</button>
+                                <div class="meaning-explanation hidden">I have predictable days off from Monday to Friday</div>
+                            </div>
+                            <div class="meaning-item">
+                                <span>6 …with almost zero opportunities to develop broader interests…</span>
+                                <button class="meaning-btn">Show meaning</button>
+                                <div class="meaning-explanation hidden">With almost no chance to enjoy other hobbies or interests</div>
+                            </div>
                         </div>
                         <div class="question-list">
-                            <div class="question-item"><strong>d</strong> Look at the highlighted phrases in the articles and work out their meaning from the context. Then match them to definitions 1–7.</div>
-                            <div class="question-item">1 ______ = managed to arrive</div>
-                            <div class="question-item">2 ______ = not understood the most important fact</div>
-                            <div class="question-item">3 ______ = do things spontaneously, without reflecting</div>
-                            <div class="question-item">4 ______ = defend myself</div>
-                            <div class="question-item">5 ______ = continue working hard without respite</div>
-                            <div class="question-item">6 ______ = ended a long time ago</div>
-                            <div class="question-item">7 ______ = reasonable, acceptable</div>
+                            <div class="question-item question-task"><strong>d</strong> Look at the highlighted phrases in the articles and work out their meaning from the context. Then match them to definitions 1–7.</div>
+                            <div class="exercise-subheader">Definitions</div>
+                            <div class="definition-item">
+                                <div class="definition-text">1. managed to arrive</div>
+                                <input type="text" class="definition-input" data-definition="1">
+                                <div class="definition-feedback hidden"></div>
+                            </div>
+                            <div class="definition-item">
+                                <div class="definition-text">2. not understood the most important fact</div>
+                                <input type="text" class="definition-input" data-definition="2">
+                                <div class="definition-feedback hidden"></div>
+                            </div>
+                            <div class="definition-item">
+                                <div class="definition-text">3. do things spontaneously, without reflecting</div>
+                                <input type="text" class="definition-input" data-definition="3">
+                                <div class="definition-feedback hidden"></div>
+                            </div>
+                            <div class="definition-item">
+                                <div class="definition-text">4. defend myself</div>
+                                <input type="text" class="definition-input" data-definition="4">
+                                <div class="definition-feedback hidden"></div>
+                            </div>
+                            <div class="definition-item">
+                                <div class="definition-text">5. continue working hard without respite</div>
+                                <input type="text" class="definition-input" data-definition="5">
+                                <div class="definition-feedback hidden"></div>
+                            </div>
+                            <div class="definition-item">
+                                <div class="definition-text">6. ended a long time ago</div>
+                                <input type="text" class="definition-input" data-definition="6">
+                                <div class="definition-feedback hidden"></div>
+                            </div>
+                            <div class="definition-item">
+                                <div class="definition-text">7. reasonable, acceptable</div>
+                                <input type="text" class="definition-input" data-definition="7">
+                                <div class="definition-feedback hidden"></div>
+                            </div>
                         </div>
                         <div class="question-list">
                             <div class="question-item"><strong>e</strong> Were you surprised by anything the three people said?</div>
@@ -3030,7 +3451,7 @@
         }
 
         function afterSectionRender(section) {
-            if (section === 'Reading and Listening') {
+            if (section === 'Reading and Listening' || section === 'Reading') {
                 bindReadingListeningEvents();
             }
         }
@@ -3049,6 +3470,86 @@
                         : 'Hide suggested answers';
                 });
             }
+
+            document.querySelectorAll('.meaning-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const explanation = btn.nextElementSibling;
+                    if (!explanation) return;
+
+                    explanation.classList.toggle('hidden');
+                    btn.classList.toggle('active');
+                    btn.textContent = explanation.classList.contains('hidden')
+                        ? 'Show meaning'
+                        : 'Hide meaning';
+                });
+            });
+
+            const readingBCorrect = {
+                reading_b_1: 'A',
+                reading_b_2: 'C',
+                reading_b_3: 'C',
+                reading_b_4: 'A',
+                reading_b_5: 'B',
+                reading_b_6: 'B'
+            };
+
+            document.querySelectorAll('.reading-choice').forEach(select => {
+                select.addEventListener('change', () => {
+                    if (!(select.name in readingBCorrect)) return;
+
+                    const selectedValue = select.value;
+                    const row = select.closest('.reading-select-row');
+                    if (!row) return;
+
+                    row.classList.remove('correct', 'incorrect');
+                    if (!selectedValue) return;
+
+                    if (selectedValue === readingBCorrect[select.name]) {
+                        row.classList.add('correct');
+                    } else {
+                        row.classList.add('incorrect');
+                    }
+                });
+            });
+
+            const definitionCorrectAnswers = {
+                '1': ['made it home'],
+                '2': ['missed the point'],
+                '3': ['think twice'],
+                '4': ['hold my own'],
+                '5': ['keep my nose to the grindstone'],
+                '6': ['has long gone'],
+                '7': ['fair enough']
+            };
+
+            document.querySelectorAll('.definition-input').forEach(input => {
+                input.addEventListener('blur', () => {
+                    const defNum = input.getAttribute('data-definition');
+                    const feedback = input.nextElementSibling;
+                    const userAnswer = input.value.trim().toLowerCase();
+
+                    input.classList.remove('correct', 'incorrect');
+                    feedback.classList.add('hidden');
+
+                    if (!userAnswer) return;
+
+                    const isCorrect = definitionCorrectAnswers[defNum].some(ans => 
+                        ans.toLowerCase() === userAnswer
+                    );
+
+                    if (isCorrect) {
+                        input.classList.add('correct');
+                        feedback.textContent = '✓ Correct!';
+                        feedback.classList.remove('hidden', 'incorrect');
+                        feedback.classList.add('correct');
+                    } else {
+                        input.classList.add('incorrect');
+                        feedback.textContent = '✗ Try again';
+                        feedback.classList.remove('hidden', 'correct');
+                        feedback.classList.add('incorrect');
+                    }
+                });
+            });
 
             if (checkBtn && feedback) {
                 const correctAnswers = {
@@ -3128,7 +3629,24 @@
                     showSlide('practice');
                     return;
                 }
-                if (last === 'content' || last === 'vocabulary') {
+                if (last === 'content') {
+                    const lastSection = localStorage.getItem('lastSection');
+                    if (lastSection) {
+                        currentSection = lastSection;
+                        const navItem = document.querySelector(`#courseNav .nav-item[data-section="${lastSection}"]`);
+                        if (navItem) {
+                            document.querySelectorAll('#courseNav .nav-item').forEach(i => i.classList.remove('active'));
+                            navItem.classList.add('active');
+                        }
+                        document.getElementById('sectionTitle').textContent = currentSection;
+                        document.getElementById('contentTitle').textContent = currentSection;
+                        document.getElementById('contentBody').innerHTML = getSectionContent(currentSection);
+                        afterSectionRender(currentSection);
+                    }
+                    showSlide('content');
+                    return;
+                }
+                if (last === 'vocabulary') {
                     showSlide(last);
                     return;
                 }
@@ -3141,4 +3659,5 @@
     </script>
 </body>
 </html>
+
 
