@@ -1481,6 +1481,544 @@
             background: rgba(255,237,237,0.95);
         }
 
+        /* ========== GRAMMAR SECTION STYLES ========== */
+        .grammar-content {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        .grammar-content .gc-section {
+            margin-bottom: 32px;
+        }
+        .grammar-content .gc-section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .grammar-content .gc-section-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .grammar-content .gc-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.3s;
+        }
+        .grammar-content .gc-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+        }
+
+        /* Grammar Rules - collapsible */
+        .grammar-content .gc-rule-category { margin-bottom: 16px; }
+        .grammar-content .gc-rule-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 14px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: var(--radius);
+            font-weight: 700;
+            font-size: 1.05rem;
+            user-select: none;
+            transition: transform 0.2s;
+        }
+        .grammar-content .gc-rule-header:hover { transform: translateY(-1px); }
+        .grammar-content .gc-rule-header .gc-icon {
+            width: 34px; height: 34px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+        }
+        .grammar-content .gc-rule-header .gc-arrow {
+            margin-left: auto;
+            transition: transform 0.3s;
+            font-size: 1.1rem;
+        }
+        .grammar-content .gc-rule-header.open .gc-arrow { transform: rotate(180deg); }
+        .grammar-content .gc-rule-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .grammar-content .gc-rule-body.open { max-height: 3000px; }
+        .grammar-content .gc-rule-content {
+            padding: 18px;
+            background: #f8fafc;
+            border-radius: 0 0 var(--radius) var(--radius);
+            border: 1px solid var(--border-color);
+            border-top: none;
+        }
+        .grammar-content .gc-rule-content h4 {
+            color: var(--primary);
+            margin: 14px 0 6px;
+            font-size: 0.93rem;
+        }
+        .grammar-content .gc-rule-content h4:first-child { margin-top: 0; }
+        .grammar-content .gc-rule-content p,
+        .grammar-content .gc-rule-content li {
+            font-size: 0.93rem;
+            margin-bottom: 5px;
+        }
+        .grammar-content .gc-rule-content ul { padding-left: 20px; margin-bottom: 10px; }
+        .grammar-content .gc-example {
+            background: #dbeafe;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-size: 0.91rem;
+            border-left: 3px solid var(--primary);
+        }
+        .grammar-content .gc-example .hl {
+            background: #fef08a;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        .grammar-content .gc-note {
+            background: #ffedd5;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-size: 0.88rem;
+            border-left: 3px solid #f59e0b;
+        }
+
+        /* Exercise badge */
+        .grammar-content .gc-exercise-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #f59e0b;
+            color: #1e1b4b;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        /* Exercise 1a: Match extracts */
+        .grammar-content .gc-job-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .grammar-content .gc-job-chip {
+            padding: 10px 14px;
+            background: #dbeafe;
+            border: 2px solid #818cf8;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-align: center;
+        }
+        .grammar-content .gc-extract-card {
+            background: #dbeafe;
+            border-radius: var(--radius);
+            padding: 18px;
+            margin-bottom: 14px;
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+        .grammar-content .gc-extract-num {
+            position: absolute;
+            top: -10px; left: -10px;
+            width: 30px; height: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .grammar-content .gc-extract-text {
+            font-size: 0.93rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .grammar-content .gc-extract-text .hl-word {
+            background: #fef08a;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        .grammar-content .gc-extract-select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .grammar-content .gc-extract-select:focus { outline: none; border-color: var(--primary); }
+        .grammar-content .gc-extract-select.correct { border-color: #10b981; background: #d1fae5; }
+        .grammar-content .gc-extract-select.wrong { border-color: #ef4444; background: #fee2e2; }
+
+        /* Exercise 1b: Linker table */
+        .grammar-content .gc-linker-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            margin-bottom: 16px;
+        }
+        .grammar-content .gc-linker-table th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 12px 14px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .grammar-content .gc-linker-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-color);
+            background: white;
+            vertical-align: top;
+            min-height: 70px;
+        }
+        .grammar-content .gc-linker-table tr:last-child td { border-bottom: none; }
+        .grammar-content .gc-col-cell {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.25s;
+            border: 2px dashed #cbd5e1 !important;
+            background: repeating-linear-gradient(45deg, #f8fafc, #f8fafc 10px, #f1f5f9 10px, #f1f5f9 20px) !important;
+            min-height: 70px;
+        }
+        .grammar-content .gc-col-cell::before {
+            content: 'Click here to place';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: #94a3b8;
+            font-size: 0.82rem;
+            font-weight: 600;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .grammar-content .gc-col-cell.has-linker::before { display: none; }
+        .grammar-content .gc-col-cell:hover {
+            border-color: var(--primary-light) !important;
+            background: #dbeafe !important;
+            transform: scale(1.02);
+        }
+        .grammar-content .gc-col-cell.flash-correct {
+            animation: gcFlashCorrect 0.6s ease;
+            border-color: #10b981 !important;
+            background: #d1fae5 !important;
+        }
+        .grammar-content .gc-col-cell.flash-wrong {
+            animation: gcFlashWrong 0.6s ease;
+            border-color: #ef4444 !important;
+            background: #fee2e2 !important;
+        }
+        @keyframes gcFlashCorrect {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.05); box-shadow: 0 0 0 4px rgba(16,185,129,0.4); }
+            60% { transform: scale(0.98); }
+            100% { transform: scale(1); box-shadow: none; }
+        }
+        @keyframes gcFlashWrong {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-6px); }
+            80% { transform: translateX(6px); }
+        }
+        .grammar-content .gc-linker-item {
+            display: inline-block;
+            padding: 5px 11px;
+            background: #dbeafe;
+            border: 2px solid #818cf8;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .grammar-content .gc-linker-item:hover {
+            background: #818cf8;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .grammar-content .gc-linker-item.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(91,91,255,0.3);
+        }
+        .grammar-content .gc-linker-item.placed {
+            opacity: 0.35;
+            text-decoration: line-through;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .grammar-content .gc-linker-item.locked {
+            cursor: default;
+            pointer-events: none;
+        }
+        .grammar-content .gc-linker-pool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 16px;
+            background: #f1f5f9;
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+            min-height: 60px;
+            border: 2px dashed #cbd5e1;
+        }
+        .grammar-content .gc-linker-pool-title {
+            width: 100%;
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .grammar-content .gc-linker-pool-hint {
+            width: 100%;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        /* Exercise 2a/2b: Circle */
+        .grammar-content .gc-circle-exercise p {
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            line-height: 2;
+        }
+        .grammar-content .gc-circle-option {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 2px solid #818cf8;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            margin: 0 2px;
+            user-select: none;
+            background: white;
+            font-size: 0.9rem;
+        }
+        .grammar-content .gc-circle-option:hover {
+            background: #dbeafe;
+            transform: translateY(-1px);
+        }
+        .grammar-content .gc-circle-option.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .grammar-content .gc-circle-option.correct {
+            background: #10b981 !important;
+            color: white !important;
+            border-color: #10b981 !important;
+            animation: gcFlashCorrect 0.6s ease;
+        }
+        .grammar-content .gc-circle-option.wrong {
+            background: #ef4444 !important;
+            color: white !important;
+            border-color: #ef4444 !important;
+            animation: gcFlashWrong 0.6s ease;
+        }
+        .grammar-content .gc-circle-option.locked {
+            cursor: default;
+            pointer-events: none;
+        }
+
+        /* Exercise 2c: Join sentences */
+        .grammar-content .gc-join-item {
+            background: #f8fafc;
+            border-radius: var(--radius);
+            padding: 18px;
+            margin-bottom: 14px;
+            border: 1px solid var(--border-color);
+        }
+        .grammar-content .gc-join-item .gc-sentence-pair {
+            font-size: 0.93rem;
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        .grammar-content .gc-join-item .gc-bold-word {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .grammar-content .gc-join-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.93rem;
+            transition: border-color 0.2s;
+            resize: vertical;
+            min-height: 46px;
+        }
+        .grammar-content .gc-join-input:focus { outline: none; border-color: var(--primary); }
+        .grammar-content .gc-show-answer-btn {
+            margin-top: 6px;
+            padding: 5px 12px;
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: background 0.2s;
+        }
+        .grammar-content .gc-show-answer-btn:hover { background: var(--primary); }
+        .grammar-content .gc-answer-text {
+            margin-top: 6px;
+            padding: 10px 14px;
+            background: #d1fae5;
+            border-radius: 8px;
+            font-size: 0.91rem;
+            display: none;
+            border-left: 3px solid #10b981;
+        }
+        .grammar-content .gc-answer-text.show { display: block; }
+
+        /* Exercise 2d/2e: Audio */
+        .grammar-content .gc-audio-card {
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            color: white;
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        .grammar-content .gc-audio-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
+        .grammar-content .gc-audio-card p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.93rem;
+            margin-bottom: 14px;
+        }
+        .grammar-content .gc-audio-card audio { width: 100%; height: 42px; border-radius: 8px; margin-bottom: 14px; }
+        .grammar-content .gc-audio-sentence {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .grammar-content .gc-audio-sentence .gc-num {
+            width: 26px; height: 26px;
+            background: #f59e0b;
+            color: #1e1b4b;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700;
+            font-size: 0.82rem;
+            flex-shrink: 0;
+        }
+        .grammar-content .gc-audio-sentence input {
+            flex: 1;
+            padding: 7px 10px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+        }
+        .grammar-content .gc-audio-sentence input::placeholder { color: rgba(255,255,255,0.5); }
+        .grammar-content .gc-audio-sentence input:focus { outline: none; border-color: #f59e0b; }
+
+        /* Grammar buttons */
+        .grammar-content .gc-btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .grammar-content .gc-btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .grammar-content .gc-btn-secondary:hover { background: #dbeafe; }
+        .grammar-content .gc-btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        /* Tip card */
+        .grammar-content .gc-tip-card {
+            background: #ffedd5;
+            border-left: 4px solid #f59e0b;
+            border-radius: var(--radius);
+            padding: 16px;
+            margin: 16px 0;
+        }
+        .grammar-content .gc-tip-card h4 { margin-bottom: 6px; color: #92400e; }
+
+        /* Score counter */
+        .grammar-content .gc-score-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: #d1fae5;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #065f46;
+            margin-left: 10px;
+        }
+
+        /* Divider */
+        .grammar-content .gc-divider {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+            margin: 28px 0;
+        }
+
+        /* Professions image */
+        .grammar-content .gc-professions-img {
+            max-width: 600px;
+            width: 100%;
+            border-radius: var(--radius);
+            margin: 16px auto;
+            display: block;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
     </style>
 </head>
 <body>
@@ -3412,6 +3950,486 @@
                     </div>
                 `;
             }
+            if (section === 'Grammar') {
+                return `
+                <div class="grammar-content">
+                    <!-- Grammar Rules -->
+                    <div class="gc-section" id="gcRules">
+                        <h2 class="gc-section-title">Discourse Markers (1): Linkers</h2>
+                        <p class="gc-section-subtitle">Click each category to expand the rules and examples</p>
+
+                        <!-- Result -->
+                        <div class="gc-rule-category">
+                            <div class="gc-rule-header open" onclick="gcToggleRule(this)">
+                                <div class="gc-icon">&#xFE0F;</div>
+                                <span>Result</span>
+                                <span class="gc-arrow">&#9660;</span>
+                            </div>
+                            <div class="gc-rule-body open">
+                                <div class="gc-rule-content">
+                                    <div class="gc-example">1. I have a job interview next week, <span class="hl">so</span> I've bought myself a suit!</div>
+                                    <div class="gc-example">2. It had snowed hard all night. <span class="hl">As a result</span>, the airport was closed until 11.00 a.m.<br>We regret that you do not have the necessary qualifications and <span class="hl">therefore / consequently</span> we are unable to offer you the job.</div>
+                                    <h4>Rules:</h4>
+                                    <ul>
+                                        <li><strong>so</strong> is the most common way of introducing a result or a logical connection.</li>
+                                        <li><strong>as a result</strong>, <strong>therefore</strong>, and <strong>consequently</strong> (more formal than <em>so</em>) are often used at the beginning of a sentence or clause.</li>
+                                    </ul>
+                                    <div class="gc-note">&#128161; <strong>therefore</strong> and <strong>consequently</strong> can also be used before a main verb, e.g. <em>We have therefore / consequently decided not to offer you the job.</em></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reason -->
+                        <div class="gc-rule-category">
+                            <div class="gc-rule-header open" onclick="gcToggleRule(this)" style="background: linear-gradient(135deg, #059669, #34d399);">
+                                <div class="gc-icon">&#10067;</div>
+                                <span>Reason</span>
+                                <span class="gc-arrow">&#9660;</span>
+                            </div>
+                            <div class="gc-rule-body open">
+                                <div class="gc-rule-content">
+                                    <div class="gc-example">1. I've stopped emailing her, <span class="hl">because / as / since</span> she never answers me.<br>Can I go home, <span class="hl">seeing as / seeing that</span> there's no work to do?</div>
+                                    <div class="gc-example">2. The plane was late <span class="hl">because of</span> the fog.<br>Flight 341 has been delayed <span class="hl">due to / owing to</span> adverse weather conditions.</div>
+                                    <h4>Rules:</h4>
+                                    <ul>
+                                        <li><strong>because</strong>, <strong>as</strong>, and <strong>since</strong> (more formal) are synonyms and are used to introduce clauses giving a reason. <em>as</em> and <em>since</em> are often used at the beginning of a sentence.</li>
+                                        <li>We can use <strong>seeing as / that</strong> to give a reason for what we're saying.</li>
+                                        <li><strong>because of</strong>, <strong>due to</strong>, and <strong>owing to</strong> also express the reason for something. They are usually followed by a noun, a gerund, or <em>the fact that</em> + clause.</li>
+                                    </ul>
+                                    <div class="gc-note">&#128161; <strong>due to</strong> and <strong>owing to</strong> are more formal than <strong>because of</strong>.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Purpose -->
+                        <div class="gc-rule-category">
+                            <div class="gc-rule-header open" onclick="gcToggleRule(this)" style="background: linear-gradient(135deg, #d97706, #fbbf24);">
+                                <div class="gc-icon">&#127919;</div>
+                                <span>Purpose</span>
+                                <span class="gc-arrow">&#9660;</span>
+                            </div>
+                            <div class="gc-rule-body open">
+                                <div class="gc-rule-content">
+                                    <div class="gc-example">1. I did a language course <span class="hl">to / in order to / so as to</span> improve my English.</div>
+                                    <div class="gc-example">2. He closed the door quietly <span class="hl">so as not to / in order not to</span> wake the baby.</div>
+                                    <div class="gc-example">3. They moved to London <span class="hl">so (that)</span> they could see their grandchildren more often.</div>
+                                    <div class="gc-example">4. I'm not going to tell Amy, <span class="hl">in case</span> she tells everyone else.</div>
+                                    <h4>Rules:</h4>
+                                    <ul>
+                                        <li><strong>to</strong>, <strong>in order to</strong>, and <strong>so as to</strong> introduce a clause of purpose and are all followed by an infinitive. <em>to</em> is the most informal.</li>
+                                        <li>For negative purpose we use <strong>so as not to</strong> or <strong>in order not to</strong>.</li>
+                                        <li>We can also use <strong>so (that) + can / could + verb</strong> or <strong>will / would + verb</strong> to express purpose. <em>that</em> can be left out in informal English.</li>
+                                    </ul>
+                                    <div class="gc-note">&#128161; Use <strong>so (that)</strong> when there is a change of subject in the clause of purpose, e.g. <em>She put a blanket over the baby so (that) he wouldn't be cold.</em></div>
+                                    <ul>
+                                        <li>We use <strong>in case</strong> + a clause when we do something in order to be ready for future situations / problems, or to avoid them.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contrast -->
+                        <div class="gc-rule-category">
+                            <div class="gc-rule-header open" onclick="gcToggleRule(this)" style="background: linear-gradient(135deg, #7c3aed, #a78bfa);">
+                                <div class="gc-icon">&#9878;&#65039;</div>
+                                <span>Contrast</span>
+                                <span class="gc-arrow">&#9660;</span>
+                            </div>
+                            <div class="gc-rule-body open">
+                                <div class="gc-rule-content">
+                                    <div class="gc-example">1. The meeting was OK, <span class="hl">but</span> the journey home was a nightmare.<br>Agnes was attracted to the stranger, <span class="hl">yet</span> something in her head was telling her not to get close to him.<br>It's a really good idea. <span class="hl">However</span>, it may be too expensive.<br>The moon shone brightly. <span class="hl">Nevertheless</span>, it was hard to find our way.</div>
+                                    <div class="gc-example">2. We enjoyed the film <span class="hl">although / even though / though</span> it was long.</div>
+                                    <div class="gc-example">3. <span class="hl">In spite of / Despite</span> being 85, she still travels all over the world.<br><span class="hl">In spite of / Despite</span> her age... <span class="hl">In spite of / Despite</span> the fact that she's 85...</div>
+                                    <h4>Rules:</h4>
+                                    <ul>
+                                        <li><strong>but</strong> is the most common and informal way of introducing contrast. <strong>yet</strong> is used in the same way, but is more formal / literary.</li>
+                                        <li><strong>however</strong> and <strong>nevertheless</strong> are normally used at the beginning of a sentence to connect it to the previous one and are usually followed by a comma.</li>
+                                        <li><strong>nevertheless</strong> (or <em>nonetheless</em>) is more formal / literary than <em>however</em>.</li>
+                                        <li><strong>even though</strong> is more emphatic than <strong>although</strong>. <strong>though</strong> is more common in informal speech.</li>
+                                    </ul>
+                                    <div class="gc-note">&#128161; After <strong>in spite of</strong> and <strong>despite</strong>, use a gerund, a noun, or <em>the fact that</em> + clause.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="gc-divider">
+
+                    <!-- Exercise 1a: Match Extracts -->
+                    <div class="gc-section" id="gcEx1a">
+                        <span class="gc-exercise-badge">Exercise 1a</span>
+                        <h2 class="gc-section-title">Match the Extracts to Jobs</h2>
+                        <p class="gc-section-subtitle">Read the extracts from "What I'm really thinking" articles. Match them to the jobs from the list.</p>
+
+                        <div class="gc-job-list">
+                            <div class="gc-job-chip">&#127973; A&amp;E doctor</div>
+                            <div class="gc-job-chip">&#129463; Dental hygienist</div>
+                            <div class="gc-job-chip">&#128087; Fashion stylist</div>
+                            <div class="gc-job-chip">&#128188; Political advisor</div>
+                            <div class="gc-job-chip">&#127891; University lecturer</div>
+                            <div class="gc-job-chip">&#128222; 999 operator</div>
+                        </div>
+
+                        <div class="gc-extract-card">
+                            <div class="gc-extract-num">1</div>
+                            <div class="gc-extract-text">
+                                <span class="hl-word">Although</span> it is not my place to judge, I get frustrated sometimes. The man who rang <span class="hl-word">because</span> his toothpaste was burning his mouth; the mother whose baby was afraid of a fly.
+                            </div>
+                            <select class="gc-extract-select" data-answer="999" onchange="gcCheckMatch(this)">
+                                <option value="">— Select a job —</option>
+                                <option value="ae">A&amp;E doctor</option>
+                                <option value="dh">Dental hygienist</option>
+                                <option value="fs">Fashion stylist</option>
+                                <option value="pa">Political advisor</option>
+                                <option value="ul">University lecturer</option>
+                                <option value="999">999 operator</option>
+                            </select>
+                        </div>
+
+                        <div class="gc-extract-card">
+                            <div class="gc-extract-num">2</div>
+                            <div class="gc-extract-text">
+                                When you are really disengaged and disconnected, I see hands reach for phones in bags. Sometimes you even pass notes and giggle. <span class="hl-word">Yet</span> I also see you when you laugh at my jokes.
+                            </div>
+                            <select class="gc-extract-select" data-answer="ul" onchange="gcCheckMatch(this)">
+                                <option value="">— Select a job —</option>
+                                <option value="ae">A&amp;E doctor</option>
+                                <option value="dh">Dental hygienist</option>
+                                <option value="fs">Fashion stylist</option>
+                                <option value="pa">Political advisor</option>
+                                <option value="ul">University lecturer</option>
+                                <option value="999">999 operator</option>
+                            </select>
+                        </div>
+
+                        <div class="gc-extract-card">
+                            <div class="gc-extract-num">3</div>
+                            <div class="gc-extract-text">
+                                I'm exhausted. It is demoralizing to start a shift only to find that the department already has a four-hour wait <span class="hl-word">to</span> see someone. There are people lining the corridors, and there is nowhere to take new patients, and <span class="hl-word">consequently</span> the wait gets longer.
+                            </div>
+                            <select class="gc-extract-select" data-answer="ae" onchange="gcCheckMatch(this)">
+                                <option value="">— Select a job —</option>
+                                <option value="ae">A&amp;E doctor</option>
+                                <option value="dh">Dental hygienist</option>
+                                <option value="fs">Fashion stylist</option>
+                                <option value="pa">Political advisor</option>
+                                <option value="ul">University lecturer</option>
+                                <option value="999">999 operator</option>
+                            </select>
+                        </div>
+
+                        <div class="gc-extract-card">
+                            <div class="gc-extract-num">4</div>
+                            <div class="gc-extract-text">
+                                One supermodel arrived at a shoot three hours late, then spent another couple of hours looking at Twitter while everyone waited for her. Then she was a nightmare. She was a world-class bully, and said she had never met anyone as rude as me. <span class="hl-word">However</span>, I fought back and she was lovely after that – <span class="hl-word">though</span> she made me sign a non-disclosure agreement not to talk about the shoot.
+                            </div>
+                            <select class="gc-extract-select" data-answer="fs" onchange="gcCheckMatch(this)">
+                                <option value="">— Select a job —</option>
+                                <option value="ae">A&amp;E doctor</option>
+                                <option value="dh">Dental hygienist</option>
+                                <option value="fs">Fashion stylist</option>
+                                <option value="pa">Political advisor</option>
+                                <option value="ul">University lecturer</option>
+                                <option value="999">999 operator</option>
+                            </select>
+                        </div>
+
+                        <div class="gc-extract-card">
+                            <div class="gc-extract-num">5</div>
+                            <div class="gc-extract-text">
+                                I'm only here <span class="hl-word">in order to</span> help get you elected. But why you? Yes, I know, you won the party's nomination, but did they realize that, <span class="hl-word">despite</span> your firm handshake and boyish charm, you know as much about corporate tax policy as I know about astrophysics?
+                            </div>
+                            <select class="gc-extract-select" data-answer="pa" onchange="gcCheckMatch(this)">
+                                <option value="">— Select a job —</option>
+                                <option value="ae">A&amp;E doctor</option>
+                                <option value="dh">Dental hygienist</option>
+                                <option value="fs">Fashion stylist</option>
+                                <option value="pa">Political advisor</option>
+                                <option value="ul">University lecturer</option>
+                                <option value="999">999 operator</option>
+                            </select>
+                        </div>
+
+                        <div class="gc-extract-card">
+                            <div class="gc-extract-num">6</div>
+                            <div class="gc-extract-text">
+                                I know it's not the most pleasant experience, <span class="hl-word">so</span> I try to alleviate the worry...
+                            </div>
+                            <select class="gc-extract-select" data-answer="dh" onchange="gcCheckMatch(this)">
+                                <option value="">— Select a job —</option>
+                                <option value="ae">A&amp;E doctor</option>
+                                <option value="dh">Dental hygienist</option>
+                                <option value="fs">Fashion stylist</option>
+                                <option value="pa">Political advisor</option>
+                                <option value="ul">University lecturer</option>
+                                <option value="999">999 operator</option>
+                            </select>
+                        </div>
+
+                        <div class="gc-btn-group">
+                            <button class="gc-btn gc-btn-secondary" onclick="gcResetMatches()">&#128260; Reset</button>
+                        </div>
+                    </div>
+
+                    <hr class="gc-divider">
+
+                    <!-- Exercise 1b: Categorize Linkers -->
+                    <div class="gc-section" id="gcEx1b">
+                        <span class="gc-exercise-badge">Exercise 1b</span>
+                        <h2 class="gc-section-title">Categorize the Linkers <span class="gc-score-counter" id="gcLinkerScore">0 / 9 placed</span></h2>
+                        <p class="gc-section-subtitle">Click on a linker below, then click on the column where it belongs.</p>
+
+                        <div class="gc-linker-pool" id="gcLinkerPool">
+                            <div class="gc-linker-pool-title">Available Linkers</div>
+                            <span class="gc-linker-item" data-word="because" data-category="reason">because</span>
+                            <span class="gc-linker-item" data-word="consequently" data-category="result">consequently</span>
+                            <span class="gc-linker-item" data-word="in order to" data-category="purpose">in order to</span>
+                            <span class="gc-linker-item" data-word="However" data-category="contrast">However</span>
+                            <span class="gc-linker-item" data-word="to" data-category="purpose">to</span>
+                            <span class="gc-linker-item" data-word="so" data-category="result">so</span>
+                            <span class="gc-linker-item" data-word="despite" data-category="contrast">despite</span>
+                            <span class="gc-linker-item" data-word="Yet" data-category="contrast">Yet</span>
+                            <span class="gc-linker-item" data-word="though" data-category="contrast">though</span>
+                            <div class="gc-linker-pool-hint">&#128070; Click a linker to select it, then click a cell in the table below to place it.</div>
+                        </div>
+
+                        <table class="gc-linker-table">
+                            <thead>
+                                <tr>
+                                    <th>&#10145;&#65039; Result</th>
+                                    <th>&#10067; Reason</th>
+                                    <th>&#127919; Purpose</th>
+                                    <th>&#9878;&#65039; Contrast</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="gc-col-cell" data-col="result" onclick="gcPlaceLinker(this)"></td>
+                                    <td class="gc-col-cell" data-col="reason" onclick="gcPlaceLinker(this)"></td>
+                                    <td class="gc-col-cell" data-col="purpose" onclick="gcPlaceLinker(this)"></td>
+                                    <td class="gc-col-cell" data-col="contrast" onclick="gcPlaceLinker(this)">
+                                        <span class="gc-linker-item placed locked" style="opacity:0.6; text-decoration:none; background:#ede9fe; border-color:#a78bfa;">Although</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="gc-col-cell" data-col="result" onclick="gcPlaceLinker(this)"></td>
+                                    <td class="gc-col-cell" data-col="reason" onclick="gcPlaceLinker(this)"></td>
+                                    <td class="gc-col-cell" data-col="purpose" onclick="gcPlaceLinker(this)"></td>
+                                    <td class="gc-col-cell" data-col="contrast" onclick="gcPlaceLinker(this)"></td>
+                                </tr>
+                                <tr>
+                                    <td class="gc-col-cell" data-col="result" onclick="gcPlaceLinker(this)"></td>
+                                    <td class="gc-col-cell" data-col="reason" onclick="gcPlaceLinker(this)"></td>
+                                    <td class="gc-col-cell" data-col="purpose" onclick="gcPlaceLinker(this)"></td>
+                                    <td class="gc-col-cell" data-col="contrast" onclick="gcPlaceLinker(this)"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="gc-btn-group">
+                            <button class="gc-btn gc-btn-secondary" onclick="gcResetLinkerTable()">&#128260; Reset</button>
+                        </div>
+                    </div>
+
+                    <hr class="gc-divider">
+
+                    <!-- Exercise 2a: Circle Correct Linker -->
+                    <div class="gc-section" id="gcEx2a">
+                        <span class="gc-exercise-badge">Exercise 2a</span>
+                        <h2 class="gc-section-title">Circle the Correct Linker</h2>
+                        <p class="gc-section-subtitle">Click on the correct linker in each sentence. You'll get instant feedback!</p>
+
+                        <div class="gc-card gc-circle-exercise" id="gcCircle2a">
+                            <p style="font-style:italic; color: var(--text-secondary); margin-bottom: 18px;">
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">Even though</span> / <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">Despite</span> she's working really hard, I don't think she'll be able to catch up.
+                            </p>
+                            <p>1. We can't afford to have a holiday this year
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">as</span> /
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">yet</span>
+                                we've got an overdraft at the bank.
+                            </p>
+                            <p>2. Could we rearrange my timetable
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">so that</span> /
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">in case</span>
+                                I don't have so many classes on Fridays?
+                            </p>
+                            <p>3. I got to the interview on time
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">due to</span> /
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">in spite of the fact that</span>
+                                my train was late.
+                            </p>
+                            <p>4. It isn't worth phoning John,
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">seeing that</span> /
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">so that</span>
+                                he's arriving in five minutes.
+                            </p>
+                            <p>5. He gets a good salary
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">though</span> /
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">since</span>
+                                the job itself is quite monotonous.
+                            </p>
+                        </div>
+
+                        <div class="gc-btn-group">
+                            <button class="gc-btn gc-btn-secondary" onclick="gcResetCircle('gcCircle2a')">&#128260; Reset</button>
+                        </div>
+                    </div>
+
+                    <hr class="gc-divider">
+
+                    <!-- Exercise 2b: Circle Better Option -->
+                    <div class="gc-section" id="gcEx2b">
+                        <span class="gc-exercise-badge">Exercise 2b</span>
+                        <h2 class="gc-section-title">Circle the Better Option (Register)</h2>
+                        <p class="gc-section-subtitle">Choose the more appropriate option according to the level of formality.</p>
+
+                        <div class="gc-card gc-circle-exercise" id="gcCircle2b">
+                            <p style="font-style:italic; color: var(--text-secondary); margin-bottom: 18px;">
+                                Sales have increased over the last six months.
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">So</span> /
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">Therefore</span>
+                                we will be taking on five new employees.
+                            </p>
+                            <p>1. I've been off work for the last three days
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">because of</span> /
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">owing to</span>
+                                this nasty cough I've got.
+                            </p>
+                            <p>2. The organization has severe financial problems, and
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">so</span> /
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">consequently</span>
+                                half the staff have been laid off.
+                            </p>
+                            <p>3. The company has reported declining sales this year.
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">Nevertheless</span> /
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">But</span>,
+                                they have so far managed to avoid any staff cuts.
+                            </p>
+                            <p>4. I stopped at a service station
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">to</span> /
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">in order to</span>
+                                fill up with petrol.
+                            </p>
+                            <p>5. I thought it was an amazing book. It was a bit depressing,
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">though</span> /
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">however</span>.
+                            </p>
+                            <p>6. We regret to announce that the performance has been cancelled
+                                <span class="gc-circle-option" data-correct="true" onclick="gcCircleSelect(this)">due to</span> /
+                                <span class="gc-circle-option" data-correct="false" onclick="gcCircleSelect(this)">because of</span>
+                                technical problems.
+                            </p>
+                        </div>
+
+                        <div class="gc-btn-group">
+                            <button class="gc-btn gc-btn-secondary" onclick="gcResetCircle('gcCircle2b')">&#128260; Reset</button>
+                        </div>
+                    </div>
+
+                    <hr class="gc-divider">
+
+                    <!-- Exercise 2c: Join Sentences -->
+                    <div class="gc-section" id="gcEx2c">
+                        <span class="gc-exercise-badge">Exercise 2c</span>
+                        <h2 class="gc-section-title">Join the Sentences</h2>
+                        <p class="gc-section-subtitle">Join the sentences using the <strong>bold</strong> word(s), making any necessary changes. Click "Show Answer" to check.</p>
+
+                        <div class="gc-card">
+                            <div class="gc-join-item">
+                                <div class="gc-sentence-pair" style="background: #d1fae5; padding: 12px; border-radius: 8px; margin-bottom: 12px;">
+                                    <strong>Example:</strong> We only use energy-efficient light bulbs. We don't want to waste electricity. <span class="gc-bold-word">so as</span><br>
+                                    <em>We only use energy-efficient light bulbs so as not to waste electricity.</em>
+                                </div>
+                            </div>
+
+                            <div class="gc-join-item">
+                                <div class="gc-sentence-pair">1. Our seats were a long way from the stage. We enjoyed the play. <span class="gc-bold-word">In spite</span></div>
+                                <textarea class="gc-join-input" placeholder="Write your answer here..."></textarea>
+                                <button class="gc-show-answer-btn" onclick="gcToggleAnswer(this)">&#128161; Show Answer</button>
+                                <div class="gc-answer-text">In spite of our seats being a long way from the stage, we enjoyed the play.</div>
+                            </div>
+
+                            <div class="gc-join-item">
+                                <div class="gc-sentence-pair">2. It took us ages to get there. The traffic was heavy. <span class="gc-bold-word">because of</span></div>
+                                <textarea class="gc-join-input" placeholder="Write your answer here..."></textarea>
+                                <button class="gc-show-answer-btn" onclick="gcToggleAnswer(this)">&#128161; Show Answer</button>
+                                <div class="gc-answer-text">It took us ages to get there because of the heavy traffic.</div>
+                            </div>
+
+                            <div class="gc-join-item">
+                                <div class="gc-sentence-pair">3. I took the price off the bag. I didn't want Becky to know how much it had cost. <span class="gc-bold-word">so</span></div>
+                                <textarea class="gc-join-input" placeholder="Write your answer here..."></textarea>
+                                <button class="gc-show-answer-btn" onclick="gcToggleAnswer(this)">&#128161; Show Answer</button>
+                                <div class="gc-answer-text">I took the price off the bag so (that) Becky wouldn't know how much it had cost.</div>
+                            </div>
+
+                            <div class="gc-join-item">
+                                <div class="gc-sentence-pair">4. Keep the receipt for the sweater. Your dad might not like it. <span class="gc-bold-word">in case</span></div>
+                                <textarea class="gc-join-input" placeholder="Write your answer here..."></textarea>
+                                <button class="gc-show-answer-btn" onclick="gcToggleAnswer(this)">&#128161; Show Answer</button>
+                                <div class="gc-answer-text">Keep the receipt for the sweater in case your dad doesn't like it.</div>
+                            </div>
+
+                            <div class="gc-join-item">
+                                <div class="gc-sentence-pair">5. Susanna is an only child. She isn't at all spoilt. <span class="gc-bold-word">Even though</span></div>
+                                <textarea class="gc-join-input" placeholder="Write your answer here..."></textarea>
+                                <button class="gc-show-answer-btn" onclick="gcToggleAnswer(this)">&#128161; Show Answer</button>
+                                <div class="gc-answer-text">Even though Susanna is an only child, she isn't at all spoilt.</div>
+                            </div>
+
+                            <div class="gc-join-item">
+                                <div class="gc-sentence-pair">6. Prices have risen. Production costs have increased. <span class="gc-bold-word">due to</span></div>
+                                <textarea class="gc-join-input" placeholder="Write your answer here..."></textarea>
+                                <button class="gc-show-answer-btn" onclick="gcToggleAnswer(this)">&#128161; Show Answer</button>
+                                <div class="gc-answer-text">Prices have risen due to increased production costs.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="gc-divider">
+
+                    <!-- Exercise 2d/2e: Listening -->
+                    <div class="gc-section" id="gcEx2de">
+                        <span class="gc-exercise-badge">Exercises 2d &amp; 2e</span>
+                        <h2 class="gc-section-title">&#127911; Listening</h2>
+                        <p class="gc-section-subtitle">Listen to the audio and complete the sentences.</p>
+
+                        <div class="gc-audio-card">
+                            <h3>&#128266; Exercise 2d – Audio 1.16</h3>
+                            <p>Listen and write the first halves of eight sentences. Compare with a partner, and then decide together how you think the sentences might continue.</p>
+                            <audio controls src="audios/1.16.mp3"></audio>
+                            <div class="gc-audio-sentence"><span class="gc-num">1</span><input type="text" placeholder="Write the first half of the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">2</span><input type="text" placeholder="Write the first half of the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">3</span><input type="text" placeholder="Write the first half of the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">4</span><input type="text" placeholder="Write the first half of the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">5</span><input type="text" placeholder="Write the first half of the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">6</span><input type="text" placeholder="Write the first half of the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">7</span><input type="text" placeholder="Write the first half of the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">8</span><input type="text" placeholder="Write the first half of the sentence..."></div>
+                        </div>
+
+                        <div class="gc-audio-card" style="background: linear-gradient(135deg, #064e3b, #065f46);">
+                            <h3>&#128266; Exercise 2e – Audio 1.17</h3>
+                            <p>Now listen and complete the sentences from 2d. Are they similar to what you predicted?</p>
+                            <audio controls src="audios/1.17.mp3"></audio>
+                            <div class="gc-audio-sentence"><span class="gc-num">1</span><input type="text" placeholder="Complete the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">2</span><input type="text" placeholder="Complete the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">3</span><input type="text" placeholder="Complete the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">4</span><input type="text" placeholder="Complete the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">5</span><input type="text" placeholder="Complete the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">6</span><input type="text" placeholder="Complete the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">7</span><input type="text" placeholder="Complete the sentence..."></div>
+                            <div class="gc-audio-sentence"><span class="gc-num">8</span><input type="text" placeholder="Complete the sentence..."></div>
+                        </div>
+
+                        <div class="gc-tip-card">
+                            <h4>&#128161; Tip</h4>
+                            <p style="font-size: 0.93rem;">Since the audio files may not be available in this version, use these exercises for classroom practice. Play the audio from your textbook's audio resources and have students fill in the blanks. The listening exercises focus on recognizing linker patterns in natural speech.</p>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
             return `<p>${sectionSummaries[section] || 'This section is coming soon. Please continue to the next lesson when ready.'}</p>`;
         }
 
@@ -3453,6 +4471,9 @@
         function afterSectionRender(section) {
             if (section === 'Reading and Listening' || section === 'Reading') {
                 bindReadingListeningEvents();
+            }
+            if (section === 'Grammar') {
+                initGrammarExercises();
             }
         }
 
@@ -3656,6 +4677,165 @@
             // default
             showSlide('vocabulary');
         })();
+
+        // ========== GRAMMAR SECTION JAVASCRIPT ==========
+        let gcSelectedLinker = null;
+        let gcPlacedCount = 0;
+        const gcTotalLinkers = 9;
+
+        function gcToggleRule(header) {
+            header.classList.toggle('open');
+            header.nextElementSibling.classList.toggle('open');
+        }
+
+        // Exercise 1a - Match extracts to jobs
+        function gcCheckMatch(select) {
+            select.classList.remove('correct', 'wrong');
+            if (select.value === select.dataset.answer) {
+                select.classList.add('correct');
+            } else if (select.value) {
+                select.classList.add('wrong');
+            }
+        }
+
+        function gcResetMatches() {
+            document.querySelectorAll('#gcEx1a .gc-extract-select').forEach(s => {
+                s.value = '';
+                s.classList.remove('correct', 'wrong');
+            });
+        }
+
+        // Exercise 1b - Linker categorization table
+        function initGrammarExercises() {
+            gcSelectedLinker = null;
+            gcPlacedCount = 0;
+
+            const pool = document.getElementById('gcLinkerPool');
+            if (!pool) return;
+
+            pool.querySelectorAll('.gc-linker-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    if (item.classList.contains('placed')) return;
+                    pool.querySelectorAll('.gc-linker-item').forEach(i => i.classList.remove('selected'));
+                    item.classList.add('selected');
+                    gcSelectedLinker = item;
+                });
+            });
+        }
+
+        function gcPlaceLinker(cell) {
+            if (!gcSelectedLinker) return;
+
+            const cellCategory = cell.dataset.col;
+            const linkerCategory = gcSelectedLinker.dataset.category;
+
+            if (cellCategory === linkerCategory) {
+                cell.classList.add('flash-correct');
+                gcSelectedLinker.classList.add('flash-correct');
+
+                const capturedLinker = gcSelectedLinker;
+                setTimeout(() => {
+                    const clone = capturedLinker.cloneNode(true);
+                    clone.classList.remove('selected', 'flash-correct');
+                    clone.classList.add('placed', 'locked');
+                    clone.style.opacity = '1';
+                    clone.style.textDecoration = 'none';
+                    clone.onclick = null;
+                    cell.appendChild(clone);
+                    cell.classList.add('has-linker');
+
+                    capturedLinker.classList.remove('flash-correct', 'selected');
+                    capturedLinker.classList.add('placed');
+                    gcSelectedLinker = null;
+
+                    gcPlacedCount++;
+                    gcUpdateLinkerScore();
+
+                    setTimeout(() => cell.classList.remove('flash-correct'), 600);
+
+                    if (gcPlacedCount === gcTotalLinkers) {
+                        setTimeout(() => {
+                            alert('Excellent! All linkers have been correctly placed!');
+                        }, 700);
+                    }
+                }, 300);
+            } else {
+                cell.classList.add('flash-wrong');
+                gcSelectedLinker.classList.add('flash-wrong');
+
+                const capturedLinker = gcSelectedLinker;
+                setTimeout(() => {
+                    cell.classList.remove('flash-wrong');
+                    if (capturedLinker) {
+                        capturedLinker.classList.remove('flash-wrong', 'selected');
+                    }
+                    gcSelectedLinker = null;
+                }, 600);
+            }
+        }
+
+        function gcUpdateLinkerScore() {
+            const el = document.getElementById('gcLinkerScore');
+            if (el) el.textContent = gcPlacedCount + ' / ' + gcTotalLinkers + ' placed';
+        }
+
+        function gcResetLinkerTable() {
+            document.querySelectorAll('.gc-col-cell').forEach(cell => {
+                cell.querySelectorAll('.gc-linker-item').forEach(item => {
+                    if (!item.classList.contains('locked') || item.textContent.trim() !== 'Although') {
+                        item.remove();
+                    }
+                });
+                cell.classList.remove('has-linker', 'flash-correct', 'flash-wrong');
+            });
+
+            const pool = document.getElementById('gcLinkerPool');
+            if (pool) {
+                pool.querySelectorAll('.gc-linker-item').forEach(item => {
+                    item.classList.remove('placed', 'selected', 'flash-correct', 'flash-wrong');
+                });
+            }
+
+            gcSelectedLinker = null;
+            gcPlacedCount = 0;
+            gcUpdateLinkerScore();
+            initGrammarExercises();
+        }
+
+        // Circle exercises (2a, 2b)
+        function gcCircleSelect(el) {
+            if (el.classList.contains('locked')) return;
+
+            const isCorrect = el.dataset.correct === 'true';
+
+            if (isCorrect) {
+                el.classList.add('correct', 'locked');
+                const siblings = el.parentElement.querySelectorAll('.gc-circle-option');
+                siblings.forEach(s => {
+                    if (s !== el) s.classList.add('locked');
+                });
+            } else {
+                el.classList.add('wrong');
+                setTimeout(() => {
+                    el.classList.remove('wrong');
+                }, 600);
+            }
+        }
+
+        function gcResetCircle(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.querySelectorAll('.gc-circle-option').forEach(o => {
+                o.classList.remove('selected', 'correct', 'wrong', 'locked');
+            });
+        }
+
+        // Join sentences - show answer toggle
+        function gcToggleAnswer(btn) {
+            const answer = btn.nextElementSibling;
+            answer.classList.toggle('show');
+            btn.textContent = answer.classList.contains('show') ? '\uD83D\uDE48 Hide Answer' : '\uD83D\uDCA1 Show Answer';
+        }
     </script>
 </body>
 </html>
