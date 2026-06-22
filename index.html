@@ -4449,6 +4449,13 @@
                         window.location.href = 'warmup/Earnmoney.html';
                         return;
                     }
+                    // If Writing, navigate to the writing page
+                    if (targetSection === 'Writing') {
+                        nav.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                        item.classList.add('active');
+                        window.location.href = 'writing/writing.html';
+                        return;
+                    }
 
                     nav.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
                     item.classList.add('active');
