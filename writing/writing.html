@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Job Application Emails – Interactive Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #7B2D8E;
+    --primary-light: #A855C7;
+    --primary-dark: #5C1A6E;
+    --accent: #E84393;
+    --bg: #FAF7FC;
+    --card: #FFFFFF;
+    --text: #2D2D2D;
+    --text-light: #6B6B6B;
+    --border: #E8DFF0;
+    --success: #27AE60;
+    --error: #E74C3C;
+    --warning: #F39C12;
+    --highlight: #FFF3CD;
+    --radius: 16px;
+    --shadow: 0 4px 24px rgba(123, 45, 142, 0.08);
+    --shadow-lg: 0 12px 48px rgba(123, 45, 142, 0.12);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    padding: 80px 24px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    animation: heroFloat 20s ease-in-out infinite;
+  }
+  @keyframes heroFloat {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(5%, -5%); }
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .hero p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .hero-badges {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-badge {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0 24px;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 12px 0;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    padding: 10px 20px;
+    border: none;
+    background: var(--bg);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-light);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+  }
+  .nav-btn:hover, .nav-btn.active {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    display: none;
+  }
+  .section.active { display: block; animation: fadeIn 0.5s ease; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .section-label {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+  }
+  .section-header p {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .kfs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .kf-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary);
+    transition: all 0.3s;
+  }
+  .kf-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .kf-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+  .kf-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: var(--primary-dark);
+  }
+  .kf-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+  }
+
+  .ads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 32px;
+  }
+  .ad-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  .ad-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  .ad-body { padding: 28px; }
+  .ad-tag {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .ad-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--primary-dark);
+    margin-bottom: 4px;
+  }
+  .ad-location {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ad-body p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .ad-section-title {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.9rem;
+    margin: 16px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .ad-list {
+    list-style: none;
+    padding: 0;
+  }
+  .ad-list li {
+    padding: 6px 0 6px 24px;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  .ad-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: 700;
+  }
+
+  .email-container {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .email-header {
+    background: #F0EBF5;
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .email-field {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+  .email-field strong {
+    color: var(--primary);
+    font-weight: 600;
+    min-width: 70px;
+    display: inline-block;
+  }
+  .email-body {
+    padding: 32px;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  .email-body .greeting { margin-bottom: 16px; }
+  .email-paragraph {
+    margin-bottom: 20px;
+    padding: 16px;
+    border-radius: 12px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s;
+  }
+  .email-paragraph.p1 { border-left-color: #3498DB; }
+  .email-paragraph.p2 { border-left-color: #E67E22; }
+  .email-paragraph.p3 { border-left-color: #27AE60; }
+  .para-number {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  .error-input {
+    border: 2px solid var(--warning);
+    background: var(--highlight);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    outline: none;
+    transition: all 0.3s;
+    min-width: 100px;
+  }
+  .error-input:focus {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(123, 45, 142, 0.1);
+  }
+  .error-input.correct {
+    border-color: var(--success);
+    background: #E8F8F0;
+    color: var(--success);
+  }
+  .error-input.incorrect {
+    border-color: var(--error);
+    background: #FDE8E8;
+    color: var(--error);
+  }
+
+  .exercise-container {
+    background: white;
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .exercise-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .exercise-num {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .blank-input {
+    border: none;
+    border-bottom: 2px solid var(--primary);
+    padding: 4px 8px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--primary);
+    background: transparent;
+    outline: none;
+    min-width: 120px;
+    transition: all 0.3s;
+  }
+  .blank-input:focus {
+    border-bottom-color: var(--accent);
+    background: #F8F4FB;
+  }
+  .blank-input.correct {
+    color: var(--success);
+    border-bottom-color: var(--success);
+    background: #E8F8F0;
+  }
+  .blank-input.incorrect {
+    color: var(--error);
+    border-bottom-color: var(--error);
+    background: #FDE8E8;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(123, 45, 142, 0.3);
+  }
+  .btn-secondary {
+    background: var(--bg);
+    color: var(--primary);
+    border: 2px solid var(--border);
+  }
+  .btn-secondary:hover {
+    border-color: var(--primary);
+    background: #F0EBF5;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .tip-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--primary);
+    transition: all 0.3s;
+  }
+  .tip-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .tip-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    opacity: 0.2;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .tip-card h4 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+  }
+  .tip-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+  .tip-example {
+    background: #F8F4FB;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--primary);
+    border-left: 3px solid var(--primary-light);
+  }
+
+  .writing-area {
+    width: 100%;
+    min-height: 300px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .writing-area:focus {
+    border-color: var(--primary);
+  }
+  .word-counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding: 12px 20px;
+    background: #F8F4FB;
+    border-radius: 12px;
+    font-size: 0.9rem;
+  }
+  .word-count {
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .word-count.in-range { color: var(--success); }
+  .word-count.out-range { color: var(--error); }
+
+  .quiz-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s;
+  }
+  .quiz-option:hover {
+    border-color: var(--primary-light);
+    background: #F8F4FB;
+  }
+  .quiz-option.correct-answer {
+    border-color: var(--success);
+    background: #E8F8F0;
+  }
+  .quiz-option.wrong-answer {
+    border-color: var(--error);
+    background: #FDE8E8;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border);
+    border-radius: 50px;
+    overflow: hidden;
+    margin: 16px 0;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 50px;
+    transition: width 0.5s ease;
+  }
+
+  .score-display {
+    text-align: center;
+    padding: 24px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: var(--radius);
+    color: white;
+    margin: 24px 0;
+  }
+  .score-display .score-num {
+    font-size: 3rem;
+    font-weight: 800;
+  }
+  .score-display .score-label {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 60px 20px 80px; }
+    .section { padding: 40px 16px; }
+    .card, .exercise-container { padding: 20px; }
+    .email-body { padding: 20px; }
+    .email-header { padding: 16px 20px; }
+    .ad-body { padding: 20px; }
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--border);
+    background: white;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-light);
+  }
+  .tab-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .checklist-check {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    margin-top: 2px;
+  }
+  .checklist-check.checked {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+  }
+  .checklist-text {
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  .img-banner {
+    width: 100%;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 24px 0;
+    box-shadow: var(--shadow);
+  }
+  .img-banner img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  .error-list {
+    background: #FFF8F0;
+    border: 1px solid #FDE8D0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 16px;
+  }
+  .error-list h4 {
+    color: var(--warning);
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+  }
+  .error-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #FDE8D0;
+    font-size: 0.9rem;
+  }
+  .error-item:last-child { border-bottom: none; }
+  .error-wrong { color: var(--error); text-decoration: line-through; }
+  .error-right { color: var(--success); font-weight: 600; }
+
+  .reveal-btn {
+    background: none;
+    border: 1px dashed var(--primary-light);
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s;
+  }
+  .reveal-btn:hover {
+    background: #F0EBF5;
+  }
+
+  .step-indicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--bg);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-light);
+    border: 2px solid var(--border);
+  }
+  .step.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+  .step-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .validation-hint {
+    background: #F0EBF5;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    border-left: 4px solid var(--primary);
+  }
+  .validation-hint p {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .validation-hint p:last-child {
+    margin-bottom: 0;
+  }
+
+  .counter-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: #F8F4FB;
+    border-radius: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .counter-display span {
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+  .counter-display strong {
+    color: var(--primary);
+    font-size: 1.1rem;
+  }
+
+  /* Cross-out sentence styling */
+  .crossable-sentence {
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    display: inline;
+    border: 2px solid transparent;
+  }
+  .crossable-sentence:hover {
+    background: #FDE8E8;
+    border-color: var(--error);
+  }
+  .crossable-sentence.crossed {
+    text-decoration: line-through;
+    color: var(--error);
+    background: #FDE8E8;
+    border-color: var(--error);
+    opacity: 0.7;
+  }
+
+  .crossout-instruction {
+    background: #FFF8F0;
+    border: 1px solid #FDE8D0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  .crossout-instruction strong {
+    color: var(--warning);
+  }
+
+  .crossout-counter {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Writing Job Application Emails</h1>
+    <p>Master the art of professional cover letters and application emails with interactive exercises, tips, and real-world examples.</p>
+    <div class="hero-badges">
+      <span class="hero-badge"> Interactive Exercises</span>
+      <span class="hero-badge">💡 Expert Tips</span>
+      <span class="hero-badge">✅ Self-Check Tools</span>
+    </div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('success')">1. Key Success Factors</button>
+    <button class="nav-btn" onclick="showSection('receptionist')">2. Receptionist Ad</button>
+    <button class="nav-btn" onclick="showSection('model')">3. Model Email</button>
+    <button class="nav-btn" onclick="showSection('language')">4. Useful Language</button>
+    <button class="nav-btn" onclick="showSection('festival')">5. Festival Ad</button>
+    <button class="nav-btn" onclick="showSection('tips')">6. Tips & Planning</button>
+    <button class="nav-btn" onclick="showSection('writing')">7. Writing Practice</button>
+    <button class="nav-btn" onclick="showSection('quiz')">8. Quiz</button>
+  </div>
+</nav>
+
+<!-- SECTION 1: KEY SUCCESS FACTORS -->
+<section class="section active" id="success">
+  <div class="section-header">
+    <span class="section-label">Foundation</span>
+    <h2>Key Success Factors</h2>
+    <p>Three essential principles for writing effective job application emails</p>
+  </div>
+
+  <div class="img-banner">
+    <img src="https://image.qwenlm.ai/public_source/c190461f-7558-4c34-b460-7668e175659c/18d46719b-d313-48ca-a277-653ed5fddacd.png" alt="Writing a job application email">
+  </div>
+
+  <div class="kfs-grid">
+    <div class="kf-card fade-up">
+      <div class="kf-icon">️</div>
+      <h3>Professional Language</h3>
+      <p>Using appropriate, professional-sounding language throughout your email. Avoid slang, contractions, and overly casual expressions.</p>
+    </div>
+    <div class="kf-card fade-up">
+      <div class="kf-icon">✨</div>
+      <h3>Positive Self-Image</h3>
+      <p>Conveying a positive image of yourself without appearing overconfident or arrogant. Be factual and positive about your skills.</p>
+    </div>
+    <div class="kf-card fade-up">
+      <div class="kf-icon">🎯</div>
+      <h3>Avoid Basic Mistakes</h3>
+      <p>Avoiding basic mistakes which will make you look careless. Check spelling, grammar, punctuation, and formatting carefully.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div class="exercise-container">
+      <div class="exercise-title">
+        <span class="exercise-num"></span>
+        Self-Assessment Checklist
+      </div>
+      <p style="color: var(--text-light); margin-bottom: 16px;">Check each item as you review your application email:</p>
+      <div id="checklist">
+        <div class="checklist-item">
+          <div class="checklist-check" onclick="toggleCheck(this)">✓</div>
+          <span class="checklist-text">I used formal language throughout (no contractions like "I've", "I'd")</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check" onclick="toggleCheck(this)">✓</div>
+          <span class="checklist-text">I included a clear subject line and appropriate greeting</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check" onclick="toggleCheck(this)">✓</div>
+          <span class="checklist-text">My email is organized into clear paragraphs</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check" onclick="toggleCheck(this)">✓</div>
+          <span class="checklist-text">I mentioned relevant qualifications and experience</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check" onclick="toggleCheck(this)">✓</div>
+          <span class="checklist-text">I sounded confident but not arrogant</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check" onclick="toggleCheck(this)">✓</div>
+          <span class="checklist-text">I checked spelling, grammar, and punctuation</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check" onclick="toggleCheck(this)">✓</div>
+          <span class="checklist-text">I used an appropriate closing (e.g., "Yours sincerely")</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check" onclick="toggleCheck(this)">✓</div>
+          <span class="checklist-text">I removed any irrelevant or inappropriate information</span>
+        </div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="checkProgress" style="width: 0%"></div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-light);"><span id="checkCount">0</span> of 8 items checked</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: RECEPTIONIST AD -->
+<section class="section" id="receptionist">
+  <div class="section-header">
+    <span class="section-label">Analysing a Model Text</span>
+    <h2>Job Advertisement: Receptionist</h2>
+    <p>Read the following job advertisement on a travel company website. Would you be interested in applying for the job? Why (not)?</p>
+  </div>
+
+  <div class="ads-grid">
+    <div class="ad-card fade-up" style="max-width: 500px; margin: 0 auto;">
+      <img class="ad-img" src="https://image.qwenlm.ai/public_source/c190461f-7558-4c34-b460-7668e175659c/107bb5203-42ac-4869-82b4-99ab431619ea.png" alt="Receptionist at work">
+      <div class="ad-body">
+        <span class="ad-tag">Hospitality</span>
+        <h3>Receptionist</h3>
+        <div class="ad-location">📍 Location: Edinburgh</div>
+        <p>The receptionist is the first point of contact for staff and visitors. The role involves a variety of tasks including answering and directing calls, welcoming visitors, scheduling meetings, and general admin support.</p>
+        <p><strong>Core hours:</strong> 8 a.m.–6 p.m. You will need to be available to work earlier shifts some days and later shifts other days.</p>
+        <div class="ad-section-title">About you:</div>
+        <ul class="ad-list">
+          <li>Customer-focused personality with strong can-do attitude</li>
+          <li>Proven communication skills</li>
+          <li>Able to liaise with individuals at all levels</li>
+          <li>Thrive in a fast-moving environment</li>
+        </ul>
+        <div style="background: #F0EBF5; padding: 14px; border-radius: 10px; margin-top: 16px; font-size: 0.85rem;">
+          <strong style="color: var(--primary);"> Closing date:</strong> Wednesday 18th June – click 'Apply' before this opportunity flies away!
+        </div>
+        <button class="btn btn-primary" style="margin-top: 16px; width: 100%; justify-content: center;">APPLY</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-container" style="margin-top: 32px;">
+    <div class="exercise-title">
+      <span class="exercise-num">🤔</span>
+      Discussion Question
+    </div>
+    <p style="margin-bottom: 16px;"><strong>Would you be interested in applying for this job? Why (not)?</strong></p>
+    <textarea class="writing-area" style="min-height: 120px;" placeholder="Type your thoughts here..."></textarea>
+    <div style="margin-top: 16px;">
+      <button class="btn btn-secondary" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'"> Show Sample Answer</button>
+      <div style="display: none; margin-top: 16px; padding: 20px; background: #F8F4FB; border-radius: 12px; border-left: 4px solid var(--primary);">
+        <p style="font-size: 0.95rem;"><strong>Sample answer:</strong> Yes, I would be interested in applying for this job because it offers variety in daily tasks and the opportunity to develop communication skills. The location in Edinburgh is appealing, and the role would provide valuable experience in a fast-moving environment. However, the shift patterns might be challenging to balance with other commitments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: MODEL EMAIL -->
+<section class="section" id="model">
+  <div class="section-header">
+    <span class="section-label">Analysis</span>
+    <h2>Agata's First Draft Email</h2>
+    <p>Read the first draft of an email written in response to the advertisement. Correct the mistakes in the highlighted fields.</p>
+  </div>
+
+  <div class="validation-hint">
+    <p><strong>Instructions:</strong> Each highlighted field contains a mistake. Type the correct answer and press <strong>Enter</strong> or click on the next field to validate your answer.</p>
+    <p>✅ Green = Correct |  Red = Incorrect</p>
+  </div>
+
+  <div class="email-container">
+    <div class="email-header">
+      <div class="email-field"><strong>From:</strong> Agata Beck</div>
+      <div class="email-field"><strong>To:</strong> irena.foster@besttravel.net</div>
+      <div class="email-field"><strong>Subject:</strong> Application</div>
+    </div>
+    <div class="email-body">
+      <div class="greeting">
+        Dear <input type="text" class="error-input" data-answer="Ms" value="Miss" onkeydown="handleEnter(event, this)" onblur="validateInput(this)"> Foster,
+      </div>
+      <p>My name is Agata Beck. I am writing to apply for the post of receptionist <input type="text" class="error-input" data-answer="advertised on your website" value="advertised in your website" onkeydown="handleEnter(event, this)" onblur="validateInput(this)" style="min-width: 200px;">.</p>
+
+      <div class="email-paragraph p1">
+        <span class="para-number">1</span>
+        <strong>Paragraph 1 – Qualifications:</strong>
+        <p>I have recently graduated from Humboldt University in Berlin, where I completed a degree in Business Studies. I have <input type="text" class="error-input" data-answer="a high level of spoken English" value="a high level of spoken english" onkeydown="handleEnter(event, this)" onblur="validateInput(this)" style="min-width: 250px;"> (C1 on the CEFR), as I lived <input type="text" class="error-input" data-answer="in the United States for six months" value="in the United States during six months" onkeydown="handleEnter(event, this)" onblur="validateInput(this)" style="min-width: 280px;"> as part of <input type="text" class="error-input" data-answer="an exchange programme" value="an exchange programm" onkeydown="handleEnter(event, this)" onblur="validateInput(this)" style="min-width: 180px;"> between my school and a high school in Utah. <span class="crossable-sentence" onclick="toggleCrossout(this)">I made many American friends during this period, but we lost touch when I came home.</span></p>
+      </div>
+
+      <div class="email-paragraph p2">
+        <span class="para-number">2</span>
+        <strong>Paragraph 2 – Experience:</strong>
+        <p>As you will see from my CV, I have some relevant experience because I am currently an intern at a leading German travel company. I have worked in various roles, including <input type="text" class="error-input" data-answer="marketing assistant" value="marketing asistant" onkeydown="handleEnter(event, this)" onblur="validateInput(this)" style="min-width: 160px;"> and administrator and my tasks have included organizing and running meetings, and dealing with clients by phone and email. <input type="text" class="error-input" data-answer="The director of the company" value="The director of company" onkeydown="handleEnter(event, this)" onblur="validateInput(this)" style="min-width: 200px;"> would be happy to provide a reference. <span class="crossable-sentence" onclick="toggleCrossout(this)">He is, in fact, my uncle.</span></p>
+      </div>
+
+      <div class="email-paragraph p3">
+        <span class="para-number">3</span>
+        <strong>Paragraph 3 – Suitability:</strong>
+        <p>I am very <input type="text" class="error-input" data-answer="enthusiastic about travelling" value="enthusiastic on travelling" onkeydown="handleEnter(event, this)" onblur="validateInput(this)" style="min-width: 220px;"> and would welcome the chance to be part of such a high-profile and successful company. I believe I would be suitable for the job advertised as, <input type="text" class="error-input" data-answer="apart from my work experience" value="apart of my work experience" onkeydown="handleEnter(event, this)" onblur="validateInput(this)" style="min-width: 230px;">, I am an outgoing person and get on well with people. Friends describe me as calm and conscientious and I would enjoy the variety and excitement the job would offer. <span class="crossable-sentence" onclick="toggleCrossout(this)">I would definitely not panic when things got busy!</span></p>
+      </div>
+
+      <p>I attach a full CV and if you require <input type="text" class="error-input" data-answer="further information" value="a further information" onkeydown="handleEnter(event, this)" onblur="validateInput(this)" style="min-width: 160px;">, I would be very happy to provide it.</p>
+      <p>I look forward to hearing from you.</p>
+      <p>Yours sincerely,<br>Agata Beck</p>
+    </div>
+  </div>
+
+  <div class="counter-display">
+    <span>Correct answers: <strong id="correctCount">0</strong> / 10</span>
+    <span>Incorrect answers: <strong id="incorrectCount">0</strong></span>
+    <span>Sentences crossed out: <strong id="crossoutCount">0</strong> / 3</span>
+  </div>
+
+  <div class="action-buttons">
+    <button class="btn btn-primary" onclick="showAllAnswers()">️ Show All Answers</button>
+    <button class="btn btn-secondary" onclick="resetEmailExercise()">🔄 Reset Exercise</button>
+  </div>
+
+  <div class="exercise-container" style="margin-top: 24px;">
+    <div class="exercise-title">
+      <span class="exercise-num"></span>
+      Exercise b: Improve the Draft
+    </div>
+    <p style="margin-bottom: 16px;"><strong>Task:</strong> Cross out three sentences (not including the example) which are irrelevant or inappropriate. <em>Click on any sentence in the email above to cross it out.</em></p>
+    <div class="crossout-instruction">
+      <strong>Example (already crossed out):</strong> <span style="text-decoration: line-through; color: var(--error);">"My name is Agata Beck."</span>
+    </div>
+    <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px;">
+      💡 <strong>Tip:</strong> Look for sentences that include personal information not relevant to the job, or details that might seem unprofessional to a potential employer.
+    </p>
+    <div id="crossoutFeedback" style="margin-top: 12px; display: none;"></div>
+  </div>
+
+  <div class="exercise-container">
+    <div class="exercise-title">
+      <span class="exercise-num"></span>
+      Exercise c: Critical Thinking
+    </div>
+    <p style="margin-bottom: 16px;"><strong>Question:</strong> If you were a manager at the travel company, would you have given Agata an interview if she had sent her first draft?</p>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab(this, 'tab-yes')">Yes</button>
+      <button class="tab-btn" onclick="showTab(this, 'tab-no')">No</button>
+      <button class="tab-btn" onclick="showTab(this, 'tab-maybe')">Maybe</button>
+    </div>
+    <div class="tab-content active" id="tab-yes">
+      <p style="color: var(--success);">✅ <strong>Yes</strong> – Despite the errors, Agata shows relevant qualifications (Business Studies degree, C1 English), relevant experience (intern at travel company), and a positive attitude. The content is strong even if the presentation needs work.</p>
+    </div>
+    <div class="tab-content" id="tab-no">
+      <p style="color: var(--error);">❌ <strong>No</strong> – The email contains too many basic errors (spelling, grammar, capitalization) and includes inappropriate information (mentioning her uncle is the director, losing touch with American friends). This suggests carelessness.</p>
+    </div>
+    <div class="tab-content" id="tab-maybe">
+      <p style="color: var(--warning);"> <strong>Maybe</strong> – It depends on the company's standards. Some employers might overlook errors if the qualifications are strong, while others would see the mistakes as a red flag for a receptionist role requiring attention to detail.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: USEFUL LANGUAGE -->
+<section class="section" id="language">
+  <div class="section-header">
+    <span class="section-label">Vocabulary</span>
+    <h2>Useful Language</h2>
+    <p>Look at 1–9 below. How did Agata express these ideas in a more formal way? Use the <strong>bold</strong> words to help you remember.</p>
+  </div>
+
+  <div class="exercise-container">
+    <div class="exercise-title">
+      <span class="exercise-num"></span>
+      Exercise e: Rewrite informally → formally
+    </div>
+    <p style="color: var(--text-light); margin-bottom: 20px;">Use the <strong>bold hint words</strong> to help you rewrite each sentence more formally. Type your answer and click Check.</p>
+
+    <div id="languageExercises">
+      <div class="exercise-item" style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+        <p style="margin-bottom: 8px;"><strong>1.</strong> "This letter is to ask you to give me the job of receptionist."</p>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px;">Hint: <strong>apply</strong></p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span>I am writing to</span>
+          <input type="text" class="blank-input" data-answer="apply for the post of receptionist" placeholder="type here...">
+        </div>
+        <button class="btn btn-secondary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.85rem;" onclick="checkBlank(this)">Check</button>
+        <span class="feedback" style="margin-left: 10px; font-size: 0.85rem;"></span>
+      </div>
+
+      <div class="exercise-item" style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+        <p style="margin-bottom: 8px;"><strong>2.</strong> "I've just finished uni, where I did Business Studies."</p>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px;">Hint: <strong>graduate / degree</strong></p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span>I have recently</span>
+          <input type="text" class="blank-input" data-answer="graduated from university with a degree in Business Studies" placeholder="type here...">
+        </div>
+        <button class="btn btn-secondary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.85rem;" onclick="checkBlank(this)">Check</button>
+        <span class="feedback" style="margin-left: 10px; font-size: 0.85rem;"></span>
+      </div>
+
+      <div class="exercise-item" style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+        <p style="margin-bottom: 8px;"><strong>3.</strong> "I can speak English very well."</p>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px;">Hint: <strong>high</strong></p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span>I have</span>
+          <input type="text" class="blank-input" data-answer="a high level of spoken English" placeholder="type here...">
+        </div>
+        <button class="btn btn-secondary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.85rem;" onclick="checkBlank(this)">Check</button>
+        <span class="feedback" style="margin-left: 10px; font-size: 0.85rem;"></span>
+      </div>
+
+      <div class="exercise-item" style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+        <p style="margin-bottom: 8px;"><strong>4.</strong> "I've done this kind of job before."</p>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px;">Hint: <strong>relevant</strong></p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span>I have some</span>
+          <input type="text" class="blank-input" data-answer="relevant experience" placeholder="type here...">
+        </div>
+        <button class="btn btn-secondary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.85rem;" onclick="checkBlank(this)">Check</button>
+        <span class="feedback" style="margin-left: 10px; font-size: 0.85rem;"></span>
+      </div>
+
+      <div class="exercise-item" style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+        <p style="margin-bottom: 8px;"><strong>5.</strong> "My tasks have included talking to people on the phone."</p>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px;">Hint: <strong>deal / clients</strong></p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span>My tasks have included</span>
+          <input type="text" class="blank-input" data-answer="dealing with clients by phone" placeholder="type here...">
+        </div>
+        <button class="btn btn-secondary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.85rem;" onclick="checkBlank(this)">Check</button>
+        <span class="feedback" style="margin-left: 10px; font-size: 0.85rem;"></span>
+      </div>
+
+      <div class="exercise-item" style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+        <p style="margin-bottom: 8px;"><strong>6.</strong> "I'd love to work for such a famous company."</p>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px;">Hint: <strong>welcome / high-profile</strong></p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span>I would</span>
+          <input type="text" class="blank-input" data-answer="welcome the chance to be part of such a high-profile company" placeholder="type here...">
+        </div>
+        <button class="btn btn-secondary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.85rem;" onclick="checkBlank(this)">Check</button>
+        <span class="feedback" style="margin-left: 10px; font-size: 0.85rem;"></span>
+      </div>
+
+      <div class="exercise-item" style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+        <p style="margin-bottom: 8px;"><strong>7.</strong> "I'm sending a full CV with this email."</p>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px;">Hint: <strong>attach</strong></p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span>I</span>
+          <input type="text" class="blank-input" data-answer="attach a full CV" placeholder="type here...">
+        </div>
+        <button class="btn btn-secondary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.85rem;" onclick="checkBlank(this)">Check</button>
+        <span class="feedback" style="margin-left: 10px; font-size: 0.85rem;"></span>
+      </div>
+
+      <div class="exercise-item" style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+        <p style="margin-bottom: 8px;"><strong>8.</strong> "If you need to know anything else, I'll tell you."</p>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px;">Hint: <strong>require / provide</strong></p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span>If you</span>
+          <input type="text" class="blank-input" data-answer="require further information, I would be happy to provide it" placeholder="type here...">
+        </div>
+        <button class="btn btn-secondary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.85rem;" onclick="checkBlank(this)">Check</button>
+        <span class="feedback" style="margin-left: 10px; font-size: 0.85rem;"></span>
+      </div>
+
+      <div class="exercise-item" style="margin-bottom: 16px;">
+        <p style="margin-bottom: 8px;"><strong>9.</strong> "Hope to hear from you soon!"</p>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px;">Hint: <strong>forward</strong></p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span>I look</span>
+          <input type="text" class="blank-input" data-answer="forward to hearing from you" placeholder="type here...">
+        </div>
+        <button class="btn btn-secondary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.85rem;" onclick="checkBlank(this)">Check</button>
+        <span class="feedback" style="margin-left: 10px; font-size: 0.85rem;"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: FESTIVAL AD -->
+<section class="section" id="festival">
+  <div class="section-header">
+    <span class="section-label">Planning What to Write</span>
+    <h2>Job Advertisement: Festival Staff</h2>
+    <p>Read the job advertisement and underline the information you will need to respond to. Then make notes about qualifications, experience, personality, and other information.</p>
+  </div>
+
+  <div class="ads-grid">
+    <div class="ad-card fade-up" style="max-width: 600px; margin: 0 auto;">
+      <img class="ad-img" src="https://image.qwenlm.ai/public_source/c190461f-7558-4c34-b460-7668e175659c/1c21620c1-08fe-4bd4-9083-60bd2c29200f.png" alt="Festival staff">
+      <div class="ad-body">
+        <span class="ad-tag" style="background: var(--success);">Events</span>
+        <h3>Festival Staff Required</h3>
+        <div class="ad-location">📍 Global Stage UK – West of England, 12th–14th July</div>
+        <p>Join Global Stage UK, a world music event, as festival staff. Ensure the safety and comfort of the public and assist in running a successful festival.</p>
+        
+        <div class="two-col" style="margin-top: 20px;">
+          <div>
+            <div class="ad-section-title" style="color: var(--success);">Responsibilities:</div>
+            <ul class="ad-list">
+              <li>Ensure safety and comfort of the public</li>
+              <li>Manage crowd-related problems calmly</li>
+              <li>Prevent unauthorized access to the site</li>
+            </ul>
+          </div>
+          <div>
+            <div class="ad-section-title" style="color: var(--success);">Requirements:</div>
+            <ul class="ad-list">
+              <li>Aged 18 or over, eligible to work in UK</li>
+              <li>Physically fit and healthy</li>
+              <li>Able to work under pressure</li>
+              <li>Speak English well</li>
+              <li>Experience dealing with the public</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div style="background: #E8F8F0; padding: 14px; border-radius: 10px; margin-top: 16px; font-size: 0.85rem;">
+          <strong style="color: var(--success);">📧 How to apply:</strong> Send an email and full CV to Emma Richards: e.richards@globalstage.org
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-container" style="margin-top: 32px;">
+    <div class="exercise-title">
+      <span class="exercise-num">📋</span>
+      Planning Notes
+    </div>
+    <p style="color: var(--text-light); margin-bottom: 16px;">Make notes about the following before writing your application:</p>
+    <div class="two-col">
+      <div style="padding: 20px; background: #F8F4FB; border-radius: 12px;">
+        <h4 style="color: var(--primary); margin-bottom: 12px;"> Qualifications</h4>
+        <textarea class="writing-area" style="min-height: 80px; font-size: 0.9rem;" placeholder="What qualifications do you have?"></textarea>
+      </div>
+      <div style="padding: 20px; background: #E8F8F0; border-radius: 12px;">
+        <h4 style="color: var(--success); margin-bottom: 12px;">💼 Relevant Experience</h4>
+        <textarea class="writing-area" style="min-height: 80px; font-size: 0.9rem;" placeholder="What relevant experience could you include?"></textarea>
+      </div>
+      <div style="padding: 20px; background: #FFF3CD; border-radius: 12px;">
+        <h4 style="color: var(--warning); margin-bottom: 12px;">🌟 Personality Aspects</h4>
+        <textarea class="writing-area" style="min-height: 80px; font-size: 0.9rem;" placeholder="What aspects of your personality make you suitable?"></textarea>
+      </div>
+      <div style="padding: 20px; background: #FDE8E8; border-radius: 12px;">
+        <h4 style="color: var(--error); margin-bottom: 12px;">📌 Other Information</h4>
+        <textarea class="writing-area" style="min-height: 80px; font-size: 0.9rem;" placeholder="Any other information you need to include?"></textarea>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: TIPS & PLANNING -->
+<section class="section" id="tips">
+  <div class="section-header">
+    <span class="section-label">Best Practices</span>
+    <h2>Tips for Writing a Covering Email</h2>
+    <p>Compare notes with a partner and discuss how relevant you think each other's information is, what you should leave out, and what else you might want to include.</p>
+  </div>
+
+  <div class="img-banner">
+    <img src="https://image.qwenlm.ai/public_source/c190461f-7558-4c34-b460-7668e175659c/107bb5203-42ac-4869-82b4-99ab431619ea.png" alt="Professional receptionist">
+  </div>
+
+  <div class="tips-grid">
+    <div class="tip-card fade-up">
+      <div class="tip-num">01</div>
+      <h4>Open Appropriately</h4>
+      <p>Use appropriate sentences to open the email/letter. State clearly why you are writing.</p>
+      <div class="tip-example">"I am writing to apply for the post of receptionist advertised on your website."</div>
+    </div>
+    <div class="tip-card fade-up">
+      <div class="tip-num">02</div>
+      <h4>Organize into Paragraphs</h4>
+      <p>Organize the main body into clear paragraphs: qualifications, experience, and suitability.</p>
+      <div class="tip-example">Paragraph 1: Personal info & skills. Paragraph 2: Experience. Paragraph 3: Why you're suitable.</div>
+    </div>
+    <div class="tip-card fade-up">
+      <div class="tip-num">03</div>
+      <h4>Use Formal Style</h4>
+      <p>Don't use contractions or very informal expressions. Use formal vocabulary where appropriate.</p>
+      <div class="tip-example">Use "require" instead of "need", "as" instead of "because"</div>
+    </div>
+    <div class="tip-card fade-up">
+      <div class="tip-num">04</div>
+      <h4>Use Conditionals</h4>
+      <p>The use of a conditional can often sound more polite and professional.</p>
+      <div class="tip-example">"I would welcome the chance to..." instead of "I want to..."</div>
+    </div>
+    <div class="tip-card fade-up">
+      <div class="tip-num">05</div>
+      <h4>Be Factual & Positive</h4>
+      <p>When explaining why you're suitable, be factual and positive, but not overconfident. Avoid sounding arrogant.</p>
+      <div class="tip-example">"I believe I would be suitable..." not "I am the perfect candidate..."</div>
+    </div>
+    <div class="tip-card fade-up">
+      <div class="tip-num">06</div>
+      <h4>Close Appropriately</h4>
+      <p>Use appropriate phrases to close the email/letter professionally.</p>
+      <div class="tip-example">"Yours sincerely," (when you know the name) or "Yours faithfully," (when you don't)</div>
+    </div>
+  </div>
+
+  <div class="exercise-container" style="margin-top: 32px;">
+    <div class="exercise-title">
+      <span class="exercise-num">⚠️</span>
+      Common Mistakes to Avoid
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+      <div style="padding: 16px; background: #FDE8E8; border-radius: 12px; border-left: 4px solid var(--error);">
+        <strong style="color: var(--error);">❌ Don't:</strong>
+        <p style="font-size: 0.9rem; margin-top: 8px;">Include irrelevant personal information (e.g., "we lost touch when I came home")</p>
+      </div>
+      <div style="padding: 16px; background: #FDE8E8; border-radius: 12px; border-left: 4px solid var(--error);">
+        <strong style="color: var(--error);"> Don't:</strong>
+        <p style="font-size: 0.9rem; margin-top: 8px;">Mention family connections unprofessionally (e.g., "He is, in fact, my uncle")</p>
+      </div>
+      <div style="padding: 16px; background: #FDE8E8; border-radius: 12px; border-left: 4px solid var(--error);">
+        <strong style="color: var(--error);">❌ Don't:</strong>
+        <p style="font-size: 0.9rem; margin-top: 8px;">Use informal language or contractions (e.g., "I'd love to", "I've done")</p>
+      </div>
+      <div style="padding: 16px; background: #E8F8F0; border-radius: 12px; border-left: 4px solid var(--success);">
+        <strong style="color: var(--success);">✅ Do:</strong>
+        <p style="font-size: 0.9rem; margin-top: 8px;">Keep content relevant to the job requirements</p>
+      </div>
+      <div style="padding: 16px; background: #E8F8F0; border-radius: 12px; border-left: 4px solid var(--success);">
+        <strong style="color: var(--success);">✅ Do:</strong>
+        <p style="font-size: 0.9rem; margin-top: 8px;">Proofread carefully for spelling and grammar</p>
+      </div>
+      <div style="padding: 16px; background: #E8F8F0; border-radius: 12px; border-left: 4px solid var(--success);">
+        <strong style="color: var(--success);">✅ Do:</strong>
+        <p style="font-size: 0.9rem; margin-top: 8px;">Use conditional forms for politeness</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: WRITING PRACTICE -->
+<section class="section" id="writing">
+  <div class="section-header">
+    <span class="section-label">Writing</span>
+    <h2>Write Your Covering Email</h2>
+    <p>You have decided to apply for the festival job advertised. Write a covering email of between 220 and 260 words.</p>
+  </div>
+
+  <div class="img-banner">
+    <img src="https://image.qwenlm.ai/public_source/c190461f-7558-4c34-b460-7668e175659c/1c21620c1-08fe-4bd4-9083-60bd2c29200f.png" alt="Festival staff">
+  </div>
+
+  <div class="step-indicator">
+    <div class="step active">
+      <span class="step-num">1</span>
+      DRAFT
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      EDIT
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      CHECK
+    </div>
+  </div>
+
+  <div class="exercise-container">
+    <div class="exercise-title">
+      <span class="exercise-num">️</span>
+      DRAFT Your Email
+    </div>
+    <p style="color: var(--text-light); margin-bottom: 20px;">
+      <strong>Task:</strong> Write a covering email of between <strong>220 and 260 words</strong> applying for the Global Stage UK festival staff position.
+    </p>
+
+    <div style="background: #F8F4FB; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+      <h4 style="color: var(--primary); margin-bottom: 12px;">📋 Structure Guide:</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 6px 0;">🔹 <strong>Opening:</strong> Write an introductory sentence to explain why you are writing</li>
+        <li style="padding: 6px 0;">🔹 <strong>Paragraph 1:</strong> Give personal information including skills and qualifications</li>
+        <li style="padding: 6px 0;">🔹 <strong>Paragraph 2:</strong> Talk about any relevant experience you have</li>
+        <li style="padding: 6px 0;">🔹 <strong>Paragraph 3:</strong> Explain why you think you would be suitable for the job</li>
+        <li style="padding: 6px 0;">🔹 <strong>Closing:</strong> Finish the email appropriately</li>
+      </ul>
+    </div>
+
+    <textarea class="writing-area" id="writingArea" placeholder="From: [Your Name]
+To: e.richards@globalstage.org
+Subject: Application – Festival Staff
+
+Dear Ms Richards,
+
+I am writing to apply for the position of festival staff at Global Stage UK...
+
+[Continue writing your email here]" oninput="updateWordCount()"></textarea>
+
+    <div class="word-counter">
+      <span>Word count: <span class="word-count" id="wordCount">0</span> / 220–260 words</span>
+      <span id="wordStatus" style="font-weight: 600;">Start writing...</span>
+    </div>
+
+    <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+      <button class="btn btn-primary" onclick="checkWriting()">📊 Analyse My Email</button>
+      <button class="btn btn-secondary" onclick="clearWriting()">🗑️ Clear</button>
+      <button class="btn btn-secondary" onclick="showExample()">💡 Show Example</button>
+    </div>
+
+    <div id="writingFeedback" style="margin-top: 20px; display: none;"></div>
+  </div>
+
+  <div class="exercise-container">
+    <div class="exercise-title">
+      <span class="exercise-num">️</span>
+      EDIT Your Email
+    </div>
+    <p style="color: var(--text-light); margin-bottom: 16px;">Check paragraphing, cut any irrelevant information, and make sure it's the right length.</p>
+    <div id="editChecklist">
+      <div class="checklist-item">
+        <div class="checklist-check" onclick="toggleEditCheck(this)">✓</div>
+        <span class="checklist-text">Correct paragraphing (intro + 3 main paragraphs + closing)</span>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-check" onclick="toggleEditCheck(this)">✓</div>
+        <span class="checklist-text">No irrelevant information included</span>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-check" onclick="toggleEditCheck(this)">✓</div>
+        <span class="checklist-text">Right length (220–260 words)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-container">
+    <div class="exercise-title">
+      <span class="exercise-num">✅</span>
+      CHECK Your Email
+    </div>
+    <p style="color: var(--text-light); margin-bottom: 16px;">Check the email for mistakes in grammar, spelling, punctuation, and register.</p>
+    <div id="finalChecklist">
+      <div class="checklist-item">
+        <div class="checklist-check" onclick="toggleEditCheck(this)">✓</div>
+        <span class="checklist-text">No grammar mistakes</span>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-check" onclick="toggleEditCheck(this)">✓</div>
+        <span class="checklist-text">No spelling mistakes</span>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-check" onclick="toggleEditCheck(this)">✓</div>
+        <span class="checklist-text">Correct punctuation</span>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-check" onclick="toggleEditCheck(this)">✓</div>
+        <span class="checklist-text">Appropriate register (formal, no contractions)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: QUIZ -->
+<section class="section" id="quiz">
+  <div class="section-header">
+    <span class="section-label">Test Yourself</span>
+    <h2>Interactive Quiz</h2>
+    <p>Test your knowledge of professional email writing</p>
+  </div>
+
+  <div id="quizContainer">
+    <!-- Quiz questions will be generated by JS -->
+  </div>
+
+  <div id="quizResults" style="display: none;"></div>
+</section>
+
+<script>
+  // NAVIGATION
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    observeFadeUps();
+  }
+
+  // TABS
+  function showTab(btn, tabId) {
+    const parent = btn.parentElement;
+    parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const container = parent.parentElement;
+    container.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  // CHECKLIST
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+    updateCheckProgress();
+  }
+
+  function updateCheckProgress() {
+    const total = document.querySelectorAll('#checklist .checklist-check').length;
+    const checked = document.querySelectorAll('#checklist .checklist-check.checked').length;
+    const pct = (checked / total) * 100;
+    document.getElementById('checkProgress').style.width = pct + '%';
+    document.getElementById('checkCount').textContent = checked;
+  }
+
+  function toggleEditCheck(el) {
+    el.classList.toggle('checked');
+  }
+
+  // ERROR INPUT VALIDATION
+  let correctAnswers = 0;
+  let incorrectAnswers = 0;
+
+  function handleEnter(event, input) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      validateInput(input);
+      
+      const inputs = document.querySelectorAll('.error-input');
+      const currentIndex = Array.from(inputs).indexOf(input);
+      if (currentIndex < inputs.length - 1) {
+        inputs[currentIndex + 1].focus();
+      }
+    }
+  }
+
+  function validateInput(input) {
+    const answer = input.dataset.answer.toLowerCase().trim();
+    const userAnswer = input.value.toLowerCase().trim();
+    
+    if (!userAnswer) return;
+    
+    input.classList.remove('correct', 'incorrect');
+    
+    if (userAnswer === answer) {
+      input.classList.add('correct');
+      if (!input.dataset.validated) {
+        correctAnswers++;
+        input.dataset.validated = 'true';
+        updateCounter();
+      }
+    } else {
+      input.classList.add('incorrect');
+      if (!input.dataset.validated) {
+        incorrectAnswers++;
+        input.dataset.validated = 'true';
+        updateCounter();
+      }
+    }
+  }
+
+  function updateCounter() {
+    document.getElementById('correctCount').textContent = correctAnswers;
+    document.getElementById('incorrectCount').textContent = incorrectAnswers;
+  }
+
+  // SHOW ALL ANSWERS
+  function showAllAnswers() {
+    const inputs = document.querySelectorAll('.error-input');
+    inputs.forEach(input => {
+      input.value = input.dataset.answer;
+      input.classList.remove('incorrect');
+      input.classList.add('correct');
+      if (!input.dataset.validated) {
+        correctAnswers++;
+        input.dataset.validated = 'true';
+      }
+    });
+    updateCounter();
+
+    // Also cross out the 3 irrelevant sentences
+    const crossableSentences = document.querySelectorAll('.crossable-sentence');
+    crossableSentences.forEach(s => {
+      if (!s.classList.contains('crossed')) {
+        s.classList.add('crossed');
+      }
+    });
+    updateCrossoutCounter();
+
+    // Show feedback
+    const feedback = document.getElementById('crossoutFeedback');
+    feedback.style.display = 'block';
+    feedback.innerHTML = '<div style="padding: 16px; background: #E8F8F0; border-radius: 12px; border-left: 4px solid var(--success);"><strong style="color: var(--success);">✅ All answers revealed!</strong><p style="margin-top: 8px; font-size: 0.9rem;">The three irrelevant/inappropriate sentences have been crossed out. Click "Reset Exercise" to try again.</p></div>';
+  }
+
+  // RESET EXERCISE
+  function resetEmailExercise() {
+    const inputs = document.querySelectorAll('.error-input');
+    inputs.forEach(input => {
+      // Restore original value from a stored attribute
+      input.value = input.dataset.original || input.value;
+      input.classList.remove('correct', 'incorrect');
+      delete input.dataset.validated;
+    });
+    correctAnswers = 0;
+    incorrectAnswers = 0;
+    updateCounter();
+
+    // Reset cross-outs
+    const crossableSentences = document.querySelectorAll('.crossable-sentence');
+    crossableSentences.forEach(s => {
+      s.classList.remove('crossed');
+    });
+    updateCrossoutCounter();
+
+    // Hide feedback
+    const feedback = document.getElementById('crossoutFeedback');
+    feedback.style.display = 'none';
+  }
+
+  // CROSS-OUT SENTENCES
+  function toggleCrossout(el) {
+    el.classList.toggle('crossed');
+    updateCrossoutCounter();
+  }
+
+  function updateCrossoutCounter() {
+    const total = document.querySelectorAll('.crossable-sentence').length;
+    const crossed = document.querySelectorAll('.crossable-sentence.crossed').length;
+    document.getElementById('crossoutCount').textContent = crossed;
+
+    // Show feedback when all 3 are crossed
+    const feedback = document.getElementById('crossoutFeedback');
+    if (crossed === 3) {
+      feedback.style.display = 'block';
+      feedback.innerHTML = '<div style="padding: 16px; background: #E8F8F0; border-radius: 12px; border-left: 4px solid var(--success);"><strong style="color: var(--success);">✅ Well done!</strong><p style="margin-top: 8px; font-size: 0.9rem;">You\'ve crossed out all 3 irrelevant/inappropriate sentences. These sentences included personal information not relevant to the job application.</p></div>';
+    } else if (crossed > 0) {
+      feedback.style.display = 'block';
+      feedback.innerHTML = '<div style="padding: 16px; background: #FFF8F0; border-radius: 12px; border-left: 4px solid var(--warning);"><strong style="color: var(--warning);">️ ' + crossed + ' of 3 sentences crossed out</strong><p style="margin-top: 8px; font-size: 0.9rem;">Keep looking for sentences that include irrelevant personal information or unprofessional details.</p></div>';
+    } else {
+      feedback.style.display = 'none';
+    }
+  }
+
+  // LANGUAGE EXERCISES
+  function checkBlank(btn) {
+    const item = btn.parentElement;
+    const input = item.querySelector('.blank-input');
+    const feedback = item.querySelector('.feedback');
+    const answer = input.dataset.answer.toLowerCase();
+    const userAnswer = input.value.toLowerCase().trim();
+
+    if (!userAnswer) {
+      feedback.textContent = '️ Please type an answer';
+      feedback.style.color = 'var(--warning)';
+      return;
+    }
+
+    const answerWords = answer.split(' ');
+    const userWords = userAnswer.split(' ');
+    let matchCount = 0;
+    answerWords.forEach(w => {
+      if (userWords.some(uw => uw.includes(w) || w.includes(uw))) matchCount++;
+    });
+    const matchPct = matchCount / answerWords.length;
+
+    if (matchPct >= 0.7) {
+      input.classList.remove('incorrect');
+      input.classList.add('correct');
+      feedback.textContent = '✅ Correct! Well done!';
+      feedback.style.color = 'var(--success)';
+    } else {
+      input.classList.remove('correct');
+      input.classList.add('incorrect');
+      feedback.textContent = '❌ Try again. Hint: ' + answer;
+      feedback.style.color = 'var(--error)';
+    }
+  }
+
+  // WRITING
+  function updateWordCount() {
+    const text = document.getElementById('writingArea').value.trim();
+    const words = text ? text.split(/\s+/).length : 0;
+    const counter = document.getElementById('wordCount');
+    const status = document.getElementById('wordStatus');
+    counter.textContent = words;
+
+    if (words === 0) {
+      counter.className = 'word-count';
+      status.textContent = 'Start writing...';
+      status.style.color = 'var(--text-light)';
+    } else if (words < 220) {
+      counter.className = 'word-count out-range';
+      status.textContent = 'Too short – add ' + (220 - words) + ' more words';
+      status.style.color = 'var(--error)';
+    } else if (words <= 260) {
+      counter.className = 'word-count in-range';
+      status.textContent = '✅ Perfect length!';
+      status.style.color = 'var(--success)';
+    } else {
+      counter.className = 'word-count out-range';
+      status.textContent = 'Too long – cut ' + (words - 260) + ' words';
+      status.style.color = 'var(--error)';
+    }
+  }
+
+  function checkWriting() {
+    const text = document.getElementById('writingArea').value.trim();
+    const words = text ? text.split(/\s+/).length : 0;
+    const feedback = document.getElementById('writingFeedback');
+    feedback.style.display = 'block';
+
+    let html = '<div style="padding: 20px; background: #F8F4FB; border-radius: 12px;">';
+    html += '<h4 style="color: var(--primary); margin-bottom: 12px;">📊 Analysis Results</h4>';
+
+    if (words === 0) {
+      html += '<p style="color: var(--error);">⚠️ Please write something first!</p>';
+    } else {
+      if (words >= 220 && words <= 260) {
+        html += '<p style="color: var(--success);">✅ Word count: ' + words + ' (within 220–260 range)</p>';
+      } else if (words < 220) {
+        html += '<p style="color: var(--error);"> Word count: ' + words + ' (too short – need at least 220)</p>';
+      } else {
+        html += '<p style="color: var(--error);">❌ Word count: ' + words + ' (too long – max 260)</p>';
+      }
+
+      const contractions = text.match(/\b(I'm|I've|I'd|don't|won't|can't|wouldn't|couldn't|shouldn't|it's|that's|there's)\b/gi);
+      if (contractions) {
+        html += '<p style="color: var(--warning);">️ Found ' + contractions.length + ' contraction(s): ' + contractions.join(', ') + ' – avoid these in formal writing</p>';
+      } else {
+        html += '<p style="color: var(--success);">✅ No contractions found – good formal style!</p>';
+      }
+
+      const hasOpening = /writing to apply/i.test(text);
+      const hasClosing = /yours sincerely|yours faithfully|look forward/i.test(text);
+      const hasAttach = /attach|attached/i.test(text);
+
+      html += hasOpening ? '<p style="color: var(--success);">✅ Clear opening statement</p>' : '<p style="color: var(--warning);">️ Consider adding a clear opening (e.g., "I am writing to apply...")</p>';
+      html += hasClosing ? '<p style="color: var(--success);">✅ Appropriate closing</p>' : '<p style="color: var(--warning);">️ Add a professional closing (e.g., "Yours sincerely")</p>';
+      html += hasAttach ? '<p style="color: var(--success);">✅ Mentioned attached CV</p>' : '<p style="color: var(--warning);">️ Remember to mention your attached CV</p>';
+    }
+
+    html += '</div>';
+    feedback.innerHTML = html;
+  }
+
+  function clearWriting() {
+    document.getElementById('writingArea').value = '';
+    document.getElementById('writingFeedback').style.display = 'none';
+    updateWordCount();
+  }
+
+  function showExample() {
+    const example = `From: [Your Name]
+To: e.richards@globalstage.org
+Subject: Application – Festival Staff
+
+Dear Ms Richards,
+
+I am writing to apply for the position of festival staff at Global Stage UK, as advertised on your website.
+
+I am 20 years old and currently studying Event Management at the University of Bristol. I have a high level of spoken English (C2 on the CEFR) and I am eligible to work in the UK. I am physically fit and healthy, and I enjoy working in active, outdoor environments.
+
+As you will see from my attached CV, I have relevant experience working with the public. Last summer, I worked as a steward at a music festival in Glastonbury, where my tasks included directing visitors, managing queues, and dealing with any crowd-related problems calmly and professionally. I also volunteered at a local community centre, where I developed strong communication skills.
+
+I am very enthusiastic about music and would welcome the chance to be part of such a high-profile event. I believe I would be suitable for this role as, apart from my work experience, I am an outgoing person who remains calm under pressure. I am confident I could ensure the safety and comfort of the public throughout the festival.
+
+I attach a full CV and if you require further information, I would be very happy to provide it.
+
+I look forward to hearing from you.
+
+Yours sincerely,
+[Your Name]`;
+
+    document.getElementById('writingArea').value = example;
+    updateWordCount();
+  }
+
+  // QUIZ
+  const quizQuestions = [
+    {
+      q: "Which is the most appropriate opening for a job application email?",
+      options: [
+        "Hey there! I want the receptionist job!",
+        "I am writing to apply for the post of receptionist advertised on your website.",
+        "Hi! Give me the job please.",
+        "Yo, I saw your ad and I'm interested."
+      ],
+      correct: 1
+    },
+    {
+      q: "Which closing is appropriate when you know the recipient's name?",
+      options: [
+        "Cheers!",
+        "See ya!",
+        "Yours sincerely,",
+        "Later!"
+      ],
+      correct: 2
+    },
+    {
+      q: "Which sentence uses formal language correctly?",
+      options: [
+        "I'd love to work for your company.",
+        "I would welcome the chance to work for your company.",
+        "I wanna work at your place.",
+        "I'm super excited to join your team!"
+      ],
+      correct: 1
+    },
+    {
+      q: "What should you AVOID in a job application email?",
+      options: [
+        "Mentioning relevant qualifications",
+        "Using formal vocabulary",
+        "Including irrelevant personal information",
+        "Organizing content into paragraphs"
+      ],
+      correct: 2
+    },
+    {
+      q: "Which is correct: 'advertised ___ your website'?",
+      options: [
+        "in",
+        "at",
+        "on",
+        "by"
+      ],
+      correct: 2
+    },
+    {
+      q: "How should you express 'I can speak English very well' formally?",
+      options: [
+        "I'm really good at English.",
+        "I have a high level of spoken English.",
+        "English is my thing!",
+        "I speak English like a native, no cap."
+      ],
+      correct: 1
+    },
+    {
+      q: "Which information is IRRELEVANT in Agata's email?",
+      options: [
+        "Her degree in Business Studies",
+        "Her C1 English level",
+        "Losing touch with American friends",
+        "Her internship experience"
+      ],
+      correct: 2
+    },
+    {
+      q: "What is the correct word count for the festival staff application email?",
+      options: [
+        "100–150 words",
+        "150–200 words",
+        "220–260 words",
+        "300–350 words"
+      ],
+      correct: 2
+    }
+  ];
+
+  let currentQuiz = 0;
+  let quizScore = 0;
+
+  function renderQuiz() {
+    const container = document.getElementById('quizContainer');
+    if (currentQuiz >= quizQuestions.length) {
+      showQuizResults();
+      return;
+    }
+
+    const q = quizQuestions[currentQuiz];
+    let html = `
+      <div class="exercise-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <span style="font-size: 0.85rem; color: var(--text-light);">Question ${currentQuiz + 1} of ${quizQuestions.length}</span>
+          <span style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">Score: ${quizScore}/${currentQuiz}</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: ${(currentQuiz / quizQuestions.length) * 100}%"></div>
+        </div>
+        <h3 style="margin: 20px 0; font-size: 1.15rem; color: var(--primary-dark);">${q.q}</h3>
+        <div id="quizOptions">
+          ${q.options.map((opt, i) => `
+            <button class="quiz-option" onclick="selectQuizAnswer(${i})">${opt}</button>
+          `).join('')}
+        </div>
+        <div id="quizFeedback" style="margin-top: 16px;"></div>
+        <button class="btn btn-primary" id="nextQuizBtn" style="display: none; margin-top: 16px;" onclick="nextQuizQuestion()">
+          ${currentQuiz < quizQuestions.length - 1 ? 'Next Question →' : 'See Results 🏆'}
+        </button>
+      </div>
+    `;
+    container.innerHTML = html;
+  }
+
+  function selectQuizAnswer(idx) {
+    const q = quizQuestions[currentQuiz];
+    const options = document.querySelectorAll('.quiz-option');
+    options.forEach((opt, i) => {
+      opt.onclick = null;
+      if (i === q.correct) opt.classList.add('correct-answer');
+      else if (i === idx && i !== q.correct) opt.classList.add('wrong-answer');
+    });
+
+    const feedback = document.getElementById('quizFeedback');
+    if (idx === q.correct) {
+      quizScore++;
+      feedback.innerHTML = '<p style="color: var(--success); font-weight: 600;">✅ Correct! Well done!</p>';
+    } else {
+      feedback.innerHTML = '<p style="color: var(--error); font-weight: 600;">❌ Incorrect. The correct answer is highlighted in green.</p>';
+    }
+    document.getElementById('nextQuizBtn').style.display = 'inline-flex';
+  }
+
+  function nextQuizQuestion() {
+    currentQuiz++;
+    renderQuiz();
+  }
+
+  function showQuizResults() {
+    const container = document.getElementById('quizContainer');
+    const results = document.getElementById('quizResults');
+    container.style.display = 'none';
+    results.style.display = 'block';
+
+    const pct = Math.round((quizScore / quizQuestions.length) * 100);
+    let message = '';
+    let emoji = '';
+    if (pct >= 90) { message = 'Outstanding! You\'re ready to write professional emails!'; emoji = '🏆'; }
+    else if (pct >= 70) { message = 'Great job! Just a few more things to review.'; emoji = '🌟'; }
+    else if (pct >= 50) { message = 'Good effort! Review the tips section and try again.'; emoji = '📚'; }
+    else { message = 'Keep practicing! Review all sections and retake the quiz.'; emoji = '💪'; }
+
+    results.innerHTML = `
+      <div class="score-display">
+        <div style="font-size: 4rem;">${emoji}</div>
+        <div class="score-num">${quizScore}/${quizQuestions.length}</div>
+        <div class="score-label">${message}</div>
+        <div style="margin-top: 16px; font-size: 1.5rem; font-weight: 700;">${pct}%</div>
+      </div>
+      <div class="exercise-container">
+        <h3 style="color: var(--primary-dark); margin-bottom: 16px;"> Quiz Summary</h3>
+        <div class="progress-bar" style="height: 12px;">
+          <div class="progress-fill" style="width: ${pct}%"></div>
+        </div>
+        <p style="margin-top: 16px; color: var(--text-light);">You answered ${quizScore} out of ${quizQuestions.length} questions correctly.</p>
+        <button class="btn btn-primary" style="margin-top: 16px;" onclick="resetQuiz()">🔄 Retake Quiz</button>
+      </div>
+    `;
+  }
+
+  function resetQuiz() {
+    currentQuiz = 0;
+    quizScore = 0;
+    document.getElementById('quizContainer').style.display = 'block';
+    document.getElementById('quizResults').style.display = 'none';
+    renderQuiz();
+  }
+
+  // FADE UP OBSERVER
+  function observeFadeUps() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  }
+
+  // INIT
+  document.addEventListener('DOMContentLoaded', () => {
+    // Store original values for reset
+    document.querySelectorAll('.error-input').forEach(input => {
+      input.dataset.original = input.value;
+    });
+    renderQuiz();
+    observeFadeUps();
+  });
+</script>
+
+</body>
+</html>
+
