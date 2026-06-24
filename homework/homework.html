@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1B – A Job for Life? | Complete Vocabulary & Grammar Exercises</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.0.0/index.css">
+<style>
+  :root {
+    --primary: #4f46e5;
+    --primary-light: #818cf8;
+    --primary-dark: #3730a3;
+    --accent: #f59e0b;
+    --success: #10b981;
+    --error: #ef4444;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+    color: white;
+    padding: 2rem 1.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+
+  .header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .unit-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .unit-badge .num {
+    background: white;
+    color: var(--primary);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+  }
+
+  .header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .header h1 span { color: #fbbf24; }
+
+  .header-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .header-tag {
+    background: rgba(255,255,255,0.15);
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .header-tag b {
+    background: rgba(255,255,255,0.3);
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.4rem;
+    margin-right: 0.3rem;
+  }
+
+  .quote-bar {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border-left: 4px solid #fbbf24;
+    padding: 1rem 1.2rem;
+    margin-top: 1.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  .quote-bar cite {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.85rem;
+    font-style: normal;
+    font-weight: 600;
+    opacity: 0.9;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: -1.5rem auto 3rem;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .progress-bar {
+    background: var(--card);
+    border-radius: 1rem;
+    padding: 1.2rem 1.5rem;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .progress-label { font-weight: 700; font-size: 0.95rem; white-space: nowrap; }
+
+  .progress-track {
+    flex: 1;
+    min-width: 200px;
+    height: 10px;
+    background: var(--border);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 5px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+  }
+
+  .progress-text { font-weight: 700; color: var(--primary); font-size: 0.95rem; min-width: 60px; text-align: right; }
+
+  .tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.3rem;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .tab {
+    padding: 0.8rem 1.5rem;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 0.7rem;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .tab:hover { border-color: var(--primary-light); transform: translateY(-2px); }
+
+  .tab.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+  }
+
+  .tab .tab-icon { font-size: 1.2rem; }
+
+  .exercise-panel { display: none; animation: fadeIn 0.4s ease; }
+  .exercise-panel.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .card-title .letter {
+    background: var(--primary);
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  .card-subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; padding-left: 3.3rem; }
+
+  .sentence-item {
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+    background: #f8fafc;
+    border-radius: 0.7rem;
+    border-left: 4px solid var(--border);
+    transition: all 0.3s;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .sentence-item.correct { border-left-color: var(--success); background: #ecfdf5; }
+  .sentence-item.incorrect { border-left-color: var(--error); background: #fef2f2; }
+
+  .sentence-item.flash-correct { animation: flashGreen 0.6s ease; }
+  .sentence-item.flash-incorrect { animation: flashRed 0.6s ease; }
+
+  @keyframes flashGreen {
+    0% { background: #ecfdf5; box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.4); }
+    100% { background: #f8fafc; box-shadow: none; }
+  }
+
+  @keyframes flashRed {
+    0% { background: #fef2f2; box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.4); }
+    100% { background: #f8fafc; box-shadow: none; }
+  }
+
+  .sentence-item.stay-correct {
+    border-left-color: var(--success);
+    background: #ecfdf5;
+  }
+
+  .sentence-num {
+    background: var(--primary);
+    color: white;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .sentence-item.stay-correct .sentence-num { background: var(--success); }
+
+  .sentence-text { flex: 1; font-size: 0.95rem; line-height: 1.7; }
+
+  .sentence-text input {
+    border: none;
+    border-bottom: 2px dashed var(--primary-light);
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    padding: 0.1rem 0.3rem;
+    min-width: 120px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .sentence-text input:focus { border-bottom-color: var(--primary); border-bottom-style: solid; }
+  .sentence-text input.correct-input { color: var(--success); border-bottom-color: var(--success); border-bottom-style: solid; }
+  .sentence-text input.incorrect-input { color: var(--error); border-bottom-color: var(--error); border-bottom-style: solid; }
+
+  .feedback-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.2rem; }
+
+  .word-bank {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 2px solid #fbbf24;
+    border-radius: 0.8rem;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .word-bank-label { font-weight: 700; font-size: 0.85rem; color: #92400e; margin-right: 0.5rem; }
+
+  .word-chip {
+    background: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #78350f;
+    border: 1px solid #f59e0b;
+    cursor: default;
+  }
+
+  .btn {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 0.7rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: inherit;
+  }
+
+  .btn-primary { background: var(--primary); color: white; }
+  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); }
+  .btn-secondary { background: var(--border); color: var(--text); }
+  .btn-secondary:hover { background: #cbd5e1; }
+  .btn-small { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+
+  .btn-group { display: flex; gap: 0.8rem; margin-top: 1.5rem; flex-wrap: wrap; }
+
+  .match-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+
+  @media (max-width: 700px) {
+    .match-container { grid-template-columns: 1fr; }
+    .card { padding: 1.2rem; }
+    .card-subtitle { padding-left: 0; }
+  }
+
+  .match-col-title { font-weight: 800; font-size: 1.1rem; margin-bottom: 0.8rem; padding: 0.5rem 0.8rem; border-radius: 0.5rem; }
+  .match-col-title.a-col { background: #ede9fe; color: #5b21b6; }
+  .match-col-title.b-col { background: #dbeafe; color: #1e40af; }
+
+  .match-item {
+    padding: 0.8rem 1rem;
+    background: #f8fafc;
+    border: 2px solid var(--border);
+    border-radius: 0.6rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+    font-size: 0.95rem;
+    user-select: none;
+  }
+
+  .match-item:hover { border-color: var(--primary-light); transform: translateX(4px); }
+  .match-item.selected { border-color: var(--primary); background: #eef2ff; box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2); }
+  .match-item.matched { border-color: var(--success); background: #ecfdf5; cursor: default; }
+  .match-item.matched::after { content: ' ✓'; color: var(--success); font-weight: 800; }
+  .match-item.wrong { border-color: var(--error); background: #fef2f2; animation: shake 0.4s; }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+
+  .def-item {
+    padding: 1rem 1.2rem;
+    background: #f8fafc;
+    border-radius: 0.7rem;
+    margin-bottom: 0.8rem;
+    border-left: 4px solid var(--border);
+    transition: all 0.3s;
+  }
+
+  .def-item.correct { border-left-color: var(--success); background: #ecfdf5; }
+  .def-item.incorrect { border-left-color: var(--error); background: #fef2f2; }
+  .def-item.flash-correct { animation: flashGreen 0.6s ease; }
+  .def-item.flash-incorrect { animation: flashRed 0.6s ease; }
+
+  .def-text { font-size: 0.95rem; margin-bottom: 0.6rem; line-height: 1.5; }
+
+  .def-num {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+  }
+
+  .def-select { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+
+  .def-select select {
+    padding: 0.4rem 0.8rem;
+    border: 2px solid var(--border);
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: white;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .def-select select:focus { border-color: var(--primary); }
+  .def-select select.correct-select { border-color: var(--success); background: #ecfdf5; color: #065f46; }
+  .def-select select.incorrect-select { border-color: var(--error); background: #fef2f2; color: #991b1b; }
+
+  .circle-item {
+    padding: 1rem 1.2rem;
+    background: #f8fafc;
+    border-radius: 0.7rem;
+    margin-bottom: 0.8rem;
+    border-left: 4px solid var(--border);
+    transition: all 0.3s;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .circle-item.correct { border-left-color: var(--success); background: #ecfdf5; }
+  .circle-item.incorrect { border-left-color: var(--error); background: #fef2f2; }
+  .circle-item.flash-correct { animation: flashGreen 0.6s ease; }
+  .circle-item.flash-incorrect { animation: flashRed 0.6s ease; }
+  .circle-item.stay-correct { border-left-color: var(--success); background: #ecfdf5; }
+
+  .circle-item-text { flex: 1; }
+
+  .word-option {
+    display: inline-block;
+    padding: 0.25rem 0.8rem;
+    border: 2px solid var(--border);
+    border-radius: 0.6rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    margin: 0 0.2rem;
+    background: white;
+    user-select: none;
+  }
+
+  .word-option:hover { border-color: var(--primary-light); background: #eef2ff; }
+  .word-option.selected { border-color: var(--primary); background: #eef2ff; color: var(--primary-dark); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); }
+  .word-option.correct-opt { border-color: var(--success); background: #ecfdf5; color: #065f46; }
+  .word-option.incorrect-opt { border-color: var(--error); background: #fef2f2; color: #991b1b; text-decoration: line-through; opacity: 0.7; }
+  .word-option.both-opt { border-color: var(--accent); background: #fef3c7; color: #92400e; }
+
+  .tick-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--muted);
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    background: white;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .tick-box:hover { background: var(--border); }
+  .tick-box input { accent-color: var(--primary); width: 16px; height: 16px; }
+
+  .result-banner {
+    padding: 1rem 1.5rem;
+    border-radius: 0.8rem;
+    margin-top: 1rem;
+    font-weight: 700;
+    display: none;
+    align-items: center;
+    gap: 0.7rem;
+    animation: fadeIn 0.4s;
+  }
+
+  .result-banner.show { display: flex; }
+  .result-banner.success { background: #ecfdf5; color: #065f46; border: 2px solid var(--success); }
+  .result-banner.partial { background: #fef3c7; color: #92400e; border: 2px solid var(--accent); }
+  .result-banner.fail { background: #fef2f2; color: #991b1b; border: 2px solid var(--error); }
+
+  .confetti { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; }
+
+  .instructions {
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 0.7rem;
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    color: #3730a3;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .instructions .icon { font-size: 1.2rem; }
+
+  .section-divider { height: 2px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 1.5rem 0; }
+
+  .linker-word {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin: 0 0.15rem;
+    border: 2px solid transparent;
+    background: white;
+  }
+
+  .linker-word:hover { background: #eef2ff; border-color: var(--primary-light); }
+  .linker-word.crossed { background: #fef2f2; color: #991b1b; text-decoration: line-through; border-color: var(--error); }
+  .linker-word.correct-linker { background: #ecfdf5; color: #065f46; border-color: var(--success); }
+  .linker-word.wrong-cross { background: #fef2f2; color: #991b1b; border-color: var(--error); }
+  .linker-word.selected-linker { background: #eef2ff; border-color: var(--primary); color: var(--primary-dark); }
+
+  .bold-word { font-weight: 800; }
+
+  .linker-bank {
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+    border: 2px solid #a78bfa;
+    border-radius: 0.8rem;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .linker-bank-label { font-weight: 700; font-size: 0.85rem; color: #5b21b6; margin-right: 0.5rem; }
+
+  .linker-chip {
+    background: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #5b21b6;
+    border: 1px solid #a78bfa;
+    cursor: default;
+  }
+
+  .phrase-input {
+    border: none;
+    border-bottom: 2px dashed var(--primary-light);
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    padding: 0.1rem 0.3rem;
+    min-width: 100px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .phrase-input:focus { border-bottom-color: var(--primary); border-bottom-style: solid; }
+  .phrase-input.correct-input { color: var(--success); border-bottom-color: var(--success); border-bottom-style: solid; }
+  .phrase-input.incorrect-input { color: var(--error); border-bottom-color: var(--error); border-bottom-style: solid; }
+
+  /* Specific styles for 4c and 4d */
+  .transform-item {
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    background: #f8fafc;
+    border-radius: 0.7rem;
+    border-left: 4px solid var(--border);
+    transition: all 0.3s;
+  }
+  
+  .transform-item.correct { border-left-color: var(--success); background: #ecfdf5; }
+  .transform-item.incorrect { border-left-color: var(--error); background: #fef2f2; }
+  .transform-item.flash-correct { animation: flashGreen 0.6s ease; }
+  .transform-item.flash-incorrect { animation: flashRed 0.6s ease; }
+  .transform-item.stay-correct { border-left-color: var(--success); background: #ecfdf5; }
+
+  .original-sentence {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  .keyword-badge {
+    display: inline-block;
+    background: #eef2ff;
+    color: var(--primary-dark);
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.3rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+    font-style: normal;
+  }
+
+  .transform-input-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .transform-input {
+    flex: 1;
+    min-width: 200px;
+    border: none;
+    border-bottom: 2px solid var(--primary-light);
+    background: transparent;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    padding: 0.2rem 0.5rem;
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  .transform-input:focus { border-bottom-color: var(--primary); border-bottom-style: solid; background: rgba(255,255,255,0.5); }
+  .transform-input.correct-input { color: var(--success); border-bottom-color: var(--success); }
+  .transform-input.incorrect-input { color: var(--error); border-bottom-color: var(--error); }
+
+  .completion-input {
+    width: 100%;
+    border: 2px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+    min-height: 60px;
+  }
+
+  .completion-input:focus { border-color: var(--primary); }
+
+  .example-answer {
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    background: #ecfdf5;
+    border-radius: 0.4rem;
+    color: #065f46;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: none;
+    border-left: 3px solid var(--success);
+  }
+
+  .example-answer.show { display: block; animation: fadeIn 0.3s; }
+
+  @media (max-width: 600px) {
+    .header { padding: 1.5rem 1rem 2.5rem; }
+    .container { padding: 0 1rem; }
+    .card { padding: 1rem; }
+    .btn { padding: 0.6rem 1rem; font-size: 0.85rem; }
+    .sentence-text input { min-width: 80px; }
+    .circle-item { flex-wrap: wrap; }
+    .transform-input { min-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-content">
+    <div class="unit-badge">
+      <span class="num">1</span>
+      <span>UNIT 1B</span>
+    </div>
+    <h1>A job for <span>life</span>?</h1>
+    <div class="header-tags">
+      <span class="header-tag"><b>G</b> discourse markers: linkers</span>
+      <span class="header-tag"><b>V</b> work</span>
+      <span class="header-tag"><b>P</b> the rhythm of English</span>
+    </div>
+    <div class="quote-bar">
+      "A professional is one who does his best work when he feels the least like working."
+      <cite>— Frank Lloyd Wright, American architect</cite>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="progress-bar">
+    <span class="progress-label">📊 Overall Progress</span>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <span class="progress-text" id="progressText">0%</span>
+  </div>
+
+  <div class="tabs" id="mainTabs">
+    <button class="tab active" data-tab="vocabulary"><span class="tab-icon"></span><span>Vocabulary</span></button>
+    <button class="tab" data-tab="vocab-reading"><span class="tab-icon"></span><span>Vocabulary from Reading</span></button>
+    <button class="tab" data-tab="grammar"><span class="tab-icon">✍️</span><span>Grammar</span></button>
+  </div>
+
+  <!-- VOCABULARY TAB -->
+  <div class="exercise-panel active" id="vocabulary">
+    <!-- 1a -->
+    <div class="card">
+      <div class="card-title"><span class="letter">a</span>Complete the adjectives in the sentences</div>
+      <div class="card-subtitle">Type the missing letters to complete each adjective describing work experiences.</div>
+      <div class="instructions"><span class="icon">💡</span><span>Type your answer and press <b>Enter</b> or click another field to check instantly.</span></div>
+      <div id="ex1a-items"></div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="reset1a()">↺ Reset All</button>
+      </div>
+    </div>
+
+    <!-- 1b -->
+    <div class="card">
+      <div class="card-title"><span class="letter">b</span>Match words in A to words in B</div>
+      <div class="card-subtitle">Click a word from column A, then click its matching word from column B to form a collocation.</div>
+      <div class="instructions"><span class="icon">🎯</span><span>Click one word from each column to make a pair. Then match each collocation to its definition below.</span></div>
+      <div class="match-container">
+        <div><div class="match-col-title a-col">Column A</div><div id="colA"></div></div>
+        <div><div class="match-col-title b-col">Column B</div><div id="colB"></div></div>
+      </div>
+      <div class="btn-group"><button class="btn btn-secondary" onclick="reset1b()">↺ Reset Matches</button></div>
+      <div class="section-divider"></div>
+      <div class="card-title" style="margin-top:0.5rem;"><span class="letter" style="background:var(--accent);">📖</span>Match collocations to definitions</div>
+      <div class="card-subtitle" style="padding-left:3.3rem;">Select the correct collocation for each definition. Instant feedback — try again if wrong!</div>
+      <div id="defItems"></div>
+    </div>
+
+    <!-- 1c -->
+    <div class="card">
+      <div class="card-title"><span class="letter">c</span>Complete with a collocation (+ leave or contract)</div>
+      <div class="card-subtitle">Use a word from the list combined with "leave" or "contract" to complete each sentence.</div>
+      <div class="word-bank" id="wordBank1c"><span class="word-bank-label">📦 Word Bank:</span></div>
+      <div class="instructions"><span class="icon">💡</span><span>Type your answer and press <b>Enter</b> or click another field to check instantly.</span></div>
+      <div id="ex1c-items"></div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="reset1c()">↺ Reset All</button>
+      </div>
+    </div>
+
+    <!-- 1d -->
+    <div class="card">
+      <div class="card-title"><span class="letter">d</span>Circle the correct word</div>
+      <div class="card-subtitle">Click the correct word. Tick the box if both words are possible.</div>
+      <div class="instructions"><span class="icon">👆</span><span>Click one of the two options to select it. Instant feedback. If both words work, also check the "Both ✓" box.</span></div>
+      <div id="ex1d-items"></div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="reset1d()">↺ Reset All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VOCABULARY FROM READING TAB -->
+  <div class="exercise-panel" id="vocab-reading">
+    <div class="card">
+      <div class="card-title"><span class="letter">3</span>Vocabulary from Reading — Complete the bold phrases</div>
+      <div class="card-subtitle">Fill in the missing letters to complete each idiomatic phrase.</div>
+      <div class="instructions"><span class="icon">📖</span><span>These are common English phrases and idioms related to work and daily life. Type the missing letters and press <b>Enter</b> or click another field to check.</span></div>
+      <div id="ex3-items"></div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="reset3()">↺ Reset All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAMMAR TAB -->
+  <div class="exercise-panel" id="grammar">
+    <!-- 4a -->
+    <div class="card">
+      <div class="card-title"><span class="letter">a</span>Cross out the linker that is NOT possible</div>
+      <div class="card-subtitle">Click on the linker that does NOT fit grammatically or semantically in each sentence.</div>
+      <div class="instructions"><span class="icon">❌</span><span>Click the word that should be crossed out. Instant feedback — you can change your choice anytime.</span></div>
+      <div id="ex4a-items"></div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="reset4a()">↺ Reset All</button>
+      </div>
+    </div>
+
+    <!-- 4b -->
+    <div class="card">
+      <div class="card-title"><span class="letter">b</span>Match formal linkers to the bold word</div>
+      <div class="card-subtitle">Select the formal linker(s) that can replace the bold word in each sentence.</div>
+      <div class="linker-bank" id="linkerBank">
+        <span class="linker-bank-label">📦 Linker Bank:</span>
+      </div>
+      <div id="ex4b-items"></div>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="check4b()">✓ Check Answers</button>
+        <button class="btn btn-secondary" onclick="reset4b()">↺ Reset</button>
+      </div>
+      <div class="result-banner" id="result4b"></div>
+    </div>
+
+    <!-- 4c (NEW) -->
+    <div class="card">
+      <div class="card-title"><span class="letter">c</span>Complete the second sentence</div>
+      <div class="card-subtitle">Complete the second sentence so it has a similar meaning to the first sentence. Use the word in brackets.</div>
+      <div class="instructions"><span class="icon">✏️</span><span>Type the missing part of the sentence. Press <b>Enter</b> or click 'Check' to validate.</span></div>
+      <div id="ex4c-items"></div>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="checkAll4c()">✓ Check All</button>
+        <button class="btn btn-secondary" onclick="reset4c()">↺ Reset All</button>
+        <button class="btn btn-success" onclick="showAll4c()"> Show Answers</button>
+      </div>
+      <div class="result-banner" id="result4c"></div>
+    </div>
+
+    <!-- 4d (NEW) -->
+    <div class="card">
+      <div class="card-title"><span class="letter">d</span>Complete the sentences</div>
+      <div class="card-subtitle">Finish the sentences in a way that makes sense. There are no single correct answers, but you can check example completions.</div>
+      <div class="instructions"><span class="icon">💭</span><span>Write your own ending for each sentence. Click 'Show Example' to see a possible answer.</span></div>
+      <div id="ex4d-items"></div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="reset4d()">↺ Reset All</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<canvas class="confetti" id="confettiCanvas"></canvas>
+
+<script>
+// ============ DATA ============
+
+const ex1aData = [
+  { text: 'My father is a bus driver, driving the same route every day, but he doesn\'t find it ', answer: 'monotonous', hint: 'monotonous', suffix: '.' },
+  { text: 'Ben is working in a ', answer: 'dead-end', hint: 'd___-e___', suffix: ' job with no chances of promotion.' },
+  { text: 'My job as a nurse is very ', answer: 'demanding', hint: 'dem_______', suffix: ', mainly because I have so many patients to look after.' },
+  { text: 'Chloe is very ambitious; her dream is to get a ', answer: 'high-paying', hint: 'h___-p_______', suffix: ' job in finance.' },
+  { text: 'Being a psychologist tests my abilities, and I often find it ', answer: 'challenging', hint: 'ch_________', suffix: ', but I love it!' },
+  { text: 'Factory work can be extremely ', answer: 'repetitive', hint: 'rep_________', suffix: '; you often do the same thing every day.' },
+  { text: 'The most ', answer: 'motivating', hint: 'mot________', suffix: ' thing about being a physical therapist is helping people get better.' },
+  { text: 'Being a sports coach is very ', answer: 'rewarding', hint: 'rew________', suffix: ' when your team is doing well.' },
+  { text: 'Working nights as a security guard can be ', answer: 'tedious', hint: 'ted______', suffix: ' because nothing usually happens.' }
+];
+
+const definitions = [
+  { text: 'a change that you make in order to get a better job', answer: 'career move' },
+  { text: 'the act of looking for employment', answer: 'job hunting' },
+  { text: 'a person who plans and organizes festivals and conferences, etc.', answer: 'events manager' },
+  { text: 'examinations you have passed at school, college or university, etc.', answer: 'academic qualifications' },
+  { text: 'the jobs you have done so far in your life', answer: 'work experience' },
+  { text: 'a series of jobs within a company or profession, from the lowest paid to the highest paid', answer: 'career ladder' },
+  { text: 'people who work for government departments', answer: 'civil servants' },
+  { text: 'a quick way to achieve a high position in a job', answer: 'fast track' }
+];
+
+const ex1cData = [
+  { text: 'After his trial period, the company offered my husband a ', answer: 'permanent contract', suffix: '.' },
+  { text: 'Lucy has just had a baby, so she\'s on ', answer: 'maternity leave', suffix: '.' },
+  { text: 'Most people with a ', answer: 'full-time contract', suffix: ' work for at least 35 hours per week.' },
+  { text: 'My boss has flu, so he\'s been on ', answer: 'sick leave', suffix: ' all week.' },
+  { text: 'Holly only wants a ', answer: 'part-time contract', suffix: ' so she can look after her children in the afternoons.' },
+  { text: 'Being self-employed, I have a ', answer: 'freelance contract', suffix: ' with several different employers.' },
+  { text: 'I\'ve used all my holiday, so I\'ll have to take ', answer: 'unpaid leave', suffix: ' if I go to the Champions League final.' },
+  { text: 'Tom\'s wife is ill in hospital, so he\'s on ', answer: 'compassionate leave', suffix: '.' },
+  { text: 'The project is only running for three months, so they\'ve given me a ', answer: 'temporary contract', suffix: '.' },
+  { text: 'Eddie and Sienna have got a new baby, so he\'s taken ', answer: 'paternity leave', suffix: '.' },
+  { text: 'One of the main disadvantages of a ', answer: 'zero-hours contract', suffix: ' is not knowing how much you\'ll earn from week to week.' }
+];
+
+const ex1dData = [
+  { prefix: 'Where I work, there\'s a good relationship between management and the ', options: ['staff', 'workforce'], suffix: '.', answer: 'both', both: true },
+  { prefix: 'We\'re looking for someone with good people ', options: ['qualifications', 'skills'], suffix: ' to fill this position.', answer: 'skills', both: false },
+  { prefix: '', options: ['Benefits', 'Perks'], suffix: ' offered by the company include a car and free meals in the staff canteen.', answer: 'Perks', both: false },
+  { prefix: 'We\'re having a party after work tonight for one of my ', options: ['colleagues', 'co-workers'], suffix: ' who\'s retiring.', answer: 'both', both: true },
+  { prefix: 'Daisy\'s company ', options: ['fired', 'sacked'], suffix: ' her for being late.', answer: 'both', both: true },
+  { prefix: 'I got a ', options: ['pay rise', 'promoted'], suffix: ' last week, but they won\'t increase my salary until next year.', answer: 'pay rise', both: false },
+  { prefix: 'We\'re looking to ', options: ['employ', 'hire'], suffix: ' somebody with a positive, can-do attitude.', answer: 'both', both: true },
+  { prefix: 'If they don\'t offer me more money by the end of the year, I\'m going to ', options: ['quit', 'resign'], suffix: '.', answer: 'both', both: true },
+  { prefix: 'My husband is ', options: ['off work', 'out of work'], suffix: ' with a bad back at the moment.', answer: 'off work', both: false },
+  { prefix: 'The company has announced that hundreds of employees will be ', options: ['laid off', 'made redundant'], suffix: '.', answer: 'both', both: true }
+];
+
+const ex3Data = [
+  { before: 'If you\'re upset, that\'s f', answer: 'air', hint: 'fair', after: ' enough, but don\'t blame me for what happened.' },
+  { before: 'I never th', answer: 'ink', hint: 'think', after: ' twice about doing my colleagues a favour – one day I might need something from them.' },
+  { before: 'My boss missed the p', answer: 'oint', hint: 'point', after: '. I wasn\'t complaining about my workload; it\'s my supervisor I\'ve got a problem with.' },
+  { before: 'Jess says she isn\'t very fit, but she can hold her o', answer: 'wn', hint: 'own', after: ' in any race.' },
+  { before: 'I got stuck in a huge traffic jam this morning; I only just m', answer: 'ade', hint: 'made', after: ' it to work on time.' },
+  { before: 'I\'ve had too much time off recently, so I\'ll have to keep my n', answer: 'ose', hint: 'nose', after: ' to the grindstone for the next few months.' },
+  { before: 'The days when I got stage fright have long g', answer: 'one', hint: 'gone', after: '; now the people in the audience feel like my friends.' }
+];
+
+const ex4aData = [
+  { text: 'We set off at dawn ', linkers: ['owing to', 'in order to', 'so as to'], after: ' avoid the rush-hour traffic.', wrong: 'owing to' },
+  { text: 'Laila\'s mother-in-law was a very assertive woman. ', linkers: ['However', 'Nevertheless', 'Consequently'], after: ', Laila grew to like and respect her.', wrong: 'Consequently' },
+  { text: '', linkers: ['In spite of', 'Even though', 'Despite'], after: ' being the better player, Richard ended up losing the match.', wrong: 'Even though' },
+  { text: 'Sales figures have fallen drastically ', linkers: ['due to', 'because', 'owing to'], after: ' the economic downturn.', wrong: 'because' },
+  { text: 'The decorators covered the furniture with sheets ', linkers: ['so as not to', 'not to', 'in order not to'], after: ' splash it with paint.', wrong: 'not to' },
+  { text: 'After his accident, my brother had to sell his car ', linkers: ['as', 'since', 'due to'], after: ' he couldn\'t afford the insurance.', wrong: 'due to' },
+  { text: 'We accept full responsibility for the error and ', linkers: ['nevertheless', 'consequently', 'therefore'], after: ' wish to offer you a full refund.', wrong: 'nevertheless' },
+  { text: 'I decided to extend my holiday ', linkers: ['although', 'in case', 'even though'], after: ' it meant I would have to ask for some unpaid leave.', wrong: 'in case' }
+];
+
+const ex4bData = [
+  { text: 'There\'s little chance that we will change the company director\'s mind. ', boldWord: 'However', after: ', it\'s important that we try.', answers: ['Nevertheless', 'Nonetheless'] },
+  { text: 'The company is trying to reduce costs, and ', boldWord: 'so', after: ' employees who leave are not being replaced.', answers: ['consequently', 'therefore'] },
+  { text: 'I left a message ', boldWord: 'because', after: ' the head of human resources wasn\'t at her desk.', answers: ['as', 'since', 'seeing as'] },
+  { text: 'The project had to be abandoned ', boldWord: 'because of', after: ' a lack of funding.', answers: ['due to', 'owing to'] },
+  { text: 'She arrived early ', boldWord: 'to', after: ' get a good seat.', answers: ['in order to', 'so as to'] },
+  { text: 'I knew that my supervisor was angry, ', boldWord: 'though', after: ' she hadn\'t said anything.', answers: ['although', 'even though', 'despite the fact that', 'yet'] },
+  { text: 'He has a well-paid job, ', boldWord: 'but', after: ' he never seems to have any money.', answers: ['nevertheless', 'nonetheless', 'yet'] }
+];
+
+const allLinkers = ['although', 'as', 'consequently', 'despite the fact that', 'due to', 'even though', 'in order to', 'nevertheless', 'nonetheless', 'owing to', 'seeing as', 'since', 'so as to', 'therefore', 'yet'];
+
+// NEW DATA: 4c Sentence Transformation
+const ex4cData = [
+  {
+    original: 'We have not received payment for your last bill. Consequently, you are being sent a reminder.',
+    keyword: 'since',
+    start: 'You are being sent a reminder ',
+    answer: 'since we have not received payment for your last bill',
+    suffix: '.'
+  },
+  {
+    original: 'She wrote down the appointment so that she wouldn\'t forget it.',
+    keyword: 'so as',
+    start: 'She wrote down the appointment ',
+    answer: 'so as not to forget it',
+    suffix: '.'
+  },
+  {
+    original: 'The motorway is being resurfaced, and so it will be closed until the end of the year.',
+    keyword: 'result',
+    start: 'The motorway is being resurfaced, and ',
+    answer: 'as a result it will be closed until the end of the year',
+    suffix: '.'
+  },
+  {
+    original: 'I might be going out, so you\'d better take your keys.',
+    keyword: 'in case',
+    start: 'You\'d better take your keys ',
+    answer: 'in case I go out',
+    suffix: '.'
+  },
+  {
+    original: 'He decided to apply for the job although he didn\'t meet all the requirements.',
+    keyword: 'despite',
+    start: 'He decided to apply for the job ',
+    answer: 'despite not meeting all the requirements',
+    suffix: '.'
+  },
+  {
+    original: 'I had an early night in order to be ready for the exam the next day.',
+    keyword: 'so that',
+    start: 'I had an early night ',
+    answer: 'so that I would be ready for the exam the next day',
+    suffix: '.'
+  },
+  {
+    original: 'She was offered the job even though she wasn\'t able to go to the interview.',
+    keyword: 'spite',
+    start: 'She was offered the job ',
+    answer: 'in spite of not being able to go to the interview',
+    suffix: '.'
+  },
+  {
+    original: 'He was unable to attend the conference because he was ill.',
+    keyword: 'owing',
+    start: 'He was unable to attend the conference ',
+    answer: 'owing to illness',
+    suffix: '.'
+  }
+];
+
+// NEW DATA: 4d Sentence Completion
+const ex4dData = [
+  { start: 'We had a great holiday in spite of ', example: 'the disappointing weather.' },
+  { start: 'The town centre has been pedestrianized. As a result, ', example: 'there is much less traffic now.' },
+  { start: 'I doubt that Ben will be offered the job, seeing as ', example: 'he doesn\'t have the right qualifications.' },
+  { start: 'I arrived early on my first day of work so as to ', example: 'make a good impression.' },
+  { start: 'All flights have been cancelled owing to ', example: 'the heavy snow.' },
+  { start: 'I won\'t switch my phone off in case ', example: 'someone needs to contact me.' },
+  { start: 'My colleague made a terrible mistake at work, so ', example: 'he was fired.' },
+  { start: 'She has a very demanding job. However, ', example: 'she really enjoys it.' }
+];
+
+// ============ STATE ============
+let state = { ex1a: {}, ex1bPairs: {}, ex1c: {}, ex1d: {}, ex3: {}, ex4a: {}, ex4b: {}, ex4c: {} };
+let selectedA = null;
+
+// ============ TABS ============
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.exercise-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+// ============ HELPERS ============
+function makePlaceholder(answer) {
+  if (!answer || answer.length === 0) return '___';
+  const first = answer.charAt(0);
+  const rest = '_'.repeat(answer.length - 1);
+  return first + rest;
+}
+
+function flashItem(itemEl, isCorrect, stayCorrect) {
+  itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect');
+  void itemEl.offsetWidth;
+  if (isCorrect) {
+    itemEl.classList.add('flash-correct');
+    if (stayCorrect) itemEl.classList.add('stay-correct');
+  } else {
+    itemEl.classList.add('flash-incorrect');
+  }
+}
+
+// ============ EX 1A ============
+function render1a() {
+  const container = document.getElementById('ex1a-items');
+  container.innerHTML = '';
+  ex1aData.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'sentence-item'; div.id = `ex1a-item-${i}`;
+    div.innerHTML = `<span class="sentence-num">${i+1}</span><div class="sentence-text">${item.text}<input type="text" id="ex1a-input-${i}" placeholder="${item.hint}" autocomplete="off" onkeydown="handleEnter1a(event, ${i})" onblur="validate1a(${i})">${item.suffix}</div><span class="feedback-icon" id="ex1a-icon-${i}"></span>`;
+    container.appendChild(div);
+  });
+}
+
+function handleEnter1a(e, i) { if (e.key === 'Enter') { e.preventDefault(); validate1a(i); const next = document.getElementById(`ex1a-input-${i+1}`); if (next) next.focus(); } }
+function validate1a(i) {
+  const input = document.getElementById(`ex1a-input-${i}`);
+  const itemEl = document.getElementById(`ex1a-item-${i}`);
+  const icon = document.getElementById(`ex1a-icon-${i}`);
+  const val = input.value.trim().toLowerCase();
+  if (val === '') { input.classList.remove('correct-input', 'incorrect-input'); itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect'); icon.textContent = ''; return; }
+  const isCorrect = val === ex1aData[i].answer.toLowerCase();
+  input.classList.remove('correct-input', 'incorrect-input');
+  if (isCorrect) { input.classList.add('correct-input'); flashItem(itemEl, true, true); icon.textContent = '✅'; state.ex1a[i] = true; }
+  else { input.classList.add('incorrect-input'); flashItem(itemEl, false, false); icon.textContent = '❌'; state.ex1a[i] = false; }
+  updateProgress();
+}
+function reset1a() { ex1aData.forEach((_, i) => { const input = document.getElementById(`ex1a-input-${i}`); const itemEl = document.getElementById(`ex1a-item-${i}`); const icon = document.getElementById(`ex1a-icon-${i}`); input.value = ''; input.classList.remove('correct-input', 'incorrect-input'); itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect'); icon.textContent = ''; delete state.ex1a[i]; }); updateProgress(); }
+
+// ============ EX 1B ============
+function render1b() {
+  const colA = document.getElementById('colA'); const colB = document.getElementById('colB');
+  colA.innerHTML = ''; colB.innerHTML = '';
+  const aWords = ['academic', 'career', 'career', 'civil', 'events', 'fast', 'job', 'work'];
+  const bWords = ['experience', 'hunting', 'ladder', 'manager', 'move', 'qualifications', 'servants', 'track'];
+  aWords.forEach((word, i) => { const div = document.createElement('div'); div.className = 'match-item'; div.textContent = word; div.dataset.word = word; div.dataset.idx = i; div.dataset.side = 'A'; div.addEventListener('click', () => handleMatchClick(div)); colA.appendChild(div); });
+  bWords.forEach((word, i) => { const div = document.createElement('div'); div.className = 'match-item'; div.textContent = word; div.dataset.word = word; div.dataset.idx = i; div.dataset.side = 'B'; div.addEventListener('click', () => handleMatchClick(div)); colB.appendChild(div); });
+  renderDefs();
+}
+
+function handleMatchClick(el) {
+  if (el.classList.contains('matched')) return;
+  if (el.dataset.side === 'A') { document.querySelectorAll('#colA .match-item').forEach(x => x.classList.remove('selected')); el.classList.add('selected'); selectedA = el; }
+  else if (el.dataset.side === 'B' && selectedA) {
+    const aWord = selectedA.dataset.word, bWord = el.dataset.word, aIdx = selectedA.dataset.idx;
+    let isValid = false;
+    if (aIdx === '1' && bWord === 'move') isValid = true; else if (aIdx === '2' && bWord === 'ladder') isValid = true; else if (aWord === 'job' && bWord === 'hunting') isValid = true; else if (aWord === 'events' && bWord === 'manager') isValid = true; else if (aWord === 'academic' && bWord === 'qualifications') isValid = true; else if (aWord === 'work' && bWord === 'experience') isValid = true; else if (aWord === 'civil' && bWord === 'servants') isValid = true; else if (aWord === 'fast' && bWord === 'track') isValid = true;
+    if (isValid) { selectedA.classList.add('matched'); selectedA.classList.remove('selected'); el.classList.add('matched'); state.ex1bPairs[aIdx] = bWord; }
+    else { el.classList.add('wrong'); setTimeout(() => el.classList.remove('wrong'), 500); }
+    selectedA = null; updateProgress();
+  }
+}
+function reset1b() { document.querySelectorAll('.match-item').forEach(x => x.classList.remove('matched', 'selected', 'wrong')); state.ex1bPairs = {}; selectedA = null; updateProgress(); }
+
+function renderDefs() {
+  const container = document.getElementById('defItems'); container.innerHTML = '';
+  const allCollocations = ['career move', 'job hunting', 'events manager', 'academic qualifications', 'work experience', 'career ladder', 'civil servants', 'fast track'];
+  definitions.forEach((def, i) => {
+    const div = document.createElement('div'); div.className = 'def-item'; div.id = `def-item-${i}`;
+    let optionsHtml = '<option value="">— select —</option>';
+    allCollocations.forEach(c => { optionsHtml += `<option value="${c}">${c}</option>`; });
+    div.innerHTML = `<div class="def-text"><span class="def-num">${i+1}</span>${def.text}</div><div class="def-select"><select id="def-select-${i}" onchange="validateDef(${i})">${optionsHtml}</select><span class="feedback-icon" id="def-icon-${i}"></span></div>`;
+    container.appendChild(div);
+  });
+}
+
+function validateDef(i) {
+  const sel = document.getElementById(`def-select-${i}`); const item = document.getElementById(`def-item-${i}`); const icon = document.getElementById(`def-icon-${i}`);
+  const val = sel.value;
+  if (val === '') { sel.classList.remove('correct-select', 'incorrect-select'); item.classList.remove('flash-correct', 'flash-incorrect', 'correct', 'incorrect'); icon.textContent = ''; return; }
+  const isCorrect = val === definitions[i].answer;
+  sel.classList.remove('correct-select', 'incorrect-select');
+  if (isCorrect) { sel.classList.add('correct-select'); flashItem(item, true, true); icon.textContent = '✅'; }
+  else { sel.classList.add('incorrect-select'); flashItem(item, false, false); icon.textContent = '❌'; setTimeout(() => { sel.classList.remove('incorrect-select'); sel.value = ''; item.classList.remove('flash-incorrect', 'incorrect'); icon.textContent = ''; }, 900); }
+  updateProgress();
+}
+
+// ============ EX 1C ============
+function render1c() {
+  const bank = document.getElementById('wordBank1c');
+  const words = ['compassionate', 'freelance', 'full-time', 'maternity', 'part-time', 'paternity', 'permanent', 'sick', 'temporary', 'unpaid', 'zero-hours'];
+  words.forEach(w => { const chip = document.createElement('span'); chip.className = 'word-chip'; chip.textContent = w; bank.appendChild(chip); });
+  const container = document.getElementById('ex1c-items'); container.innerHTML = '';
+  ex1cData.forEach((item, i) => {
+    const div = document.createElement('div'); div.className = 'sentence-item'; div.id = `ex1c-item-${i}`;
+    div.innerHTML = `<span class="sentence-num">${i+1}</span><div class="sentence-text">${item.text}<input type="text" id="ex1c-input-${i}" placeholder="________ leave/contract" autocomplete="off" onkeydown="handleEnter1c(event, ${i})" onblur="validate1c(${i})">${item.suffix}</div><span class="feedback-icon" id="ex1c-icon-${i}"></span>`;
+    container.appendChild(div);
+  });
+}
+function handleEnter1c(e, i) { if (e.key === 'Enter') { e.preventDefault(); validate1c(i); const next = document.getElementById(`ex1c-input-${i+1}`); if (next) next.focus(); } }
+function validate1c(i) {
+  const input = document.getElementById(`ex1c-input-${i}`); const itemEl = document.getElementById(`ex1c-item-${i}`); const icon = document.getElementById(`ex1c-icon-${i}`);
+  const val = input.value.trim().toLowerCase();
+  if (val === '') { input.classList.remove('correct-input', 'incorrect-input'); itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect'); icon.textContent = ''; return; }
+  const isCorrect = val === ex1cData[i].answer.toLowerCase();
+  input.classList.remove('correct-input', 'incorrect-input');
+  if (isCorrect) { input.classList.add('correct-input'); flashItem(itemEl, true, true); icon.textContent = '✅'; }
+  else { input.classList.add('incorrect-input'); flashItem(itemEl, false, false); icon.textContent = '❌'; }
+  updateProgress();
+}
+function reset1c() { ex1cData.forEach((_, i) => { const input = document.getElementById(`ex1c-input-${i}`); const itemEl = document.getElementById(`ex1c-item-${i}`); const icon = document.getElementById(`ex1c-icon-${i}`); input.value = ''; input.classList.remove('correct-input', 'incorrect-input'); itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect'); icon.textContent = ''; }); updateProgress(); }
+
+// ============ EX 1D ============
+function render1d() {
+  const container = document.getElementById('ex1d-items'); container.innerHTML = '';
+  ex1dData.forEach((item, i) => {
+    const div = document.createElement('div'); div.className = 'circle-item'; div.id = `ex1d-item-${i}`;
+    let optionsHtml = '';
+    item.options.forEach((opt, j) => { if (j > 0) optionsHtml += ' / '; optionsHtml += `<span class="word-option" data-idx="${i}" data-opt="${opt}" onclick="selectOpt(${i}, '${opt.replace(/'/g, "\\'")}')">${opt}</span>`; });
+    div.innerHTML = `<span class="sentence-num">${i+1}</span><div class="circle-item-text">${item.prefix}${optionsHtml}${item.suffix}</div><label class="tick-box"><input type="checkbox" id="ex1d-both-${i}" onchange="validate1d(${i})">Both ✓</label><span class="feedback-icon" id="ex1d-icon-${i}"></span>`;
+    container.appendChild(div);
+  });
+}
+function selectOpt(i, opt) {
+  const item = document.getElementById(`ex1d-item-${i}`);
+  item.querySelectorAll('.word-option').forEach(o => o.classList.remove('selected'));
+  const clicked = item.querySelector(`.word-option[data-opt="${opt.replace(/'/g, "\\'")}"]`);
+  if (clicked) clicked.classList.add('selected');
+  state.ex1d[i] = opt; validate1d(i);
+}
+function validate1d(i) {
+  const itemEl = document.getElementById(`ex1d-item-${i}`); const icon = document.getElementById(`ex1d-icon-${i}`);
+  const bothCheck = document.getElementById(`ex1d-both-${i}`); const selected = state.ex1d[i]; const item = ex1dData[i];
+  itemEl.querySelectorAll('.word-option').forEach(o => o.classList.remove('correct-opt', 'incorrect-opt', 'both-opt'));
+  itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect');
+  if (!selected) { icon.textContent = ''; return; }
+  let isCorrect = false;
+  if (item.both) { isCorrect = true; itemEl.querySelectorAll('.word-option').forEach(o => o.classList.add('both-opt')); }
+  else {
+    if (selected === item.answer) { isCorrect = true; itemEl.querySelectorAll('.word-option').forEach(o => { if (o.dataset.opt === selected) o.classList.add('correct-opt'); else o.classList.add('incorrect-opt'); }); }
+    else { itemEl.querySelectorAll('.word-option').forEach(o => { if (o.dataset.opt === selected) o.classList.add('incorrect-opt'); else if (o.dataset.opt === item.answer) o.classList.add('correct-opt'); }); }
+  }
+  if (isCorrect) { flashItem(itemEl, true, true); icon.textContent = '✅'; } else { flashItem(itemEl, false, false); icon.textContent = '❌'; }
+  updateProgress();
+}
+function reset1d() { ex1dData.forEach((_, i) => { const itemEl = document.getElementById(`ex1d-item-${i}`); const icon = document.getElementById(`ex1d-icon-${i}`); const bothCheck = document.getElementById(`ex1d-both-${i}`); itemEl.querySelectorAll('.word-option').forEach(o => o.classList.remove('selected', 'correct-opt', 'incorrect-opt', 'both-opt')); itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect'); icon.textContent = ''; bothCheck.checked = false; delete state.ex1d[i]; }); updateProgress(); }
+
+// ============ EX 3 ============
+function render3() {
+  const container = document.getElementById('ex3-items'); container.innerHTML = '';
+  ex3Data.forEach((item, i) => {
+    const div = document.createElement('div'); div.className = 'sentence-item'; div.id = `ex3-item-${i}`;
+    const placeholder = makePlaceholder(item.answer);
+    div.innerHTML = `<span class="sentence-num">${i+1}</span><div class="sentence-text">${item.before}<input type="text" class="phrase-input" id="ex3-input-${i}" placeholder="${placeholder}" autocomplete="off" onkeydown="handleEnter3(event, ${i})" onblur="validate3(${i})">${item.after}</div><span class="feedback-icon" id="ex3-icon-${i}"></span>`;
+    container.appendChild(div);
+  });
+}
+function handleEnter3(e, i) { if (e.key === 'Enter') { e.preventDefault(); validate3(i); const next = document.getElementById(`ex3-input-${i+1}`); if (next) next.focus(); } }
+function validate3(i) {
+  const input = document.getElementById(`ex3-input-${i}`); const itemEl = document.getElementById(`ex3-item-${i}`); const icon = document.getElementById(`ex3-icon-${i}`);
+  const val = input.value.trim().toLowerCase();
+  if (val === '') { input.classList.remove('correct-input', 'incorrect-input'); itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect'); icon.textContent = ''; return; }
+  const isCorrect = val === ex3Data[i].answer.toLowerCase();
+  input.classList.remove('correct-input', 'incorrect-input');
+  if (isCorrect) { input.classList.add('correct-input'); flashItem(itemEl, true, true); icon.textContent = '✅'; }
+  else { input.classList.add('incorrect-input'); flashItem(itemEl, false, false); icon.textContent = '❌'; }
+  updateProgress();
+}
+function reset3() { ex3Data.forEach((_, i) => { const input = document.getElementById(`ex3-input-${i}`); const itemEl = document.getElementById(`ex3-item-${i}`); const icon = document.getElementById(`ex3-icon-${i}`); input.value = ''; input.classList.remove('correct-input', 'incorrect-input'); itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect'); icon.textContent = ''; }); updateProgress(); }
+
+// ============ EX 4A ============
+function render4a() {
+  const container = document.getElementById('ex4a-items'); container.innerHTML = '';
+  ex4aData.forEach((item, i) => {
+    const div = document.createElement('div'); div.className = 'sentence-item'; div.id = `ex4a-item-${i}`;
+    let linkersHtml = '';
+    item.linkers.forEach((linker, j) => { if (j > 0) linkersHtml += ' / '; linkersHtml += `<span class="linker-word" data-idx="${i}" data-linker="${linker}" onclick="selectLinker4a(${i}, '${linker}')">${linker}</span>`; });
+    div.innerHTML = `<span class="sentence-num">${i+1}</span><div class="sentence-text">${item.text}${linkersHtml}${item.after}</div><span class="feedback-icon" id="ex4a-icon-${i}"></span>`;
+    container.appendChild(div);
+  });
+}
+function selectLinker4a(i, linker) {
+  const item = document.getElementById(`ex4a-item-${i}`); const icon = document.getElementById(`ex4a-icon-${i}`); const data = ex4aData[i];
+  item.querySelectorAll('.linker-word').forEach(o => o.classList.remove('crossed', 'wrong-cross', 'correct-linker', 'selected-linker'));
+  item.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect');
+  const clicked = item.querySelector(`.linker-word[data-linker="${linker}"]`);
+  if (clicked) clicked.classList.add('selected-linker');
+  state.ex4a[i] = linker;
+  const isCorrect = linker === data.wrong;
+  if (isCorrect) { if (clicked) { clicked.classList.remove('selected-linker'); clicked.classList.add('crossed'); } flashItem(item, true, true); icon.textContent = '✅'; }
+  else { if (clicked) { clicked.classList.remove('selected-linker'); clicked.classList.add('wrong-cross'); } const correctEl = item.querySelector(`.linker-word[data-linker="${data.wrong}"]`); if (correctEl) correctEl.classList.add('correct-linker'); flashItem(item, false, false); icon.textContent = '❌'; }
+  updateProgress();
+}
+function reset4a() { ex4aData.forEach((_, i) => { const itemEl = document.getElementById(`ex4a-item-${i}`); const icon = document.getElementById(`ex4a-icon-${i}`); itemEl.querySelectorAll('.linker-word').forEach(o => o.classList.remove('crossed', 'wrong-cross', 'correct-linker', 'selected-linker')); itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect'); icon.textContent = ''; delete state.ex4a[i]; }); updateProgress(); }
+
+// ============ EX 4B ============
+function render4b() {
+  const bank = document.getElementById('linkerBank');
+  allLinkers.forEach(l => { const chip = document.createElement('span'); chip.className = 'linker-chip'; chip.textContent = l; bank.appendChild(chip); });
+  const container = document.getElementById('ex4b-items'); container.innerHTML = '';
+  ex4bData.forEach((item, i) => {
+    const div = document.createElement('div'); div.className = 'def-item'; div.id = `ex4b-item-${i}`;
+    let optionsHtml = '<option value="">— select —</option>';
+    allLinkers.forEach(l => { optionsHtml += `<option value="${l}">${l}</option>`; });
+    div.innerHTML = `<div class="def-text"><span class="def-num">${i+1}</span>${item.text}<span class="bold-word">${item.boldWord}</span>${item.after}</div><div class="def-select" id="ex4b-selects-${i}"><select id="ex4b-sel-${i}-0" onchange="clearFeedback4b(${i})">${optionsHtml}</select><select id="ex4b-sel-${i}-1" onchange="clearFeedback4b(${i})">${optionsHtml}</select><select id="ex4b-sel-${i}-2" onchange="clearFeedback4b(${i})">${optionsHtml}</select><select id="ex4b-sel-${i}-3" onchange="clearFeedback4b(${i})">${optionsHtml}</select><span class="feedback-icon" id="ex4b-icon-${i}"></span></div><div class="hint-text" style="font-size:0.8rem;color:var(--muted);margin-top:0.3rem;">Select up to 4 linkers that can replace the bold word</div>`;
+    container.appendChild(div);
+  });
+}
+function clearFeedback4b(i) { document.getElementById(`ex4b-item-${i}`).classList.remove('correct', 'incorrect'); for (let j = 0; j < 4; j++) { const sel = document.getElementById(`ex4b-sel-${i}-${j}`); if (sel) sel.classList.remove('correct-select', 'incorrect-select'); } document.getElementById(`ex4b-icon-${i}`).textContent = ''; updateProgress(); }
+function check4b() {
+  let correct = 0;
+  ex4bData.forEach((item, i) => {
+    const itemEl = document.getElementById(`ex4b-item-${i}`); const icon = document.getElementById(`ex4b-icon-${i}`);
+    const selected = [];
+    for (let j = 0; j < 4; j++) { const sel = document.getElementById(`ex4b-sel-${i}-${j}`); if (sel && sel.value) selected.push(sel.value); }
+    const correctSet = new Set(item.answers.map(a => a.toLowerCase()));
+    const selectedSet = new Set(selected.map(s => s.toLowerCase()));
+    const allCorrect = selected.length === item.answers.length && item.answers.every(a => selectedSet.has(a.toLowerCase()));
+    for (let j = 0; j < 4; j++) { const sel = document.getElementById(`ex4b-sel-${i}-${j}`); if (sel && sel.value) { if (correctSet.has(sel.value.toLowerCase())) { sel.classList.add('correct-select'); sel.classList.remove('incorrect-select'); } else { sel.classList.add('incorrect-select'); sel.classList.remove('correct-select'); } } }
+    if (allCorrect) { itemEl.classList.add('correct'); itemEl.classList.remove('incorrect'); icon.textContent = '✅'; correct++; } else if (selected.length > 0) { itemEl.classList.add('incorrect'); itemEl.classList.remove('correct'); icon.textContent = '❌'; }
+  });
+  showResult('result4b', correct, ex4bData.length); updateProgress();
+}
+function reset4b() { ex4bData.forEach((_, i) => { const itemEl = document.getElementById(`ex4b-item-${i}`); const icon = document.getElementById(`ex4b-icon-${i}`); for (let j = 0; j < 4; j++) { const sel = document.getElementById(`ex4b-sel-${i}-${j}`); if (sel) { sel.value = ''; sel.classList.remove('correct-select', 'incorrect-select'); } } itemEl.classList.remove('correct', 'incorrect'); icon.textContent = ''; }); document.getElementById('result4b').classList.remove('show'); updateProgress(); }
+
+// ============ EX 4C (NEW) ============
+function render4c() {
+  const container = document.getElementById('ex4c-items');
+  container.innerHTML = '';
+  ex4cData.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'transform-item';
+    div.id = `ex4c-item-${i}`;
+    div.innerHTML = `
+      <div class="original-sentence">${i+1}. ${item.original} <span class="keyword-badge">(${item.keyword})</span></div>
+      <div class="transform-input-row">
+        <span>${item.start}</span>
+        <input type="text" class="transform-input" id="ex4c-input-${i}" placeholder="..." autocomplete="off" onkeydown="handleEnter4c(event, ${i})">
+        <span>${item.suffix}</span>
+      </div>
+      <div style="margin-top:0.5rem; display:flex; gap:0.5rem; align-items:center;">
+        <button class="btn btn-small btn-primary" onclick="validate4c(${i})">Check</button>
+        <button class="btn btn-small btn-secondary" onclick="show4c(${i})">Show Answer</button>
+        <span class="feedback-icon" id="ex4c-icon-${i}"></span>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function handleEnter4c(e, i) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    validate4c(i);
+  }
+}
+
+function validate4c(i) {
+  const input = document.getElementById(`ex4c-input-${i}`);
+  const itemEl = document.getElementById(`ex4c-item-${i}`);
+  const icon = document.getElementById(`ex4c-icon-${i}`);
+  const val = input.value.trim().toLowerCase();
+  const answer = ex4cData[i].answer.toLowerCase();
+  
+  if (val === '') {
+    input.classList.remove('correct-input', 'incorrect-input');
+    itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect');
+    icon.textContent = '';
+    return;
+  }
+
+  // Loose matching: check if it contains the keyword and is close in length
+  const keyword = ex4cData[i].keyword.toLowerCase();
+  const hasKeyword = val.includes(keyword);
+  // Allow some flexibility in length (within 20 chars of answer length)
+  const lengthDiff = Math.abs(val.length - answer.length);
+  const isCorrect = val === answer || (hasKeyword && lengthDiff < 15 && val.length > answer.length * 0.7);
+
+  input.classList.remove('correct-input', 'incorrect-input');
+  if (isCorrect) {
+    input.classList.add('correct-input');
+    flashItem(itemEl, true, true);
+    icon.textContent = '✅';
+    state.ex4c[i] = true;
+  } else {
+    input.classList.add('incorrect-input');
+    flashItem(itemEl, false, false);
+    icon.textContent = '❌';
+    state.ex4c[i] = false;
+  }
+  updateProgress();
+}
+
+function show4c(i) {
+  const input = document.getElementById(`ex4c-input-${i}`);
+  const itemEl = document.getElementById(`ex4c-item-${i}`);
+  const icon = document.getElementById(`ex4c-icon-${i}`);
+  input.value = ex4cData[i].answer;
+  input.classList.add('correct-input');
+  input.classList.remove('incorrect-input');
+  itemEl.classList.add('stay-correct');
+  itemEl.classList.remove('incorrect', 'flash-incorrect');
+  icon.textContent = '✅';
+  state.ex4c[i] = true;
+  updateProgress();
+}
+
+function checkAll4c() {
+  let correct = 0;
+  ex4cData.forEach((_, i) => validate4c(i));
+  ex4cData.forEach((_, i) => { if (state.ex4c[i] === true) correct++; });
+  showResult('result4c', correct, ex4cData.length);
+}
+
+function reset4c() {
+  ex4cData.forEach((_, i) => {
+    const input = document.getElementById(`ex4c-input-${i}`);
+    const itemEl = document.getElementById(`ex4c-item-${i}`);
+    const icon = document.getElementById(`ex4c-icon-${i}`);
+    input.value = '';
+    input.classList.remove('correct-input', 'incorrect-input');
+    itemEl.classList.remove('flash-correct', 'flash-incorrect', 'stay-correct', 'correct', 'incorrect');
+    icon.textContent = '';
+    delete state.ex4c[i];
+  });
+  document.getElementById('result4c').classList.remove('show');
+  updateProgress();
+}
+
+function showAll4c() {
+  ex4cData.forEach((_, i) => show4c(i));
+}
+
+// ============ EX 4D (NEW) ============
+function render4d() {
+  const container = document.getElementById('ex4d-items');
+  container.innerHTML = '';
+  ex4dData.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'transform-item'; // Reusing style
+    div.id = `ex4d-item-${i}`;
+    div.style.borderLeftColor = 'var(--primary-light)';
+    div.innerHTML = `
+      <div class="sentence-text" style="font-weight:600; margin-bottom:0.5rem;">${i+1}. ${item.start}...</div>
+      <textarea class="completion-input" id="ex4d-input-${i}" placeholder="Complete the sentence..." oninput="updateProgress()"></textarea>
+      <div style="margin-top:0.5rem; display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+        <button class="btn btn-small btn-secondary" onclick="toggleExample4d(${i})">💡 Show Example</button>
+      </div>
+      <div class="example-answer" id="ex4d-example-${i}">Example: ${item.example}</div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function toggleExample4d(i) {
+  const ex = document.getElementById(`ex4d-example-${i}`);
+  ex.classList.toggle('show');
+}
+
+function reset4d() {
+  ex4dData.forEach((_, i) => {
+    const input = document.getElementById(`ex4d-input-${i}`);
+    const ex = document.getElementById(`ex4d-example-${i}`);
+    input.value = '';
+    ex.classList.remove('show');
+  });
+  updateProgress();
+}
+
+// ============ UTILS ============
+function showResult(id, correct, total) {
+  const el = document.getElementById(id);
+  el.classList.remove('success', 'partial', 'fail');
+  const pct = total > 0 ? correct / total : 0;
+  if (pct === 1) { el.className = 'result-banner show success'; el.innerHTML = `🎉 Perfect! ${correct}/${total} correct!`; launchConfetti(); }
+  else if (pct >= 0.5) { el.className = 'result-banner show partial'; el.innerHTML = `👍 Good effort! ${correct}/${total} correct.`; }
+  else { el.className = 'result-banner show fail'; el.innerHTML = `💪 ${correct}/${total} correct. Review and try again!`; }
+}
+
+function updateProgress() {
+  let total = 0, done = 0;
+  ex1aData.forEach((_, i) => { total++; if (state.ex1a[i] === true) done++; });
+  definitions.forEach((_, i) => { total++; const sel = document.getElementById(`def-select-${i}`); if (sel && sel.classList.contains('correct-select')) done++; });
+  total += 8; done += Object.keys(state.ex1bPairs).length;
+  ex1cData.forEach((_, i) => { total++; const input = document.getElementById(`ex1c-input-${i}`); if (input && input.classList.contains('correct-input')) done++; });
+  ex1dData.forEach((_, i) => { total++; const itemEl = document.getElementById(`ex1d-item-${i}`); if (itemEl && itemEl.classList.contains('stay-correct')) done++; });
+  ex3Data.forEach((_, i) => { total++; const input = document.getElementById(`ex3-input-${i}`); if (input && input.classList.contains('correct-input')) done++; });
+  ex4aData.forEach((_, i) => { total++; const itemEl = document.getElementById(`ex4a-item-${i}`); if (itemEl && itemEl.classList.contains('stay-correct')) done++; });
+  ex4bData.forEach((_, i) => { total++; for (let j = 0; j < 4; j++) { const sel = document.getElementById(`ex4b-sel-${i}-${j}`); if (sel && sel.value) { done++; break; } } });
+  
+  // 4c
+  ex4cData.forEach((_, i) => { total++; if (state.ex4c[i] === true) done++; });
+  // 4d (count as done if text entered)
+  ex4dData.forEach((_, i) => { total++; const input = document.getElementById(`ex4d-input-${i}`); if (input && input.value.trim().length > 5) done++; });
+
+  const pct = Math.round((done / total) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = pct + '%';
+}
+
+function launchConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const particles = [];
+  const colors = ['#4f46e5', '#f59e0b', '#10b981', '#ef4444', '#a855f7', '#ec4899'];
+  for (let i = 0; i < 100; i++) {
+    particles.push({
+      x: Math.random() * canvas.width, y: -20 - Math.random() * 200,
+      vx: (Math.random() - 0.5) * 6, vy: Math.random() * 4 + 2,
+      size: Math.random() * 8 + 4, color: colors[Math.floor(Math.random() * colors.length)],
+      rotation: Math.random() * 360, rotSpeed: (Math.random() - 0.5) * 10
+    });
+  }
+  let frame = 0;
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy; p.vy += 0.1; p.rotation += p.rotSpeed;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.fillStyle = p.color; ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size * 0.6);
+      ctx.restore();
+    });
+    frame++;
+    if (frame < 180) requestAnimationFrame(animate);
+    else ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+  animate();
+}
+
+// ============ INIT ============
+render1a(); render1b(); render1c(); render1d();
+render3(); render4a(); render4b();
+render4c(); render4d();
+updateProgress();
+</script>
+</body>
+</html>
+
